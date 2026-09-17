@@ -1,10 +1,13 @@
-import type { Metadata } from 'next';
+'use client';
+
+import { useEffect, useState } from 'react';
 import { SiteHeader } from '../site-header';
 
-export const metadata: Metadata = { title: 'Resume — Shanyao', description: 'Profile, capabilities and contact details for Shanyao, designer.' };
-
-export default async function ResumePage({ searchParams }: { searchParams: Promise<{ lang?: string }> }) {
-  const lang = (await searchParams).lang === 'zh' ? 'zh' : 'en';
+export default function ResumePage() {
+  const [lang, setLang] = useState<'zh' | 'en'>('en');
+  useEffect(() => {
+    setLang(new URLSearchParams(window.location.search).get('lang') === 'zh' ? 'zh' : 'en');
+  }, []);
   const zh = lang === 'zh';
   return (
     <main lang={zh ? 'zh-CN' : 'en'}>

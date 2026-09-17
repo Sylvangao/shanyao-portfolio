@@ -6,6 +6,7 @@ export function ContactPopover({ lang }: { lang: 'zh' | 'en' }) {
   const [open, setOpen] = useState(false);
   const root = useRef<HTMLDivElement>(null);
   const zh = lang === 'zh';
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
 
   useEffect(() => {
     const close = (event: PointerEvent) => {
@@ -25,7 +26,7 @@ export function ContactPopover({ lang }: { lang: 'zh' | 'en' }) {
   return (
     <div className="hero-actions" ref={root}>
       <a className="social-trigger" href="https://dribbble.com/nealgao" target="_blank" rel="noreferrer" aria-label="View Shanyao on Dribbble">
-        <img src="/icons/dribbble.svg" alt="" aria-hidden="true" />
+        <img src={`${basePath}/icons/dribbble.svg`} alt="" aria-hidden="true" />
       </a>
       <div className="contact-action" data-open={open ? 'true' : 'false'}>
         <button
@@ -35,10 +36,10 @@ export function ContactPopover({ lang }: { lang: 'zh' | 'en' }) {
           aria-controls="wechat-contact-card"
           onClick={() => setOpen((value) => !value)}
         >
-          <img src="/icons/wechat.svg" alt="" aria-hidden="true" /><span>{zh ? '微信联系' : 'Let’s talk'}</span>
+          <img src={`${basePath}/icons/wechat.svg`} alt="" aria-hidden="true" /><span>{zh ? '微信联系' : 'Let’s talk'}</span>
         </button>
         <div className="contact-popover" id="wechat-contact-card" role="dialog" aria-label={zh ? '微信联系方式' : 'WeChat contact'}>
-          <img className="wechat-qr" src="/profile/shanyao-wechat-qr.jpg" alt={zh ? '山药的微信二维码' : 'Shanyao’s WeChat QR code'} />
+          <img className="wechat-qr" src={`${basePath}/profile/shanyao-wechat-qr.jpg`} alt={zh ? '山药的微信二维码' : 'Shanyao’s WeChat QR code'} />
           <div className="contact-popover-copy">
             <strong>{zh ? '微信 · nealgao' : 'WeChat · nealgao'}</strong>
             <span>{zh ? '扫码添加好友' : 'Scan to connect.'}</span>

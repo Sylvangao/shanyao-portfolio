@@ -160,7 +160,7 @@
 @media(max-width:560px){.contact-trigger>img{width:26px;height:26px}}
 
 /* Performance pass: composite transforms instead of repainting large blurred shapes. */
-.hero-ambience{filter:blur(10px) saturate(128%);transform:translate3d(-50%,-50%,0)}
+.hero-ambience{filter:blur(15px) saturate(132%);transform:translate3d(-50%,-50%,0)}
 .fluid-orb{will-change:transform,opacity;filter:none!important}
 .fluid-orb-a{border-radius:46% 54% 62% 38%/55% 42% 58% 45%!important}
 .fluid-orb-b{border-radius:61% 39% 45% 55%/41% 63% 37% 59%!important}
@@ -170,4 +170,4 @@
 @keyframes orb-c{0%,100%{transform:translate3d(0,2%,0) scale(.91,1.04) rotate(-4deg);opacity:.55}23%{transform:translate3d(-4%,-2%,0) scale(1.04,.94) rotate(5deg);opacity:.65}49%{transform:translate3d(2%,-4%,0) scale(.95,1.08) rotate(8deg);opacity:.58}74%{transform:translate3d(5%,1%,0) scale(1.07,.92) rotate(-5deg);opacity:.64}}
 .project-grid,.statement-card,.site-footer{content-visibility:auto}
 .project-grid{contain-intrinsic-size:auto 1500px}.statement-card{contain-intrinsic-size:auto 650px}.site-footer{contain-intrinsic-size:auto 620px}
-@media(max-width:560px){.hero-ambience{filter:blur(8px) saturate(126%)}}
+@media(max-width:560px){.hero-ambience{filter:blur(11px) saturate(130%)}}
