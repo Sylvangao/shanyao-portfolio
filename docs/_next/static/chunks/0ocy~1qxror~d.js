@@ -1,0 +1,1 @@
+(globalThis.TURBOPACK||(globalThis.TURBOPACK=[])).push(["object"==typeof document?document.currentScript:void 0,75097,o=>{"use strict";var t=o.i(88110);o.s(["default",0,function(){return(0,t.useEffect)(()=>{window.location.replace("/shanyao-portfolio/work/")},[]),null}])}]);
