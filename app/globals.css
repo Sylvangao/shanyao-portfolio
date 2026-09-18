@@ -221,3 +221,18 @@
 
 /* Final wordmark lockup: 2× registered mark with a one-pixel optical gap. */
 .wordmark .registered-mark{position:relative!important;top:-.16em!important;right:auto!important;margin:0!important;font-size:14px!important;line-height:1!important;letter-spacing:0!important}
+
+/* Two smaller, softer colour fields keep the ambience clear of the project edge. */
+.hero-ambience{filter:blur(22px) saturate(132%)}
+.fluid-orb-a{left:9%;top:15%;width:50%;height:52%}
+.fluid-orb-b{right:9%;top:13%;width:50%;height:52%}
+@media(max-width:560px){
+  .hero-ambience{filter:blur(18px) saturate(130%)}
+  .fluid-orb-a{left:4%;top:18%;width:53%;height:47%}
+  .fluid-orb-b{right:4%;top:16%;width:53%;height:47%}
+}
+
+/* One optical size down for the supporting copy at every breakpoint. */
+.hero-note p{font-size:16px}
+@media(max-width:760px){.hero-note p{font-size:14px}}
+@media(max-width:560px){.hero-note p{font-size:13px}}
