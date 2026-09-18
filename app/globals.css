@@ -171,3 +171,9 @@
 .project-grid,.statement-card,.site-footer{content-visibility:auto}
 .project-grid{contain-intrinsic-size:auto 1500px}.statement-card{contain-intrinsic-size:auto 650px}.site-footer{contain-intrinsic-size:auto 620px}
 @media(max-width:560px){.hero-ambience{filter:blur(11px) saturate(130%)}}
+
+/* Compact fixed-height introduction: keeps the first project visible sooner. */
+.work-hero{height:720px;min-height:0;padding-block:64px}
+.focus-title{font-weight:600}
+@media(max-width:760px){.work-hero{height:640px;min-height:0;padding-block:54px 40px}}
+@media(max-width:560px){.work-hero{height:570px;min-height:0;padding-block:44px 30px}}
