@@ -174,7 +174,7 @@
 
 /* Compact fixed-height introduction: keeps the first project visible sooner. */
 .work-hero{height:720px;min-height:0;padding-block:64px}
-.focus-title{font-weight:600}
+.focus-title{font-weight:700;font-variation-settings:"wght" 700}
 @media(max-width:760px){.work-hero{height:640px;min-height:0;padding-block:54px 40px}}
 @media(max-width:560px){.work-hero{height:570px;min-height:0;padding-block:44px 30px}}
 
