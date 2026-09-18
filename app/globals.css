@@ -236,3 +236,8 @@
 .hero-note p{font-size:16px}
 @media(max-width:760px){.hero-note p{font-size:14px}}
 @media(max-width:560px){.hero-note p{font-size:13px}}
+
+/* Match the wordmark typography to the hero headline. */
+.wordmark{font-family:"Google Sans","PingFang SC",sans-serif;font-weight:700;letter-spacing:-.025em}
+.wordmark .registered-mark{top:-.24em!important;margin-left:-2px!important;font-size:16px!important;font-weight:700!important}
+@media(max-width:560px){.wordmark .registered-mark{top:-.2em!important;margin-left:-2px!important;font-size:13px!important}}
