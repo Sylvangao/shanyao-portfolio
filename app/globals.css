@@ -260,3 +260,15 @@
 @media(hover:hover) and (pointer:fine) and (min-width:1025px){.has-custom-cursor,.has-custom-cursor *{cursor:none!important}}
 @media(max-width:1024px),(hover:none),(pointer:coarse){.cursor-dot{display:none}.hero-copy,.project-card{transform:none}.hero-ambience{transform:translate3d(-50%,-50%,0)}}
 @media(prefers-reduced-motion:reduce){.hero-copy,.project-card{transform:none}.hero-ambience{transform:translate3d(-50%,-50%,0)}.cursor-dot{transition:none}}
+
+/* Chinese glyphs need half the tracking used by their Latin counterparts. */
+main[lang="zh-CN"] .focus-title{letter-spacing:-.0125em}
+main[lang="zh-CN"] .hero-note p{letter-spacing:-.003em}
+main[lang="zh-CN"] .project-art h2{letter-spacing:-.03em}
+main[lang="zh-CN"] .kicker{letter-spacing:.04em}
+main[lang="zh-CN"] .statement-card h2{letter-spacing:-.0325em}
+main[lang="zh-CN"] .statement-copy{letter-spacing:-.01em}
+main[lang="zh-CN"] .site-footer>a{letter-spacing:-.035em}
+main[lang="zh-CN"] .resume-hero h1{letter-spacing:-.0375em}
+main[lang="zh-CN"] .resume-intro{letter-spacing:-.02em}
+main[lang="zh-CN"] .resume-profile p{letter-spacing:-.0175em}
