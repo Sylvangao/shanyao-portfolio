@@ -272,3 +272,7 @@ main[lang="zh-CN"] .site-footer>a{letter-spacing:-.035em}
 main[lang="zh-CN"] .resume-hero h1{letter-spacing:-.0375em}
 main[lang="zh-CN"] .resume-intro{letter-spacing:-.02em}
 main[lang="zh-CN"] .resume-profile p{letter-spacing:-.0175em}
+
+/* Double the colour-field motion speed without changing its path. */
+.fluid-orb-a{animation-duration:4.55s}
+.fluid-orb-b{animation-duration:6.35s}
