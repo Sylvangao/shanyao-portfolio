@@ -24,7 +24,7 @@ export function FocusHeadline({ words, label, href }: { words: string[]; label: 
     <span className="headline-line" key={line}>
       {tokenize(line).map((word) => {
         const index = wordIndex++;
-        return <span className="headline-word" style={animated ? { '--word-delay': `${index * 45}ms` } as CSSProperties : undefined} key={`${line}-${index}`}>{word}</span>;
+        return <span className="headline-word" style={animated ? { '--word-delay': `${index * 75}ms` } as CSSProperties : undefined} key={`${line}-${index}`}>{word}</span>;
       })}
     </span>
   ));
