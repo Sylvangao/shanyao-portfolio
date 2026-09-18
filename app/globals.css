@@ -196,3 +196,10 @@
   to{opacity:1;transform:translate3d(0,0,0)}
 }
 @media(prefers-reduced-motion:reduce){.focus-base span,.intro-row{animation:none}}
+
+/* Shared road mark for the browser tab and the on-page wordmark. */
+.wordmark{display:flex;align-items:center;gap:9px}
+.wordmark>img{width:28px;height:28px;flex:0 0 auto;border-radius:8px}
+.wordmark>b{position:relative;font:inherit;font-weight:inherit;letter-spacing:inherit}
+.wordmark b span{position:absolute;top:-.38em;right:-10px;margin:0}
+@media(max-width:560px){.wordmark{gap:6px}.wordmark>img{width:23px;height:23px;border-radius:6px}.wordmark b span{right:-8px}}

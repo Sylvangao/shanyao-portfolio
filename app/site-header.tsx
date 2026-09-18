@@ -3,7 +3,10 @@ export function SiteHeader({ active, lang }: { active: 'work' | 'resume'; lang: 
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
   return (
     <header className="site-header">
-      <a className="wordmark" href={`${basePath}/work/${suffix}`} aria-label="Shanyao work">Shanyao<span>®</span></a>
+      <a className="wordmark" href={`${basePath}/work/${suffix}`} aria-label="Shanyao work">
+        <img src={`${basePath}/favicon.svg`} alt="" aria-hidden="true" />
+        <b>Shanyao<span>®</span></b>
+      </a>
       <nav className={`page-tabs active-${active}`} aria-label="Primary navigation">
         <span className="tab-glider" aria-hidden="true" />
         <a className={active === 'work' ? 'active' : ''} href={`${basePath}/work/${suffix}`}>Work</a>
