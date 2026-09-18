@@ -299,3 +299,18 @@ main[lang="zh-CN"] .resume-profile p{letter-spacing:-.0175em}
 }
 
 .contact-trigger{font-weight:400}
+
+/* Flip the desktop contact card below its trigger when there is no room above. */
+@media(min-width:561px){
+  .contact-action[data-placement="below"] .contact-popover{
+    top:calc(100% + 12px);
+    bottom:auto;
+    transform:translateY(-8px) scale(.97);
+    transform-origin:left top;
+  }
+  .contact-action[data-placement="below"]:hover .contact-popover,
+  .contact-action[data-placement="below"]:focus-within .contact-popover,
+  .contact-action[data-placement="below"][data-open="true"] .contact-popover{
+    transform:translateY(0) scale(1);
+  }
+}

@@ -1,12 +1,21 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 export function ContactPopover({ lang }: { lang: 'zh' | 'en' }) {
   const [open, setOpen] = useState(false);
+  const [placement, setPlacement] = useState<'above' | 'below'>('above');
   const root = useRef<HTMLDivElement>(null);
   const zh = lang === 'zh';
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
+  const placePopover = useCallback(() => {
+    const trigger = root.current?.querySelector<HTMLElement>('.contact-trigger');
+    const popover = root.current?.querySelector<HTMLElement>('.contact-popover');
+    if (!trigger || !popover) return;
+    const triggerRect = trigger.getBoundingClientRect();
+    const requiredSpace = popover.offsetHeight + 20;
+    setPlacement(triggerRect.top < requiredSpace ? 'below' : 'above');
+  }, []);
 
   useEffect(() => {
     const close = (event: PointerEvent) => {
@@ -23,18 +32,29 @@ export function ContactPopover({ lang }: { lang: 'zh' | 'en' }) {
     };
   }, []);
 
+  useEffect(() => {
+    if (!open) return;
+    placePopover();
+    window.addEventListener('scroll', placePopover, { passive: true });
+    window.addEventListener('resize', placePopover);
+    return () => {
+      window.removeEventListener('scroll', placePopover);
+      window.removeEventListener('resize', placePopover);
+    };
+  }, [open, placePopover]);
+
   return (
     <div className="hero-actions" ref={root}>
       <a className="social-trigger" href="https://dribbble.com/nealgao" target="_blank" rel="noreferrer" aria-label="View Shanyao on Dribbble">
         <img src={`${basePath}/icons/dribbble.svg`} alt="" aria-hidden="true" />
       </a>
-      <div className="contact-action" data-open={open ? 'true' : 'false'}>
+      <div className="contact-action" data-open={open ? 'true' : 'false'} data-placement={placement} onPointerEnter={placePopover} onFocusCapture={placePopover}>
         <button
           className="contact-trigger"
           type="button"
           aria-expanded={open}
           aria-controls="wechat-contact-card"
-          onClick={() => setOpen((value) => !value)}
+          onClick={() => { placePopover(); setOpen((value) => !value); }}
         >
           <img src={`${basePath}/icons/wechat.svg`} alt="" aria-hidden="true" /><span>{zh ? '微信联系' : 'Let’s talk'}</span>
         </button>
