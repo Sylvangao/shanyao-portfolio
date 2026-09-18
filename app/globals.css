@@ -248,3 +248,15 @@
   mask-image:radial-gradient(circle 185px at var(--pointer-x) var(--pointer-y),transparent 0,transparent 37%,rgba(0,0,0,.18) 54%,rgba(0,0,0,.72) 76%,#000 100%);
 }
 @media(hover:none){.focus-base{-webkit-mask-image:none;mask-image:none}}
+
+/* Layered scroll motion and a logo-red pointer, inspired by NextWeb's interaction scale. */
+.hero-copy{transform:translate3d(0,var(--hero-shift,0),0);will-change:transform}
+.hero-ambience{transform:translate3d(-50%,calc(-50% + var(--ambience-shift,0px)),0)}
+.project-card{transform:translate3d(0,var(--card-shift,0),0);will-change:transform}
+.cursor-dot{position:fixed;z-index:2147483647;left:0;top:0;width:20px;height:20px;border-radius:50%;background:#ff5a6b;pointer-events:none;opacity:0;transform:translate3d(-40px,-40px,0);transition:width .2s ease,height .2s ease,opacity .16s ease,background-color .2s ease;will-change:transform,width,height;mix-blend-mode:normal}
+.cursor-dot.is-visible{opacity:1}
+.cursor-dot.is-hovering{width:30px;height:30px}
+.cursor-dot.is-pressed{width:15px;height:15px}
+@media(hover:hover) and (pointer:fine) and (min-width:1025px){.has-custom-cursor,.has-custom-cursor *{cursor:none!important}}
+@media(max-width:1024px),(hover:none),(pointer:coarse){.cursor-dot{display:none}.hero-copy,.project-card{transform:none}.hero-ambience{transform:translate3d(-50%,-50%,0)}}
+@media(prefers-reduced-motion:reduce){.hero-copy,.project-card{transform:none}.hero-ambience{transform:translate3d(-50%,-50%,0)}.cursor-dot{transition:none}}

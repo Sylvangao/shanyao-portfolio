@@ -17,10 +17,65 @@ export default function WorkPage() {
   useEffect(() => {
     setLang(new URLSearchParams(window.location.search).get('lang') === 'zh' ? 'zh' : 'en');
   }, []);
+  useEffect(() => {
+    const hero = document.querySelector<HTMLElement>('.work-hero');
+    const cards = Array.from(document.querySelectorAll<HTMLElement>('.project-card'));
+    const cursor = document.querySelector<HTMLElement>('.cursor-dot');
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let frame = 0;
+
+    const updateParallax = () => {
+      frame = 0;
+      if (reduceMotion.matches) return;
+      const scroll = window.scrollY;
+      hero?.style.setProperty('--hero-shift', `${Math.min(scroll * .11, 78)}px`);
+      hero?.style.setProperty('--ambience-shift', `${Math.min(scroll * .045, 32)}px`);
+      const viewportCenter = window.innerHeight / 2;
+      const strengths = [.022, .034, .026];
+      cards.forEach((card, index) => {
+        const rect = card.getBoundingClientRect();
+        const distance = rect.top + rect.height / 2 - viewportCenter;
+        const shift = Math.max(-24, Math.min(24, -distance * strengths[index % strengths.length]));
+        card.style.setProperty('--card-shift', `${shift}px`);
+      });
+    };
+    const requestParallax = () => {
+      if (!frame) frame = window.requestAnimationFrame(updateParallax);
+    };
+    const moveCursor = (event: PointerEvent) => {
+      if (!cursor || event.pointerType === 'touch') return;
+      cursor.style.transform = `translate3d(${event.clientX}px,${event.clientY}px,0) translate(-50%,-50%)`;
+      cursor.classList.add('is-visible');
+      cursor.classList.toggle('is-hovering', Boolean((event.target as Element)?.closest('a,button,[role="button"]')));
+    };
+    const hideCursor = () => cursor?.classList.remove('is-visible');
+    const pressCursor = () => cursor?.classList.add('is-pressed');
+    const releaseCursor = () => cursor?.classList.remove('is-pressed');
+
+    document.documentElement.classList.add('has-custom-cursor');
+    updateParallax();
+    window.addEventListener('scroll', requestParallax, { passive: true });
+    window.addEventListener('resize', requestParallax);
+    window.addEventListener('pointermove', moveCursor, { passive: true });
+    document.documentElement.addEventListener('mouseleave', hideCursor);
+    window.addEventListener('pointerdown', pressCursor, { passive: true });
+    window.addEventListener('pointerup', releaseCursor, { passive: true });
+    return () => {
+      if (frame) window.cancelAnimationFrame(frame);
+      document.documentElement.classList.remove('has-custom-cursor');
+      window.removeEventListener('scroll', requestParallax);
+      window.removeEventListener('resize', requestParallax);
+      window.removeEventListener('pointermove', moveCursor);
+      document.documentElement.removeEventListener('mouseleave', hideCursor);
+      window.removeEventListener('pointerdown', pressCursor);
+      window.removeEventListener('pointerup', releaseCursor);
+    };
+  }, []);
   const zh = lang === 'zh';
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
   return (
     <main lang={lang === 'zh' ? 'zh-CN' : 'en'}>
+      <span className="cursor-dot" aria-hidden="true" />
       <SiteHeader active="work" lang={lang} />
       <section className="work-hero">
         <MeshBackground />
