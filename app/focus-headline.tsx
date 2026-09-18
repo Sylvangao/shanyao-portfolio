@@ -12,7 +12,7 @@ function tokenize(line: string) {
   }, []);
 }
 
-export function FocusHeadline({ words, label, href }: { words: string[]; label: string; href: string }) {
+export function FocusHeadline({ words, label, href, emphasis = [] }: { words: string[]; label: string; href: string; emphasis?: string[] }) {
   const moveMask = (event: PointerEvent<HTMLAnchorElement>) => {
     const bounds = event.currentTarget.getBoundingClientRect();
     event.currentTarget.style.setProperty('--pointer-x', `${event.clientX - bounds.left}px`);
@@ -24,7 +24,9 @@ export function FocusHeadline({ words, label, href }: { words: string[]; label: 
     <span className="headline-line" key={line}>
       {tokenize(line).map((word) => {
         const index = wordIndex++;
-        return <span className="headline-word" style={animated ? { '--word-delay': `${index * 75}ms` } as CSSProperties : undefined} key={`${line}-${index}`}>{word}</span>;
+        const normalized = word.replace(/[，。！？、；：,.!?;:]/g, '').toLowerCase();
+        const strong = emphasis.some((term) => term.toLowerCase().includes(normalized));
+        return <span className={`headline-word${strong ? ' is-strong' : ''}`} style={animated ? { '--word-delay': `${index * 75}ms` } as CSSProperties : undefined} key={`${line}-${index}`}>{word}</span>;
       })}
     </span>
   ));

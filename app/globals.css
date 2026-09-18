@@ -314,3 +314,7 @@ main[lang="zh-CN"] .resume-profile p{letter-spacing:-.0175em}
     transform:translateY(0) scale(1);
   }
 }
+
+/* A small set of semantic anchors stays bold; supporting headline words become light. */
+.focus-title .headline-word{font-weight:300;font-variation-settings:"wght" 300}
+.focus-title .headline-word.is-strong{font-weight:700;font-variation-settings:"wght" 700}
