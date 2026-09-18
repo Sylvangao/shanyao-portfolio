@@ -187,8 +187,8 @@
 .focus-title .headline-line{display:flex;width:max-content;max-width:100%;gap:0 .19em;white-space:nowrap}
 .focus-title .headline-word{display:inline-block;width:auto;max-width:none;white-space:nowrap}
 .focus-base .headline-word{animation:hero-title-in 300ms ease-in-out var(--word-delay,0ms) both}
-.intro-row{animation:hero-support-in 300ms ease-in-out 680ms both}
-.hero-actions{animation:hero-actions-in 300ms ease-in-out 1080ms both}
+.intro-row{animation:hero-support-in 400ms ease-in-out 680ms both}
+.hero-actions{animation:hero-actions-in 400ms ease-in-out 1080ms both}
 @keyframes hero-title-in{
   from{opacity:.001;transform:translate3d(0,10px,0);filter:blur(10px)}
   to{opacity:1;transform:translate3d(0,0,0);filter:blur(0)}
