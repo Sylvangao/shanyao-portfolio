@@ -42,7 +42,7 @@ export function ContactPopover({ lang }: { lang: 'zh' | 'en' }) {
           <img className="wechat-qr" src={`${basePath}/profile/shanyao-wechat-qr.jpg`} alt={zh ? '山药的微信二维码' : 'Shanyao’s WeChat QR code'} />
           <div className="contact-popover-copy">
             <strong>{zh ? '微信 · nealgao' : 'WeChat · nealgao'}</strong>
-            <span>{zh ? '扫码添加好友' : 'Scan to connect.'}</span>
+            <span>{zh ? '加我微信，聊聊你的项目。' : 'Add me and tell me about your project.'}</span>
           </div>
         </div>
       </div>

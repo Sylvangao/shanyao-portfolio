@@ -28,7 +28,7 @@ export default function WorkPage() {
           <FocusHeadline words={zh ? ['化繁为简，','设计真正有效的产品。'] : ['Complexity made clear.','Products designed to grow.']} label={zh ? '化繁为简，设计真正有效的产品' : 'Complexity made clear. Products designed to grow'} href={zh ? '/work?lang=zh' : '/work'} />
           <div className="intro-row">
             <img className="profile-avatar" src={`${basePath}/profile/shanyao-avatar.jpg`} width="58" height="58" alt={zh ? '山药的头像' : 'Portrait of Shanyao'} />
-            <div className="hero-note"><p>{zh ? <><span>我是山药，一名独立产品设计师，拥有 13 年百度、魅族、知乎与腾讯的设计经验。</span><span>我专注于将复杂想法转化为清晰、美观且真正解决问题的数字产品。</span></> : <><span>I’m Shanyao, an independent product designer with 13 years across Baidu, Meizu, Zhihu and Tencent.</span><span>I turn complex ideas into clear, thoughtful digital products that solve real problems.</span></>}</p></div>
+            <div className="hero-note"><p>{zh ? <><span>我是山药，一名拥有 13 年经验的独立产品设计师，曾就职于百度、魅族、知乎与腾讯。</span><span>我专注于将复杂想法转化为清晰、有效的数字产品。</span></> : <><span>I’m Shanyao, an independent product designer.</span><span>Across 13 years at Baidu, Meizu, Zhihu and Tencent, I’ve turned complex ideas into clear digital products that work.</span></>}</p></div>
           </div>
           <ContactPopover lang={lang} />
         </div>

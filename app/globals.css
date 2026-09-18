@@ -213,3 +213,8 @@
 /* Keep the enlarged registered mark optically attached to the name. */
 .wordmark>b{display:inline-flex;align-items:flex-start}
 .wordmark b span{position:relative;top:-.42em;right:auto;margin-left:1px;font-size:14px;line-height:1}
+
+/* The introduction remains compact even after the larger type adjustment. */
+.hero-note p{display:-webkit-box;max-width:820px;overflow:hidden;-webkit-box-orient:vertical;-webkit-line-clamp:3;line-clamp:3;text-overflow:ellipsis;text-wrap:pretty}
+.hero-note p span{display:inline}
+.hero-note p span+span::before{content:" "}
