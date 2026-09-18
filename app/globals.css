@@ -241,3 +241,10 @@
 .wordmark{font-family:"Google Sans","PingFang SC",sans-serif;font-weight:700;letter-spacing:-.025em}
 .wordmark .registered-mark{top:-.24em!important;margin-left:-2px!important;font-size:16px!important;font-weight:700!important}
 @media(max-width:560px){.wordmark .registered-mark{top:-.2em!important;margin-left:-2px!important;font-size:13px!important}}
+
+/* Complementary masks prevent the sharp and blurred headline layers overlapping. */
+.focus-stage:hover .focus-base{
+  -webkit-mask-image:radial-gradient(circle 185px at var(--pointer-x) var(--pointer-y),transparent 0,transparent 37%,rgba(0,0,0,.18) 54%,rgba(0,0,0,.72) 76%,#000 100%);
+  mask-image:radial-gradient(circle 185px at var(--pointer-x) var(--pointer-y),transparent 0,transparent 37%,rgba(0,0,0,.18) 54%,rgba(0,0,0,.72) 76%,#000 100%);
+}
+@media(hover:none){.focus-base{-webkit-mask-image:none;mask-image:none}}
