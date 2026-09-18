@@ -1,6 +1,7 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { LiquidGlass, type LiquidGlassHandle } from 'liquid-glass-web-react';
 import { SiteHeader } from '../site-header';
 import { FocusHeadline } from '../focus-headline';
 import { MeshBackground } from '../mesh-background';
@@ -14,6 +15,7 @@ const projects = [
 
 export default function WorkPage() {
   const [lang, setLang] = useState<'zh' | 'en'>('en');
+  const glassCursor = useRef<LiquidGlassHandle>(null);
   useEffect(() => {
     setLang(new URLSearchParams(window.location.search).get('lang') === 'zh' ? 'zh' : 'en');
   }, []);
@@ -22,12 +24,23 @@ export default function WorkPage() {
     const header = document.querySelector<HTMLElement>('.site-header');
     const headline = document.querySelector<HTMLElement>('.focus-stage');
     const cards = Array.from(document.querySelectorAll<HTMLElement>('.project-card'));
-    const cursor = document.querySelector<HTMLElement>('.cursor-dot');
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
     let frame = 0;
     let targetScroll = window.scrollY;
     let smoothScroll = targetScroll;
     let headlineStart = headline ? headline.getBoundingClientRect().top + targetScroll : 280;
+    let lastPointer = { x: -100, y: -100 };
+    let hoveringControl = false;
+
+    const positionGlass = () => {
+      const element = glassCursor.current?.element;
+      if (!element || lastPointer.x < 0) return;
+      const rect = element.getBoundingClientRect();
+      glassCursor.current?.setPosition(
+        (lastPointer.x - rect.left) / rect.width,
+        (lastPointer.y - rect.top) / rect.height,
+      );
+    };
 
     const updateParallax = () => {
       if (reduceMotion.matches) {
@@ -70,17 +83,25 @@ export default function WorkPage() {
     const requestParallax = () => {
       targetScroll = window.scrollY;
       if (headline && targetScroll === 0) headlineStart = headline.getBoundingClientRect().top;
+      positionGlass();
       if (!frame) frame = window.requestAnimationFrame(updateParallax);
     };
     const moveCursor = (event: PointerEvent) => {
-      if (!cursor || event.pointerType === 'touch') return;
-      cursor.style.transform = `translate3d(${event.clientX}px,${event.clientY}px,0) translate(-50%,-50%)`;
-      cursor.classList.add('is-visible');
-      cursor.classList.toggle('is-hovering', Boolean((event.target as Element)?.closest('a,button,[role="button"]')));
+      if (event.pointerType === 'touch') return;
+      lastPointer = { x: event.clientX, y: event.clientY };
+      positionGlass();
+      const nextHovering = Boolean((event.target as Element)?.closest('a,button,[role="button"]'));
+      if (nextHovering !== hoveringControl) {
+        hoveringControl = nextHovering;
+        glassCursor.current?.engine?.setOptions({ width: nextHovering ? 56 : 44, height: nextHovering ? 56 : 44 });
+      }
     };
-    const hideCursor = () => cursor?.classList.remove('is-visible');
-    const pressCursor = () => cursor?.classList.add('is-pressed');
-    const releaseCursor = () => cursor?.classList.remove('is-pressed');
+    const hideCursor = () => {
+      lastPointer = { x: -100, y: -100 };
+      glassCursor.current?.setPosition(-1, -1);
+    };
+    const pressCursor = () => glassCursor.current?.engine?.setOptions({ width: 38, height: 38 });
+    const releaseCursor = () => glassCursor.current?.engine?.setOptions({ width: hoveringControl ? 56 : 44, height: hoveringControl ? 56 : 44 });
 
     document.documentElement.classList.add('has-custom-cursor');
     requestParallax();
@@ -104,8 +125,26 @@ export default function WorkPage() {
   const zh = lang === 'zh';
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
   return (
+    <LiquidGlass
+      ref={glassCursor}
+      className="liquid-page"
+      x={-1}
+      y={-1}
+      width={44}
+      height={44}
+      radius="auto"
+      strength={.1}
+      chromaticAberration={.22}
+      blur={.2}
+      depth={10}
+      curvature={.88}
+      glow={.14}
+      edgeHighlight={.4}
+      specular={1.05}
+      quality={128}
+      shadow="0 8px 22px rgba(31,38,55,.12), inset 0 1px 1px rgba(255,255,255,.82)"
+    >
     <main className="work-page" lang={lang === 'zh' ? 'zh-CN' : 'en'}>
-      <span className="cursor-dot" aria-hidden="true" />
       <SiteHeader active="work" lang={lang} />
       <section className="work-hero">
         <MeshBackground />
@@ -132,5 +171,6 @@ export default function WorkPage() {
       <section className="statement-card"><p className="kicker">{zh ? '设计方法' : 'Approach'}</p><h2>{zh ? <>清晰易用，<br />也令人难忘。</> : <>Clear enough to use.<br />Distinct enough to remember.</>}</h2><p className="statement-copy">{zh ? '从真实问题出发，将研究洞察、产品思维与视觉表达连接起来，形成清晰一致、可持续演进的产品体验。' : 'I work from the problem outward—connecting research, product thinking and crafted visual detail into one coherent experience.'}</p></section>
       <footer className="site-footer"><p>{zh ? '正在寻找设计伙伴或资深设计师？' : 'Have a role or project in mind?'}</p><a href="mailto:hello@example.com">{zh ? '聊一聊' : 'Let’s talk'} <span>↗</span></a><div><span>Shanyao — Designer</span><span>© 2026</span></div></footer>
     </main>
+    </LiquidGlass>
   );
 }
