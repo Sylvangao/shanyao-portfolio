@@ -276,3 +276,24 @@ main[lang="zh-CN"] .resume-profile p{letter-spacing:-.0175em}
 /* Double the colour-field motion speed without changing its path. */
 .fluid-orb-a{animation-duration:4.55s}
 .fluid-orb-b{animation-duration:6.35s}
+
+/* On phones the QR card behaves like a viewport-centred dialog, never a clipped tooltip. */
+@media(max-width:560px){
+  .contact-popover{
+    position:fixed;
+    left:50%;
+    right:auto;
+    top:50%;
+    bottom:auto;
+    width:min(360px,calc(100vw - 40px));
+    max-height:calc(100dvh - 40px);
+    overflow:auto;
+    transform:translate(-50%,calc(-50% + 8px)) scale(.97);
+    transform-origin:center;
+  }
+  .contact-action:hover .contact-popover,
+  .contact-action:focus-within .contact-popover,
+  .contact-action[data-open="true"] .contact-popover{
+    transform:translate(-50%,-50%) scale(1);
+  }
+}
