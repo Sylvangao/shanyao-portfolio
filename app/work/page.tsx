@@ -23,13 +23,20 @@ export default function WorkPage() {
     const cursor = document.querySelector<HTMLElement>('.cursor-dot');
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
     let frame = 0;
+    let targetScroll = window.scrollY;
+    let smoothScroll = targetScroll;
 
     const updateParallax = () => {
-      frame = 0;
-      if (reduceMotion.matches) return;
-      const scroll = window.scrollY;
-      hero?.style.setProperty('--hero-shift', `${Math.min(scroll * .11, 78)}px`);
-      hero?.style.setProperty('--ambience-shift', `${Math.min(scroll * .045, 32)}px`);
+      if (reduceMotion.matches) {
+        frame = 0;
+        return;
+      }
+      smoothScroll += (targetScroll - smoothScroll) * .11;
+      const lag = targetScroll - smoothScroll;
+      const heroShift = Math.max(-78, Math.min(78, lag * .38));
+      const ambienceShift = Math.max(-24, Math.min(24, lag * .1));
+      hero?.style.setProperty('--hero-shift', `${heroShift}px`);
+      hero?.style.setProperty('--ambience-shift', `${ambienceShift}px`);
       const viewportCenter = window.innerHeight / 2;
       const strengths = [.022, .034, .026];
       cards.forEach((card, index) => {
@@ -38,8 +45,17 @@ export default function WorkPage() {
         const shift = Math.max(-24, Math.min(24, -distance * strengths[index % strengths.length]));
         card.style.setProperty('--card-shift', `${shift}px`);
       });
+      if (Math.abs(lag) > .1) {
+        frame = window.requestAnimationFrame(updateParallax);
+      } else {
+        smoothScroll = targetScroll;
+        hero?.style.setProperty('--hero-shift', '0px');
+        hero?.style.setProperty('--ambience-shift', '0px');
+        frame = 0;
+      }
     };
     const requestParallax = () => {
+      targetScroll = window.scrollY;
       if (!frame) frame = window.requestAnimationFrame(updateParallax);
     };
     const moveCursor = (event: PointerEvent) => {
@@ -53,7 +69,7 @@ export default function WorkPage() {
     const releaseCursor = () => cursor?.classList.remove('is-pressed');
 
     document.documentElement.classList.add('has-custom-cursor');
-    updateParallax();
+    requestParallax();
     window.addEventListener('scroll', requestParallax, { passive: true });
     window.addEventListener('resize', requestParallax);
     window.addEventListener('pointermove', moveCursor, { passive: true });
