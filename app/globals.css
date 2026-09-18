@@ -220,4 +220,4 @@
 .hero-note p span+span::before{content:" "}
 
 /* Final wordmark lockup: 2× registered mark with a one-pixel optical gap. */
-.wordmark .registered-mark{position:relative!important;top:-.42em!important;right:auto!important;margin:0 0 0 1px!important;font-size:14px!important;line-height:1!important;letter-spacing:0!important}
+.wordmark .registered-mark{position:relative!important;top:-.16em!important;right:auto!important;margin:0!important;font-size:14px!important;line-height:1!important;letter-spacing:0!important}
