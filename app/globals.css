@@ -177,3 +177,8 @@
 .focus-title{font-weight:600}
 @media(max-width:760px){.work-hero{height:640px;min-height:0;padding-block:54px 40px}}
 @media(max-width:560px){.work-hero{height:570px;min-height:0;padding-block:44px 30px}}
+
+/* More legible introduction copy across breakpoints. */
+.hero-note p{font-size:17px}
+@media(max-width:760px){.hero-note p{font-size:15px}}
+@media(max-width:560px){.hero-note p{font-size:14px}}
