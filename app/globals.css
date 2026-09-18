@@ -183,19 +183,20 @@
 @media(max-width:760px){.hero-note p{font-size:15px}}
 @media(max-width:560px){.hero-note p{font-size:14px}}
 
-/* Intro reveal: two headline lines lead, supporting copy joins near the end. */
-.focus-base span{animation:hero-title-in 300ms ease-in-out both}
-.focus-base span:nth-child(2){animation-delay:70ms}
-.intro-row{animation:hero-support-in 300ms ease-in-out 300ms both}
+/* Intro reveal: each word follows the previous one in a continuous sequence. */
+.focus-title .headline-line{display:flex;width:max-content;max-width:100%;gap:0 .19em;white-space:nowrap}
+.focus-title .headline-word{display:inline-block;width:auto;max-width:none;white-space:nowrap}
+.focus-base .headline-word{animation:hero-title-in 300ms ease-in-out var(--word-delay,0ms) both}
+.intro-row{animation:hero-support-in 300ms ease-in-out 480ms both}
 @keyframes hero-title-in{
-  from{opacity:0;transform:translate3d(0,32px,0);filter:blur(8px)}
+  from{opacity:.001;transform:translate3d(0,10px,0);filter:blur(10px)}
   to{opacity:1;transform:translate3d(0,0,0);filter:blur(0)}
 }
 @keyframes hero-support-in{
   from{opacity:0;transform:translate3d(0,12px,0)}
   to{opacity:1;transform:translate3d(0,0,0)}
 }
-@media(prefers-reduced-motion:reduce){.focus-base span,.intro-row{animation:none}}
+@media(prefers-reduced-motion:reduce){.focus-base .headline-word,.intro-row{animation:none}}
 
 /* Shared road mark for the browser tab and the on-page wordmark. */
 .wordmark{display:flex;align-items:center;gap:9px}
