@@ -297,3 +297,5 @@ main[lang="zh-CN"] .resume-profile p{letter-spacing:-.0175em}
     transform:translate(-50%,-50%) scale(1);
   }
 }
+
+.contact-trigger{font-weight:400}
