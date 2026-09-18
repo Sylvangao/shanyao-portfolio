@@ -323,3 +323,21 @@ main[lang="zh-CN"] .resume-profile p{letter-spacing:-.0175em}
 .work-hero:has(.contact-action:hover),
 .work-hero:has(.contact-action:focus-within),
 .work-hero:has(.contact-action[data-open="true"]){overflow:visible;z-index:10}
+
+/* The desktop navigation condenses from an open, edge-aligned layout into glass. */
+@media(min-width:761px){
+  .work-page .site-header{
+    --header-progress:0;
+    width:var(--header-width,calc(100% - 40px));
+    max-width:none;
+    height:var(--header-height,72px);
+    border-color:transparent;
+    border-radius:22px;
+    background:transparent;
+    box-shadow:none;
+    backdrop-filter:none;
+    -webkit-backdrop-filter:none;
+  }
+  .work-page .site-header::after{content:"";position:absolute;z-index:-2;inset:0;border:1px solid rgba(255,255,255,.7);border-radius:inherit;background:linear-gradient(118deg,rgba(255,255,255,.58),rgba(244,246,250,.3) 46%,rgba(255,255,255,.47));box-shadow:inset 0 1px 0 rgba(255,255,255,.95),inset 0 -1px 0 rgba(255,255,255,.28),0 12px 38px rgba(22,32,55,.09);backdrop-filter:blur(30px) saturate(190%) brightness(1.06);-webkit-backdrop-filter:blur(30px) saturate(190%) brightness(1.06);opacity:var(--header-progress);pointer-events:none}
+  .work-page .site-header::before{opacity:var(--header-progress)}
+}

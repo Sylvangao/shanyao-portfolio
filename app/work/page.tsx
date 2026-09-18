@@ -19,12 +19,15 @@ export default function WorkPage() {
   }, []);
   useEffect(() => {
     const hero = document.querySelector<HTMLElement>('.work-hero');
+    const header = document.querySelector<HTMLElement>('.site-header');
+    const headline = document.querySelector<HTMLElement>('.focus-stage');
     const cards = Array.from(document.querySelectorAll<HTMLElement>('.project-card'));
     const cursor = document.querySelector<HTMLElement>('.cursor-dot');
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
     let frame = 0;
     let targetScroll = window.scrollY;
     let smoothScroll = targetScroll;
+    let headlineStart = headline ? headline.getBoundingClientRect().top + targetScroll : 280;
 
     const updateParallax = () => {
       if (reduceMotion.matches) {
@@ -37,6 +40,16 @@ export default function WorkPage() {
       const ambienceShift = Math.max(-24, Math.min(24, lag * .1));
       hero?.style.setProperty('--hero-shift', `${heroShift}px`);
       hero?.style.setProperty('--ambience-shift', `${ambienceShift}px`);
+      if (header && window.innerWidth > 760) {
+        const collapseDistance = Math.max(120, headlineStart - 100);
+        const rawProgress = Math.max(0, Math.min(1, targetScroll / collapseDistance));
+        const progress = rawProgress * rawProgress * (3 - 2 * rawProgress);
+        const openWidth = window.innerWidth - 40;
+        const closedWidth = Math.min(1180, openWidth);
+        header.style.setProperty('--header-progress', `${progress}`);
+        header.style.setProperty('--header-width', `${openWidth + (closedWidth - openWidth) * progress}px`);
+        header.style.setProperty('--header-height', `${72 - 14 * progress}px`);
+      }
       const viewportCenter = window.innerHeight / 2;
       const strengths = [.022, .034, .026];
       cards.forEach((card, index) => {
@@ -56,6 +69,7 @@ export default function WorkPage() {
     };
     const requestParallax = () => {
       targetScroll = window.scrollY;
+      if (headline && targetScroll === 0) headlineStart = headline.getBoundingClientRect().top;
       if (!frame) frame = window.requestAnimationFrame(updateParallax);
     };
     const moveCursor = (event: PointerEvent) => {
@@ -90,7 +104,7 @@ export default function WorkPage() {
   const zh = lang === 'zh';
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
   return (
-    <main lang={lang === 'zh' ? 'zh-CN' : 'en'}>
+    <main className="work-page" lang={lang === 'zh' ? 'zh-CN' : 'en'}>
       <span className="cursor-dot" aria-hidden="true" />
       <SiteHeader active="work" lang={lang} />
       <section className="work-hero">
