@@ -17,6 +17,24 @@ export default function WorkPage() {
   const [lang, setLang] = useState<'zh' | 'en'>('en');
   const glassCursor = useRef<LiquidGlassHandle>(null);
   useEffect(() => {
+    let active = true;
+    const reveal = () => {
+      if (active) document.documentElement.classList.add('fonts-ready');
+    };
+    if ('fonts' in document) {
+      Promise.all([
+        document.fonts.load('200 82px "Google Sans"'),
+        document.fonts.load('700 82px "Google Sans"'),
+      ]).then(reveal, reveal);
+    } else {
+      reveal();
+    }
+    return () => {
+      active = false;
+      document.documentElement.classList.remove('fonts-ready');
+    };
+  }, []);
+  useEffect(() => {
     setLang(new URLSearchParams(window.location.search).get('lang') === 'zh' ? 'zh' : 'en');
   }, []);
   useEffect(() => {
