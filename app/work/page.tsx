@@ -75,11 +75,7 @@ export default function WorkPage() {
         const collapseDistance = Math.max(120, headlineStart - 100);
         const rawProgress = Math.max(0, Math.min(1, targetScroll / collapseDistance));
         const progress = rawProgress * rawProgress * (3 - 2 * rawProgress);
-        const openWidth = window.innerWidth - 40;
-        const closedWidth = Math.min(1180, openWidth);
         header.style.setProperty('--header-progress', `${progress}`);
-        header.style.setProperty('--header-width', `${openWidth + (closedWidth - openWidth) * progress}px`);
-        header.style.setProperty('--header-height', `${72 - 14 * progress}px`);
       }
       const viewportCenter = window.innerHeight / 2;
       const strengths = [.022, .034, .026];
@@ -151,16 +147,16 @@ export default function WorkPage() {
       width={44}
       height={44}
       radius="auto"
-      strength={.1}
-      chromaticAberration={.22}
-      blur={.2}
-      depth={10}
-      curvature={.88}
-      glow={.14}
-      edgeHighlight={.4}
-      specular={1.05}
+      strength={.065}
+      chromaticAberration={.12}
+      blur={0}
+      depth={7}
+      curvature={.72}
+      glow={.1}
+      edgeHighlight={.3}
+      specular={.72}
       quality={128}
-      shadow="0 8px 22px rgba(31,38,55,.12), inset 0 1px 1px rgba(255,255,255,.82)"
+      shadow="0 7px 18px rgba(31,38,55,.1), inset 0 1px 1px rgba(255,255,255,.76)"
     >
     <main className="work-page" lang={lang === 'zh' ? 'zh-CN' : 'en'}>
       <SiteHeader active="work" lang={lang} />
