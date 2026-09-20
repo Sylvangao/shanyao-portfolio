@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { SiteHeader } from '../site-header';
 import { FocusHeadline } from '../focus-headline';
 import { MeshBackground } from '../mesh-background';
@@ -14,7 +14,6 @@ const projects = [
 
 export default function WorkPage() {
   const [lang, setLang] = useState<'zh' | 'en'>('en');
-  const glassCursor = useRef<HTMLSpanElement>(null);
   useEffect(() => {
     let active = true;
     const reveal = () => {
@@ -46,17 +45,6 @@ export default function WorkPage() {
     let targetScroll = window.scrollY;
     let smoothScroll = targetScroll;
     let headlineStart = headline ? headline.getBoundingClientRect().top + targetScroll : 280;
-    let lastPointer = { x: -100, y: -100 };
-    let hoveringControl = false;
-
-    const positionGlass = () => {
-      const element = glassCursor.current;
-      if (!element || lastPointer.x < 0) return;
-      element.style.left = `${lastPointer.x}px`;
-      element.style.top = `${lastPointer.y}px`;
-      element.classList.add('is-visible');
-    };
-
     const updateParallax = () => {
       if (reduceMotion.matches) {
         frame = 0;
@@ -73,6 +61,7 @@ export default function WorkPage() {
         const rawProgress = Math.max(0, Math.min(1, targetScroll / collapseDistance));
         const progress = rawProgress * rawProgress * (3 - 2 * rawProgress);
         header.style.setProperty('--header-progress', `${progress}`);
+        header.dataset.scrolled = rawProgress > .025 ? 'true' : 'false';
       }
       const viewportCenter = window.innerHeight / 2;
       const strengths = [.022, .034, .026];
@@ -94,43 +83,15 @@ export default function WorkPage() {
     const requestParallax = () => {
       targetScroll = window.scrollY;
       if (headline && targetScroll === 0) headlineStart = headline.getBoundingClientRect().top;
-      positionGlass();
       if (!frame) frame = window.requestAnimationFrame(updateParallax);
     };
-    const moveCursor = (event: PointerEvent) => {
-      if (event.pointerType === 'touch') return;
-      lastPointer = { x: event.clientX, y: event.clientY };
-      positionGlass();
-      const nextHovering = Boolean((event.target as Element)?.closest('a,button,[role="button"]'));
-      if (nextHovering !== hoveringControl) {
-        hoveringControl = nextHovering;
-        glassCursor.current?.classList.toggle('is-hovering', nextHovering);
-      }
-    };
-    const hideCursor = () => {
-      lastPointer = { x: -100, y: -100 };
-      glassCursor.current?.classList.remove('is-visible');
-    };
-    const pressCursor = () => glassCursor.current?.classList.add('is-pressed');
-    const releaseCursor = () => glassCursor.current?.classList.remove('is-pressed');
-
-    document.documentElement.classList.add('has-custom-cursor');
     requestParallax();
     window.addEventListener('scroll', requestParallax, { passive: true });
     window.addEventListener('resize', requestParallax);
-    window.addEventListener('pointermove', moveCursor, { passive: true });
-    document.documentElement.addEventListener('mouseleave', hideCursor);
-    window.addEventListener('pointerdown', pressCursor, { passive: true });
-    window.addEventListener('pointerup', releaseCursor, { passive: true });
     return () => {
       if (frame) window.cancelAnimationFrame(frame);
-      document.documentElement.classList.remove('has-custom-cursor');
       window.removeEventListener('scroll', requestParallax);
       window.removeEventListener('resize', requestParallax);
-      window.removeEventListener('pointermove', moveCursor);
-      document.documentElement.removeEventListener('mouseleave', hideCursor);
-      window.removeEventListener('pointerdown', pressCursor);
-      window.removeEventListener('pointerup', releaseCursor);
     };
   }, []);
   const zh = lang === 'zh';
@@ -162,7 +123,6 @@ export default function WorkPage() {
       </section>
       <section className="statement-card"><p className="kicker">{zh ? '设计方法' : 'Approach'}</p><h2>{zh ? <>清晰易用，<br />也令人难忘。</> : <>Clear enough to use.<br />Distinct enough to remember.</>}</h2><p className="statement-copy">{zh ? '从真实问题出发，将研究洞察、产品思维与视觉表达连接起来，形成清晰一致、可持续演进的产品体验。' : 'I work from the problem outward—connecting research, product thinking and crafted visual detail into one coherent experience.'}</p></section>
       <footer className="site-footer"><p>{zh ? '正在寻找设计伙伴或资深设计师？' : 'Have a role or project in mind?'}</p><a href="mailto:hello@example.com">{zh ? '聊一聊' : 'Let’s talk'} <span>↗</span></a><div><span>Shanyao — Designer</span><span>© 2026</span></div></footer>
-      <span className="glass-cursor" ref={glassCursor} aria-hidden="true" />
     </main>
   );
 }

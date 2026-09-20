@@ -1,8 +1,19 @@
+'use client';
+
+import type { CSSProperties } from 'react';
+import { LiquidGlass } from '@dpawlikowski/liquid-glass/react';
+
 export function SiteHeader({ active, lang }: { active: 'work' | 'resume'; lang: 'zh' | 'en' }) {
   const suffix = lang === 'zh' ? '?lang=zh' : '?lang=en';
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
   return (
-    <header className="site-header">
+    <LiquidGlass
+      as="header"
+      className="site-header"
+      intensity="subtle"
+      opacity={.12}
+      style={{ '--lg-radius':'22px', '--lg-blur':'14px', '--lg-saturate':'155%', '--lg-shadow':'0 14px 44px rgb(25 36 60 / .12)' } as CSSProperties}
+    >
       <a className="wordmark" href={`${basePath}/work/${suffix}`} aria-label="Shanyao work">
         <img src={`${basePath}/favicon.svg`} alt="" aria-hidden="true" />
         <b>Shanyao<span className="registered-mark">®</span></b>
@@ -15,6 +26,6 @@ export function SiteHeader({ active, lang }: { active: 'work' | 'resume'; lang: 
       <a className="language-switch" href={`${basePath}/${active === 'work' ? 'work' : 'resume'}/?lang=${lang === 'zh' ? 'en' : 'zh'}`} aria-label={lang === 'zh' ? 'Switch to English' : '切换到中文'}>
         <span className={lang === 'en' ? 'selected' : ''}>EN</span><i /><span className={lang === 'zh' ? 'selected' : ''}>中</span>
       </a>
-    </header>
+    </LiquidGlass>
   );
 }
