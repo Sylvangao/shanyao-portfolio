@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { LiquidGlass, type LiquidGlassHandle } from 'liquid-glass-web-react';
 import { SiteHeader } from '../site-header';
 import { FocusHeadline } from '../focus-headline';
 import { MeshBackground } from '../mesh-background';
@@ -15,7 +14,7 @@ const projects = [
 
 export default function WorkPage() {
   const [lang, setLang] = useState<'zh' | 'en'>('en');
-  const glassCursor = useRef<LiquidGlassHandle>(null);
+  const glassCursor = useRef<HTMLSpanElement>(null);
   useEffect(() => {
     let active = true;
     const reveal = () => {
@@ -51,13 +50,11 @@ export default function WorkPage() {
     let hoveringControl = false;
 
     const positionGlass = () => {
-      const element = glassCursor.current?.element;
+      const element = glassCursor.current;
       if (!element || lastPointer.x < 0) return;
-      const rect = element.getBoundingClientRect();
-      glassCursor.current?.setPosition(
-        (lastPointer.x - rect.left) / rect.width,
-        (lastPointer.y - rect.top) / rect.height,
-      );
+      element.style.left = `${lastPointer.x}px`;
+      element.style.top = `${lastPointer.y}px`;
+      element.classList.add('is-visible');
     };
 
     const updateParallax = () => {
@@ -107,15 +104,15 @@ export default function WorkPage() {
       const nextHovering = Boolean((event.target as Element)?.closest('a,button,[role="button"]'));
       if (nextHovering !== hoveringControl) {
         hoveringControl = nextHovering;
-        glassCursor.current?.engine?.setOptions({ width: nextHovering ? 56 : 44, height: nextHovering ? 56 : 44 });
+        glassCursor.current?.classList.toggle('is-hovering', nextHovering);
       }
     };
     const hideCursor = () => {
       lastPointer = { x: -100, y: -100 };
-      glassCursor.current?.setPosition(-1, -1);
+      glassCursor.current?.classList.remove('is-visible');
     };
-    const pressCursor = () => glassCursor.current?.engine?.setOptions({ width: 38, height: 38 });
-    const releaseCursor = () => glassCursor.current?.engine?.setOptions({ width: hoveringControl ? 56 : 44, height: hoveringControl ? 56 : 44 });
+    const pressCursor = () => glassCursor.current?.classList.add('is-pressed');
+    const releaseCursor = () => glassCursor.current?.classList.remove('is-pressed');
 
     document.documentElement.classList.add('has-custom-cursor');
     requestParallax();
@@ -139,25 +136,6 @@ export default function WorkPage() {
   const zh = lang === 'zh';
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
   return (
-    <LiquidGlass
-      ref={glassCursor}
-      className="liquid-page"
-      x={-1}
-      y={-1}
-      width={44}
-      height={44}
-      radius="auto"
-      strength={.065}
-      chromaticAberration={.12}
-      blur={0}
-      depth={7}
-      curvature={.72}
-      glow={.1}
-      edgeHighlight={.3}
-      specular={.72}
-      quality={128}
-      shadow="0 7px 18px rgba(31,38,55,.1), inset 0 1px 1px rgba(255,255,255,.76)"
-    >
     <main className="work-page" lang={lang === 'zh' ? 'zh-CN' : 'en'}>
       <SiteHeader active="work" lang={lang} />
       <section className="work-hero">
@@ -184,7 +162,7 @@ export default function WorkPage() {
       </section>
       <section className="statement-card"><p className="kicker">{zh ? '设计方法' : 'Approach'}</p><h2>{zh ? <>清晰易用，<br />也令人难忘。</> : <>Clear enough to use.<br />Distinct enough to remember.</>}</h2><p className="statement-copy">{zh ? '从真实问题出发，将研究洞察、产品思维与视觉表达连接起来，形成清晰一致、可持续演进的产品体验。' : 'I work from the problem outward—connecting research, product thinking and crafted visual detail into one coherent experience.'}</p></section>
       <footer className="site-footer"><p>{zh ? '正在寻找设计伙伴或资深设计师？' : 'Have a role or project in mind?'}</p><a href="mailto:hello@example.com">{zh ? '聊一聊' : 'Let’s talk'} <span>↗</span></a><div><span>Shanyao — Designer</span><span>© 2026</span></div></footer>
+      <span className="glass-cursor" ref={glassCursor} aria-hidden="true" />
     </main>
-    </LiquidGlass>
   );
 }
