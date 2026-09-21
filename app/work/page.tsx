@@ -12,6 +12,36 @@ const projects = [
   { index:'03', en:'Digital service', zh:'数字化服务', enType:'UX / Interface', zhType:'体验 / 界面', year:'2025', tone:'green' },
 ];
 
+const advantages = [
+  {
+    index: '01',
+    en: 'Direct ownership',
+    zh: '全程亲自负责',
+    enCopy: 'You work directly with me from problem framing to final delivery. No account layers, junior handoffs or outsourced design.',
+    zhCopy: '从问题定义、方案推演到最终交付，核心设计工作全程由我亲自完成，没有层层转述或设计转包。',
+    enTags: ['Direct communication', 'Senior execution', 'End-to-end'],
+    zhTags: ['直接沟通', '资深设计师执行', '全流程负责'],
+  },
+  {
+    index: '02',
+    en: 'Broad perspective',
+    zh: '横跨 ToC 与 ToB',
+    enCopy: 'Thirteen years across Baidu, Meizu, Zhihu and Tencent—from consumer products to complex enterprise systems, SaaS and AI.',
+    zhCopy: '13 年百度、魅族、知乎与腾讯经验，覆盖内容、会员与电商，也包括 SaaS、AI 与企业级复杂系统。',
+    enTags: ['ToC & ToB', '0–1 products', 'Web, mobile & AI'],
+    zhTags: ['ToC 与 ToB', '从 0 到 1', 'Web、移动端与 AI'],
+  },
+  {
+    index: '03',
+    en: 'Clear solutions',
+    zh: '复杂问题清晰落地',
+    enCopy: 'I turn ambiguous requirements and complex workflows into clear structures, intuitive experiences and actionable design systems.',
+    zhCopy: '将模糊需求与复杂流程，转化为清晰的产品结构、易用的体验与能够真正落地的设计方案。',
+    enTags: ['Problem framing', 'Systems thinking', 'Business outcomes'],
+    zhTags: ['问题定义', '系统化思考', '业务结果导向'],
+  },
+];
+
 export default function WorkPage() {
   const [lang, setLang] = useState<'zh' | 'en'>('en');
   useEffect(() => {
@@ -40,6 +70,8 @@ export default function WorkPage() {
     const header = document.querySelector<HTMLElement>('.site-header');
     const headline = document.querySelector<HTMLElement>('.focus-stage');
     const cards = Array.from(document.querySelectorAll<HTMLElement>('.project-card'));
+    const valueTitle = document.querySelector<HTMLElement>('.value-heading');
+    const valueCards = Array.from(document.querySelectorAll<HTMLElement>('.value-card'));
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
     let frame = 0;
     let targetScroll = window.scrollY;
@@ -71,6 +103,18 @@ export default function WorkPage() {
         const shift = Math.max(-24, Math.min(24, -distance * strengths[index % strengths.length]));
         card.style.setProperty('--card-shift', `${shift}px`);
       });
+      if (valueTitle) {
+        const section = valueTitle.closest<HTMLElement>('.value-section');
+        if (section) {
+          const rect = section.getBoundingClientRect();
+          const progress = Math.max(-1, Math.min(1, (window.innerHeight * .54 - rect.top - rect.height * .34) / window.innerHeight));
+          valueTitle.style.setProperty('--value-title-shift', `${progress * 54}px`);
+          valueCards.forEach((card, index) => {
+            const depth = [22, 35, 27][index] ?? 24;
+            card.style.setProperty('--value-card-shift', `${-progress * depth}px`);
+          });
+        }
+      }
       if (Math.abs(lag) > .1) {
         frame = window.requestAnimationFrame(updateParallax);
       } else {
@@ -108,6 +152,22 @@ export default function WorkPage() {
             <div className="hero-note"><p>{zh ? <><span>我是山药，一名拥有 13 年经验的独立产品设计师，曾就职于百度、魅族、知乎与腾讯。</span><span>我专注于将复杂想法转化为清晰、有效的数字产品。</span></> : <><span>I’m Shanyao, an independent product designer.</span><span>Across 13 years at Baidu, Meizu, Zhihu and Tencent, I’ve turned complex ideas into clear digital products that work.</span></>}</p></div>
           </div>
           <ContactPopover lang={lang} />
+        </div>
+      </section>
+      <section className="value-section" aria-labelledby="value-title">
+        <div className="value-heading">
+          <p className="value-kicker">{zh ? '选择我，你将获得' : 'What you get'}</p>
+          <h2 id="value-title">{zh ? <><span>资深判断，</span><span>亲自落地。</span></> : <><span>Senior thinking.</span><span>Hands-on craft.</span></>}</h2>
+        </div>
+        <div className="value-cards">
+          {advantages.map((item) => (
+            <article className="value-card" key={item.index}>
+              <div className="value-card-top"><span>{item.index}</span><span aria-hidden="true">↗</span></div>
+              <h3>{zh ? item.zh : item.en}</h3>
+              <p>{zh ? item.zhCopy : item.enCopy}</p>
+              <ul>{(zh ? item.zhTags : item.enTags).map((tag) => <li key={tag}>{tag}</li>)}</ul>
+            </article>
+          ))}
         </div>
       </section>
       <section className="project-grid" aria-label="Selected projects">

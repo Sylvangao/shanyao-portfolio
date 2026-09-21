@@ -381,3 +381,92 @@ main[lang="zh-CN"] .resume-profile p{letter-spacing:-.0175em}
 @media(max-width:560px){
   .work-hero{height:460px;min-height:0;padding-block:50px 24px}
 }
+
+/* Buyer-facing value proposition: white-space, soft colour and restrained glass. */
+.value-section{
+  position:relative;
+  max-width:1280px;
+  margin:0 auto;
+  padding:128px 40px 170px;
+  overflow:hidden;
+  isolation:isolate;
+}
+.value-section::before{
+  content:"";
+  position:absolute;
+  z-index:-2;
+  inset:38px 18px 62px;
+  border-radius:64px;
+  background:
+    radial-gradient(circle at 16% 26%,rgba(255,215,113,.3),transparent 32%),
+    radial-gradient(circle at 53% 68%,rgba(255,121,176,.24),transparent 35%),
+    radial-gradient(circle at 88% 30%,rgba(104,211,255,.25),transparent 34%),
+    #f8f9fb;
+}
+.value-section::after{
+  content:"";
+  position:absolute;
+  z-index:-1;
+  inset:38px 18px 62px;
+  border:1px solid rgba(255,255,255,.9);
+  border-radius:64px;
+  box-shadow:inset 0 1px 0 #fff,0 28px 80px rgba(28,42,70,.06);
+  pointer-events:none;
+}
+.value-heading{
+  position:relative;
+  z-index:0;
+  margin:0 34px -34px;
+  transform:translate3d(0,var(--value-title-shift,0),0);
+  will-change:transform;
+}
+.value-kicker{margin:0 0 24px;color:rgba(23,23,23,.55);font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+.value-heading h2{margin:0;color:rgba(23,23,23,.94);font-size:clamp(62px,8.1vw,118px);font-weight:650;line-height:.86;letter-spacing:-.07em}
+.value-heading h2 span{display:block}
+.value-cards{position:relative;z-index:2;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;align-items:stretch}
+.value-card{
+  min-height:480px;
+  padding:30px;
+  display:flex;
+  flex-direction:column;
+  border:1px solid rgba(255,255,255,.88);
+  border-radius:36px;
+  background:linear-gradient(145deg,rgba(255,255,255,.74),rgba(244,247,252,.4));
+  box-shadow:inset 0 1px 0 #fff,inset 0 -1px 0 rgba(104,120,150,.06),0 22px 52px rgba(27,39,65,.09);
+  backdrop-filter:blur(28px) saturate(175%);
+  -webkit-backdrop-filter:blur(28px) saturate(175%);
+  transform:translate3d(0,var(--value-card-shift,0),0);
+  will-change:transform;
+  transition:box-shadow .35s ease,border-color .35s ease;
+}
+.value-card:hover{border-color:rgba(255,255,255,1);box-shadow:inset 0 1px 0 #fff,0 30px 70px rgba(27,39,65,.14)}
+.value-card-top{display:flex;justify-content:space-between;align-items:center;color:rgba(23,23,23,.48);font-size:13px}
+.value-card-top span:last-child{display:grid;width:42px;height:42px;place-items:center;border:1px solid rgba(255,255,255,.94);border-radius:50%;background:rgba(255,255,255,.44);box-shadow:inset 0 1px 0 #fff,0 8px 18px rgba(31,45,73,.07);font-size:18px}
+.value-card h3{margin:88px 0 22px;font-size:clamp(30px,3vw,46px);font-weight:620;line-height:.98;letter-spacing:-.05em}
+.value-card p{margin:0;color:rgba(23,23,23,.64);font-size:16px;line-height:1.5;letter-spacing:-.012em}
+.value-card ul{display:flex;flex-wrap:wrap;gap:8px;margin:auto 0 0;padding:40px 0 0;list-style:none}
+.value-card li{padding:9px 12px;border:1px solid rgba(255,255,255,.9);border-radius:999px;background:rgba(255,255,255,.42);color:rgba(23,23,23,.66);font-size:11px;box-shadow:inset 0 1px 0 #fff}
+main[lang="zh-CN"] .value-heading h2{letter-spacing:-.035em}
+main[lang="zh-CN"] .value-card h3{letter-spacing:-.025em}
+main[lang="zh-CN"] .value-card p{letter-spacing:-.006em}
+
+@media(max-width:1024px){
+  .value-section{padding:100px 28px 130px}
+  .value-heading{margin-inline:22px}
+  .value-cards{grid-template-columns:1fr;gap:14px}
+  .value-card{min-height:340px;padding:27px;transform:none}
+  .value-card h3{margin-top:58px}
+  .value-heading{transform:none}
+}
+@media(max-width:560px){
+  .value-section{padding:70px 14px 90px}
+  .value-section::before,.value-section::after{inset:18px 6px 34px;border-radius:38px}
+  .value-heading{margin:0 14px 28px}
+  .value-kicker{margin-bottom:17px;font-size:10px}
+  .value-heading h2{font-size:clamp(45px,14vw,68px);line-height:.9}
+  .value-card{min-height:320px;padding:23px;border-radius:28px}
+  .value-card h3{margin:52px 0 18px;font-size:34px}
+  .value-card p{font-size:14px}
+  .value-card ul{padding-top:30px}
+}
+@media(prefers-reduced-motion:reduce){.value-heading,.value-card{transform:none}}
