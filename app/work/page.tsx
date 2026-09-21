@@ -14,20 +14,20 @@ const projects = [
 
 const advantages = [
   {
-    en: 'Senior thinking. Hands-on craft.',
-    zh: '资深判断，亲自落地。',
+    en: 'Ownership',
+    zh: '亲自负责',
     enCopy: 'You work directly with me from problem framing to final delivery. No account layers, junior handoffs or outsourced design.',
     zhCopy: '从问题定义、方案推演到最终交付，核心设计工作全程由我亲自完成，没有层层转述或设计转包。',
   },
   {
-    en: 'Consumer instinct. Enterprise depth.',
-    zh: '懂用户，也懂复杂业务。',
+    en: 'Experience',
+    zh: '经验广度',
     enCopy: 'Thirteen years across Baidu, Meizu, Zhihu and Tencent—from consumer products to complex enterprise systems, SaaS and AI.',
     zhCopy: '13 年百度、魅族、知乎与腾讯经验，覆盖内容、会员与电商，也包括 SaaS、AI 与企业级复杂系统。',
   },
   {
-    en: 'Complexity made clear.',
-    zh: '化繁为简，清晰落地。',
+    en: 'Clarity',
+    zh: '化繁为简',
     enCopy: 'I turn ambiguous requirements and complex workflows into clear structures, intuitive experiences and actionable design systems.',
     zhCopy: '将模糊需求与复杂流程，转化为清晰的产品结构、易用的体验与能够真正落地的设计方案。',
   },
@@ -103,11 +103,15 @@ export default function WorkPage() {
           valueTitle.style.setProperty('--value-progress', `${eased}`);
           valueTitle.style.setProperty('--value-title-shift', `${(1 - eased) * 70}px`);
           valueCards.forEach((card, index) => {
-            const start = .16 + index * .13;
-            const reveal = Math.max(0, Math.min(1, (progress - start) / .34));
+            const start = .02 + index * .04;
+            const reveal = Math.max(0, Math.min(1, (progress - start) / .18));
             const revealEased = reveal * reveal * (3 - 2 * reveal);
+            const copyStart = .29 + index * .08;
+            const copyReveal = Math.max(0, Math.min(1, (progress - copyStart) / .28));
+            const copyEased = copyReveal * copyReveal * (3 - 2 * copyReveal);
             const depth = [20, 34, 26][index] ?? 24;
             card.style.setProperty('--value-card-reveal', `${revealEased}`);
+            card.style.setProperty('--value-copy-reveal', `${copyEased}`);
             card.style.setProperty('--value-card-shift', `${(1 - revealEased) * 42 - eased * depth}px`);
           });
         }
