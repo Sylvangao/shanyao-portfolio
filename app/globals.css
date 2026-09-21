@@ -168,8 +168,8 @@
 @keyframes orb-a{0%,100%{transform:translate3d(0,2%,0) scale(.94,1.02) rotate(-6deg);opacity:.82}25%{transform:translate3d(5%,-3%,0) scale(1.03,.94) rotate(3deg);opacity:.91}52%{transform:translate3d(8%,1%,0) scale(.97,1.08) rotate(7deg);opacity:.86}76%{transform:translate3d(3%,4%,0) scale(1.06,.96) rotate(-3deg);opacity:.9}}
 @keyframes orb-b{0%,100%{transform:translate3d(0,-2%,0) scale(1.03,.95) rotate(5deg);opacity:.8}24%{transform:translate3d(-5%,1%,0) scale(.95,1.04) rotate(-4deg);opacity:.88}51%{transform:translate3d(-8%,4%,0) scale(1.05,.93) rotate(-7deg);opacity:.83}78%{transform:translate3d(-3%,2%,0) scale(.97,1.07) rotate(3deg);opacity:.89}}
 @keyframes orb-c{0%,100%{transform:translate3d(0,2%,0) scale(.91,1.04) rotate(-4deg);opacity:.55}23%{transform:translate3d(-4%,-2%,0) scale(1.04,.94) rotate(5deg);opacity:.65}49%{transform:translate3d(2%,-4%,0) scale(.95,1.08) rotate(8deg);opacity:.58}74%{transform:translate3d(5%,1%,0) scale(1.07,.92) rotate(-5deg);opacity:.64}}
-.project-grid,.statement-card,.site-footer{content-visibility:auto}
-.project-grid{contain-intrinsic-size:auto 1500px}.statement-card{contain-intrinsic-size:auto 650px}.site-footer{contain-intrinsic-size:auto 620px}
+.statement-card,.site-footer{content-visibility:auto}
+.statement-card{contain-intrinsic-size:auto 650px}.site-footer{contain-intrinsic-size:auto 620px}
 @media(max-width:560px){.hero-ambience{filter:blur(11px) saturate(130%)}}
 
 /* Compact fixed-height introduction: keeps the first project visible sooner. */
