@@ -16,20 +16,20 @@ const advantages = [
   {
     en: 'Ownership',
     zh: '亲自负责',
-    enCopy: 'You work directly with me from problem framing to final delivery. No account layers, junior handoffs or outsourced design.',
-    zhCopy: '从问题定义、方案推演到最终交付，核心设计工作全程由我亲自完成，没有层层转述或设计转包。',
+    enCopy: 'One senior designer from the first conversation to the final detail. No handoffs, no outsourcing—one accountable partner.',
+    zhCopy: '从首次沟通到最后一个细节，始终由同一位资深设计师负责。不转手，不外包，对结果负责。',
   },
   {
     en: 'Experience',
     zh: '经验广度',
-    enCopy: 'Thirteen years across Baidu, Meizu, Zhihu and Tencent—from consumer products to complex enterprise systems, SaaS and AI.',
-    zhCopy: '13 年百度、魅族、知乎与腾讯经验，覆盖内容、会员与电商，也包括 SaaS、AI 与企业级复杂系统。',
+    enCopy: 'Consumer intuition meets enterprise depth. I move comfortably between growth products, complex systems, SaaS and AI.',
+    zhCopy: '既理解消费产品的用户与增长，也熟悉复杂系统、SaaS 与 AI 产品的设计方法。',
   },
   {
     en: 'Clarity',
     zh: '化繁为简',
-    enCopy: 'I turn ambiguous requirements and complex workflows into clear structures, intuitive experiences and actionable design systems.',
-    zhCopy: '将模糊需求与复杂流程，转化为清晰的产品结构、易用的体验与能够真正落地的设计方案。',
+    enCopy: 'I structure ambiguity, expose the real problem and turn complex workflows into decisions your team can confidently build.',
+    zhCopy: '梳理模糊信息，找到真正问题，再将复杂流程转化为团队能够落地的清晰决策。',
   },
 ];
 
@@ -101,7 +101,7 @@ export default function WorkPage() {
           const progress = Math.max(0, Math.min(1, (window.innerHeight * .72 - rect.top) / (window.innerHeight * .62)));
           const eased = progress * progress * (3 - 2 * progress);
           valueTitle.style.setProperty('--value-progress', `${eased}`);
-          valueTitle.style.setProperty('--value-title-shift', `${(1 - eased) * 70}px`);
+          valueTitle.style.setProperty('--value-title-shift', `${(1 - eased) * 100}px`);
           valueCards.forEach((card, index) => {
             const start = .02 + index * .04;
             const reveal = Math.max(0, Math.min(1, (progress - start) / .18));
@@ -157,7 +157,7 @@ export default function WorkPage() {
       </section>
       <section className="value-section" aria-labelledby="value-title">
         <div className="value-heading">
-          <h2 id="value-title">{zh ? '你将获得' : 'What you’ll get'}</h2>
+          <h2 id="value-title">{zh ? '为什么是我' : 'Why me'}</h2>
         </div>
         <div className="value-cards">
           {advantages.map((item) => (
