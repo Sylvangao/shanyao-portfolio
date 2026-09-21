@@ -103,7 +103,7 @@ export default function WorkPage() {
           valueTitle.style.setProperty('--value-progress', `${eased}`);
           valueTitle.style.setProperty('--value-title-shift', `${(1 - eased) * 100}px`);
           valueCards.forEach((card, index) => {
-            const start = .02 + index * .04;
+            const start = .23 + index * .04;
             const reveal = Math.max(0, Math.min(1, (progress - start) / .18));
             const revealEased = reveal * reveal * (3 - 2 * reveal);
             const copyStart = .29 + index * .08;
@@ -111,7 +111,7 @@ export default function WorkPage() {
             const copyEased = copyReveal * copyReveal * (3 - 2 * copyReveal);
             card.style.setProperty('--value-card-reveal', `${revealEased}`);
             card.style.setProperty('--value-copy-reveal', `${copyEased}`);
-            card.style.setProperty('--value-card-shift', '0px');
+            card.style.setProperty('--value-card-shift', `${eased * 28}px`);
           });
         }
       }
