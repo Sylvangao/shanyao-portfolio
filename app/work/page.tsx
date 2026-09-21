@@ -109,10 +109,9 @@ export default function WorkPage() {
             const copyStart = .29 + index * .08;
             const copyReveal = Math.max(0, Math.min(1, (progress - copyStart) / .28));
             const copyEased = copyReveal * copyReveal * (3 - 2 * copyReveal);
-            const depth = [20, 34, 26][index] ?? 24;
             card.style.setProperty('--value-card-reveal', `${revealEased}`);
             card.style.setProperty('--value-copy-reveal', `${copyEased}`);
-            card.style.setProperty('--value-card-shift', `${(1 - revealEased) * 42 - eased * depth}px`);
+            card.style.setProperty('--value-card-shift', '0px');
           });
         }
       }
