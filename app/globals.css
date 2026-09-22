@@ -474,7 +474,7 @@ main[lang="zh-CN"] .value-card p{letter-spacing:-.006em}
 
 /* Minimal value section: typography is the backdrop, glass cards reveal it through blur. */
 .value-section{padding-block:40px 168px;overflow:hidden;background:#fff}
-@media(min-width:1025px){.value-section{margin-top:0}}
+@media(min-width:1025px){.value-section{margin-top:-40px}}
 .value-section::before,.value-section::after{display:none}
 .value-heading{
   position:relative;
@@ -549,7 +549,7 @@ main[lang="zh-CN"] .value-card p{letter-spacing:-.006em}
   z-index:1;
   margin:0;
   font-size:clamp(31px,3vw,45px);
-  opacity:var(--value-card-reveal,0);
+  opacity:calc(.15 + var(--value-card-reveal,0) * .85);
   filter:none;
   transform:translateY(calc((1 - var(--value-card-reveal,0)) * 30px));
 }
@@ -559,7 +559,7 @@ main[lang="zh-CN"] .value-card p{letter-spacing:-.006em}
   max-width:35ch;
   margin:24px 0 0;
   color:rgba(23,23,23,.68);
-  opacity:var(--value-copy-reveal,0);
+  opacity:calc(.15 + var(--value-copy-reveal,0) * .85);
   filter:blur(calc((1 - var(--value-copy-reveal,0)) * 10px));
   transform:translateY(calc((1 - var(--value-copy-reveal,0)) * 22px));
 }
