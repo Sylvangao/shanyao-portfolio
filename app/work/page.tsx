@@ -55,7 +55,11 @@ export default function WorkPage() {
     const header = document.querySelector<HTMLElement>('.site-header');
     const headline = document.querySelector<HTMLElement>('.focus-stage');
     const cards = Array.from(document.querySelectorAll<HTMLElement>('.project-card'));
-    const valueTitle = document.querySelector<HTMLElement>('.value-heading');
+    const overlapSections = Array.from(document.querySelectorAll<HTMLElement>('.overlap-section')).map((section) => ({
+      section,
+      title: section.querySelector<HTMLElement>('.overlap-heading'),
+    }));
+    const valueSection = document.querySelector<HTMLElement>('.value-section');
     const valueCards = Array.from(document.querySelectorAll<HTMLElement>('.value-card'));
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
     let frame = 0;
@@ -88,16 +92,20 @@ export default function WorkPage() {
         const shift = Math.max(-24, Math.min(24, -distance * strengths[index % strengths.length]));
         card.style.setProperty('--card-shift', `${shift}px`);
       });
-      if (valueTitle) {
-        const section = valueTitle.closest<HTMLElement>('.value-section');
-        if (section) {
-          const rect = section.getBoundingClientRect();
+      overlapSections.forEach(({ section, title }) => {
+        if (!title) return;
+        const rect = section.getBoundingClientRect();
+        const progress = Math.max(0, Math.min(1, (window.innerHeight * .72 - rect.top) / (window.innerHeight * .62)));
+        const eased = progress * progress * (3 - 2 * progress);
+        const titleReveal = Math.max(0, Math.min(1, (progress - .55) / .35));
+        const titleRevealEased = titleReveal * titleReveal * (3 - 2 * titleReveal);
+        title.style.setProperty('--overlap-progress', `${titleRevealEased}`);
+        title.style.setProperty('--overlap-title-shift', `${(1 - eased) * 100}px`);
+      });
+      if (valueSection) {
+          const rect = valueSection.getBoundingClientRect();
           const progress = Math.max(0, Math.min(1, (window.innerHeight * .72 - rect.top) / (window.innerHeight * .62)));
           const eased = progress * progress * (3 - 2 * progress);
-          const titleReveal = Math.max(0, Math.min(1, (progress - .55) / .35));
-          const titleRevealEased = titleReveal * titleReveal * (3 - 2 * titleReveal);
-          valueTitle.style.setProperty('--value-progress', `${titleRevealEased}`);
-          valueTitle.style.setProperty('--value-title-shift', `${(1 - eased) * 100}px`);
           valueCards.forEach((card, index) => {
             const motionStart = .08 + index * .09;
             const motion = Math.max(0, Math.min(1, (progress - motionStart) / .32));
@@ -119,7 +127,6 @@ export default function WorkPage() {
             card.style.setProperty('--value-copy-reveal', `${copyEased}`);
             card.style.setProperty('--value-card-shift', `${(1 - motionEased) * 44 + eased * 16}px`);
           });
-        }
       }
       if (Math.abs(lag) > .1) {
         frame = window.requestAnimationFrame(updateParallax);
@@ -159,8 +166,8 @@ export default function WorkPage() {
           <ContactPopover lang={lang} />
         </div>
       </section>
-      <section className="value-section" aria-labelledby="value-title">
-        <div className="value-heading">
+      <section className="value-section overlap-section" aria-labelledby="value-title">
+        <div className="overlap-heading">
           <h2 id="value-title">{zh ? '为什么是我' : 'Why me'}</h2>
         </div>
         <div className="value-cards">
@@ -180,9 +187,10 @@ export default function WorkPage() {
           ))}
         </div>
       </section>
-      <section className="portfolio-section" aria-labelledby="portfolio-title">
-        <p className="portfolio-kicker">{zh ? '精选项目' : 'Selected work'}</p>
-        <h2 id="portfolio-title">{zh ? '作品集' : 'Portfolio'}</h2>
+      <section className="portfolio-section overlap-section" aria-labelledby="portfolio-title">
+        <div className="overlap-heading">
+          <h2 id="portfolio-title">{zh ? '作品集' : 'Portfolio'}</h2>
+        </div>
         <div className="portfolio-grid">
           {projects.map((project) => (
             <a className="project-card portfolio-card" href={`${basePath}/projects/${project.slug}/?lang=${lang}`} aria-label={zh ? `查看${project.zh}` : `View ${project.en}`} key={project.slug}>
