@@ -611,14 +611,16 @@ main[lang="zh-CN"] .overlap-heading h2{letter-spacing:-.035em}
 /* Dark contact footer */
 .site-footer>.footer-contact-root{margin:auto 0}
 .footer-contact-root .contact-action{width:max-content;margin:0}
-.footer-contact-trigger.contact-trigger{height:auto;padding:0;border:0;border-radius:0;background:none;color:#fff;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none;gap:28px;font-size:clamp(76px,10vw,150px);font-weight:640;line-height:.9;letter-spacing:-.07em}
+.footer-contact-trigger.contact-trigger{height:auto;padding:0;border:0;border-radius:0;background:none;color:#fff;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none;gap:0;font-size:clamp(76px,10vw,150px);font-weight:640;line-height:.9;letter-spacing:-.07em}
 .footer-contact-trigger.contact-trigger:hover,.footer-contact-root .contact-action[data-open="true"] .footer-contact-trigger{background:none;box-shadow:none;transform:none}
-.footer-contact-arrow{display:grid!important;place-items:center;width:.48em;height:.48em;border:1px solid rgba(255,255,255,.24);border-radius:50%;background:rgba(255,255,255,.07);font-size:.36em!important;font-style:normal;opacity:.72;transform:none!important;transition:background .3s ease,opacity .3s ease,transform .35s cubic-bezier(.2,.8,.2,1)!important}
-.footer-contact-trigger:hover .footer-contact-arrow{background:rgba(255,255,255,.15);opacity:1;transform:translate(4px,-4px)!important}
 .footer-contact-popover{border-color:rgba(255,255,255,.14);background:linear-gradient(145deg,rgba(43,43,47,.96),rgba(22,22,24,.93));box-shadow:inset 0 1px 0 rgba(255,255,255,.11),0 24px 70px rgba(0,0,0,.42);color:#fff}
 .footer-contact-popover .wechat-qr{border-color:#fff;background:#fff}
 .footer-contact-popover .contact-popover-copy span{color:rgba(255,255,255,.66)}
 .site-footer>div:last-child{margin-top:auto}
+@media(hover:hover) and (pointer:fine){
+  .footer-contact-popover{position:fixed;z-index:80;left:var(--footer-popover-x,20px);top:var(--footer-popover-y,20px);bottom:auto;transform:scale(.97);transform-origin:center}
+  .footer-contact-root .contact-action:hover .footer-contact-popover,.footer-contact-root .contact-action:focus-within .footer-contact-popover,.footer-contact-root .contact-action[data-open="true"] .footer-contact-popover{transform:scale(1)}
+}
 
 /* Project detail placeholders */
 .project-detail-page{min-height:100vh;padding-bottom:100px}

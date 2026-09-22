@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useEffect, useId, useRef, useState } from 'react';
+import { useCallback, useEffect, useId, useRef, useState, type PointerEvent as ReactPointerEvent } from 'react';
 
 export function ContactPopover({ lang, variant = 'hero' }: { lang: 'zh' | 'en'; variant?: 'hero' | 'footer' }) {
   const [open, setOpen] = useState(false);
@@ -17,6 +17,20 @@ export function ContactPopover({ lang, variant = 'hero' }: { lang: 'zh' | 'en'; 
     const requiredSpace = popover.offsetHeight + 20;
     setPlacement(triggerRect.top < requiredSpace ? 'below' : 'above');
   }, []);
+  const followPointer = useCallback((event: ReactPointerEvent<HTMLDivElement>) => {
+    if (variant !== 'footer' || window.matchMedia('(hover: none), (pointer: coarse)').matches) return;
+    const popover = root.current?.querySelector<HTMLElement>('.contact-popover');
+    if (!popover) return;
+    const margin = 20;
+    const gap = 24;
+    const width = popover.offsetWidth;
+    const height = popover.offsetHeight;
+    const left = Math.max(margin, Math.min(window.innerWidth - width - margin, event.clientX + gap));
+    const above = event.clientY - height - gap;
+    const top = above >= margin ? above : Math.min(window.innerHeight - height - margin, event.clientY + gap);
+    popover.style.setProperty('--footer-popover-x', `${left}px`);
+    popover.style.setProperty('--footer-popover-y', `${Math.max(margin, top)}px`);
+  }, [variant]);
 
   useEffect(() => {
     const close = (event: PointerEvent) => {
@@ -45,7 +59,7 @@ export function ContactPopover({ lang, variant = 'hero' }: { lang: 'zh' | 'en'; 
   }, [open, placePopover]);
 
   return (
-    <div className={variant === 'footer' ? 'footer-contact-root' : 'hero-actions'} ref={root}>
+    <div className={variant === 'footer' ? 'footer-contact-root' : 'hero-actions'} ref={root} onPointerMove={followPointer}>
       {variant === 'hero' && <a className="social-trigger" href="https://dribbble.com/nealgao" target="_blank" rel="noreferrer" aria-label="View Shanyao on Dribbble">
         <img src={`${basePath}/icons/dribbble.svg`} alt="" aria-hidden="true" />
       </a>}
@@ -55,11 +69,10 @@ export function ContactPopover({ lang, variant = 'hero' }: { lang: 'zh' | 'en'; 
           type="button"
           aria-expanded={open}
           aria-controls={popoverId}
-          onClick={() => { placePopover(); setOpen((value) => !value); }}
+          onClick={() => { placePopover(); setOpen(true); }}
         >
           {variant === 'hero' && <img src={`${basePath}/icons/wechat.svg`} alt="" aria-hidden="true" />}
           <span>{zh ? '聊一聊' : 'Let’s talk'}</span>
-          {variant === 'footer' && <i className="footer-contact-arrow" aria-hidden="true">↗</i>}
         </button>
         <div className={`contact-popover${variant === 'footer' ? ' footer-contact-popover' : ''}`} id={popoverId} role="dialog" aria-label={zh ? '微信联系方式' : 'WeChat contact'}>
           <img className="wechat-qr" src={`${basePath}/profile/shanyao-wechat-qr.jpg`} alt={zh ? '山药的微信二维码' : 'Shanyao’s WeChat QR code'} />
