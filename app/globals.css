@@ -258,7 +258,8 @@
 @media(prefers-reduced-motion:reduce){.hero-copy,.project-card{transform:none}.hero-ambience{transform:translate3d(-50%,-50%,0)}}
 
 /* Chinese glyphs need half the tracking used by their Latin counterparts. */
-main[lang="zh-CN"] .focus-title{letter-spacing:-.0125em}
+main[lang="zh-CN"] .focus-title{letter-spacing:-.00625em}
+main[lang="zh-CN"] .focus-title .headline-line{gap:0 .095em}
 main[lang="zh-CN"] .hero-note p{letter-spacing:-.003em}
 main[lang="zh-CN"] .project-art h2{letter-spacing:-.03em}
 main[lang="zh-CN"] .kicker{letter-spacing:.04em}
