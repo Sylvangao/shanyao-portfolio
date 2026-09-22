@@ -105,7 +105,11 @@ export default function WorkPage() {
           valueTitle.style.setProperty('--value-progress', `${titleRevealEased}`);
           valueTitle.style.setProperty('--value-title-shift', `${(1 - eased) * 100}px`);
           valueCards.forEach((card, index) => {
-            const shell = Math.max(0, Math.min(1, (progress - .08) / .3));
+            const motionStart = .08 + index * .09;
+            const motion = Math.max(0, Math.min(1, (progress - motionStart) / .32));
+            const motionEased = motion * motion * (3 - 2 * motion);
+            const shellStart = .06 + index * .08;
+            const shell = Math.max(0, Math.min(1, (progress - shellStart) / .28));
             const shellEased = shell * shell * (3 - 2 * shell);
             const blur = Math.max(0, Math.min(1, (progress - .72) / .18));
             const blurEased = blur * blur * (3 - 2 * blur);
@@ -119,7 +123,7 @@ export default function WorkPage() {
             card.style.setProperty('--value-blur-reveal', `${blurEased}`);
             card.style.setProperty('--value-card-reveal', `${revealEased}`);
             card.style.setProperty('--value-copy-reveal', `${copyEased}`);
-            card.style.setProperty('--value-card-shift', `${eased * 28}px`);
+            card.style.setProperty('--value-card-shift', `${(1 - motionEased) * 44 + eased * 16}px`);
           });
         }
       }
