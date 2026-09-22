@@ -1,12 +1,13 @@
 'use client';
 
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useId, useRef, useState } from 'react';
 
-export function ContactPopover({ lang }: { lang: 'zh' | 'en' }) {
+export function ContactPopover({ lang, variant = 'hero' }: { lang: 'zh' | 'en'; variant?: 'hero' | 'footer' }) {
   const [open, setOpen] = useState(false);
   const [placement, setPlacement] = useState<'above' | 'below'>('above');
   const root = useRef<HTMLDivElement>(null);
   const zh = lang === 'zh';
+  const popoverId = useId();
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
   const placePopover = useCallback(() => {
     const trigger = root.current?.querySelector<HTMLElement>('.contact-trigger');
@@ -44,21 +45,23 @@ export function ContactPopover({ lang }: { lang: 'zh' | 'en' }) {
   }, [open, placePopover]);
 
   return (
-    <div className="hero-actions" ref={root}>
-      <a className="social-trigger" href="https://dribbble.com/nealgao" target="_blank" rel="noreferrer" aria-label="View Shanyao on Dribbble">
+    <div className={variant === 'footer' ? 'footer-contact-root' : 'hero-actions'} ref={root}>
+      {variant === 'hero' && <a className="social-trigger" href="https://dribbble.com/nealgao" target="_blank" rel="noreferrer" aria-label="View Shanyao on Dribbble">
         <img src={`${basePath}/icons/dribbble.svg`} alt="" aria-hidden="true" />
-      </a>
+      </a>}
       <div className="contact-action" data-open={open ? 'true' : 'false'} data-placement={placement} onPointerEnter={placePopover} onFocusCapture={placePopover}>
         <button
-          className="contact-trigger"
+          className={`contact-trigger${variant === 'footer' ? ' footer-contact-trigger' : ''}`}
           type="button"
           aria-expanded={open}
-          aria-controls="wechat-contact-card"
+          aria-controls={popoverId}
           onClick={() => { placePopover(); setOpen((value) => !value); }}
         >
-          <img src={`${basePath}/icons/wechat.svg`} alt="" aria-hidden="true" /><span>{zh ? '微信联系' : 'Let’s talk'}</span>
+          {variant === 'hero' && <img src={`${basePath}/icons/wechat.svg`} alt="" aria-hidden="true" />}
+          <span>{zh ? '聊一聊' : 'Let’s talk'}</span>
+          {variant === 'footer' && <i className="footer-contact-arrow" aria-hidden="true">↗</i>}
         </button>
-        <div className="contact-popover" id="wechat-contact-card" role="dialog" aria-label={zh ? '微信联系方式' : 'WeChat contact'}>
+        <div className={`contact-popover${variant === 'footer' ? ' footer-contact-popover' : ''}`} id={popoverId} role="dialog" aria-label={zh ? '微信联系方式' : 'WeChat contact'}>
           <img className="wechat-qr" src={`${basePath}/profile/shanyao-wechat-qr.jpg`} alt={zh ? '山药的微信二维码' : 'Shanyao’s WeChat QR code'} />
           <div className="contact-popover-copy">
             <strong>{zh ? '微信 · nealgao' : 'WeChat · nealgao'}</strong>

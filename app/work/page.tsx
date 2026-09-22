@@ -5,12 +5,7 @@ import { SiteHeader } from '../site-header';
 import { FocusHeadline } from '../focus-headline';
 import { MeshBackground } from '../mesh-background';
 import { ContactPopover } from '../contact-popover';
-
-const projects = [
-  { index:'01', en:'Product experience', zh:'产品体验设计', enType:'Product design', zhType:'产品设计', year:'2026', tone:'blue' },
-  { index:'02', en:'A new identity', zh:'品牌焕新', enType:'Brand system', zhType:'品牌系统', year:'2026', tone:'silver' },
-  { index:'03', en:'Digital service', zh:'数字化服务', enType:'UX / Interface', zhType:'体验 / 界面', year:'2025', tone:'green' },
-];
+import { projects } from '../project-data';
 
 const advantages = [
   {
@@ -187,19 +182,22 @@ export default function WorkPage() {
           ))}
         </div>
       </section>
-      <section className="project-grid" aria-label="Selected projects">
-        {projects.map((project) => (
-          <article className="project-card" key={project.index}>
-            <div className={`project-art art-${project.tone}`}>
-              <span className="glass-orb orb-one" /><span className="glass-orb orb-two" />
-              <span className="project-number">{project.index}</span><h2>{zh ? project.zh : project.en}</h2><span className="open-project" aria-hidden="true">↗</span>
-            </div>
-            <div className="project-caption"><strong>{zh ? project.zh : project.en}</strong><span>{zh ? project.zhType : project.enType}</span><span>{project.year}</span></div>
-          </article>
-        ))}
+      <section className="portfolio-section" aria-labelledby="portfolio-title">
+        <p className="portfolio-kicker">{zh ? '精选项目' : 'Selected work'}</p>
+        <h2 id="portfolio-title">{zh ? '作品集' : 'Portfolio'}</h2>
+        <div className="portfolio-grid">
+          {projects.map((project) => (
+            <a className="project-card portfolio-card" href={`${basePath}/projects/${project.slug}/?lang=${lang}`} aria-label={zh ? `查看${project.zh}` : `View ${project.en}`} key={project.slug}>
+              <div className={`portfolio-thumb portfolio-${project.tone}`}>
+                <span className="portfolio-orb portfolio-orb-a" />
+                <span className="portfolio-orb portfolio-orb-b" />
+                <span className="portfolio-arrow" aria-hidden="true">↗</span>
+              </div>
+            </a>
+          ))}
+        </div>
       </section>
-      <section className="statement-card"><p className="kicker">{zh ? '设计方法' : 'Approach'}</p><h2>{zh ? <>清晰易用，<br />也令人难忘。</> : <>Clear enough to use.<br />Distinct enough to remember.</>}</h2><p className="statement-copy">{zh ? '从真实问题出发，将研究洞察、产品思维与视觉表达连接起来，形成清晰一致、可持续演进的产品体验。' : 'I work from the problem outward—connecting research, product thinking and crafted visual detail into one coherent experience.'}</p></section>
-      <footer className="site-footer"><p>{zh ? '正在寻找设计伙伴或资深设计师？' : 'Have a role or project in mind?'}</p><a href="mailto:hello@example.com">{zh ? '聊一聊' : 'Let’s talk'} <span>↗</span></a><div><span>Shanyao — Designer</span><span>© 2026</span></div></footer>
+      <footer className="site-footer"><p>{zh ? '有项目想聊聊？' : 'Have a project in mind?'}</p><ContactPopover lang={lang} variant="footer" /><div><span>Shanyao</span><span>© 2026</span></div></footer>
     </main>
   );
 }
