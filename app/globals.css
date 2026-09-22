@@ -472,7 +472,7 @@ main[lang="zh-CN"] .value-card p{letter-spacing:-.006em}
 @media(prefers-reduced-motion:reduce){.value-heading,.value-card{transform:none}}
 
 /* Minimal value section: typography is the backdrop, glass cards reveal it through blur. */
-.value-section{padding-block:118px 168px;overflow:hidden;background:#fff}
+.value-section{padding-block:40px 168px;overflow:hidden;background:#fff}
 .value-section::before,.value-section::after{display:none}
 .value-heading{
   position:relative;
