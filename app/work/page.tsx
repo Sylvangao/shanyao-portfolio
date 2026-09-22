@@ -55,6 +55,7 @@ export default function WorkPage() {
     const header = document.querySelector<HTMLElement>('.site-header');
     const headline = document.querySelector<HTMLElement>('.focus-stage');
     const cards = Array.from(document.querySelectorAll<HTMLElement>('.project-card'));
+    const portfolioCards = Array.from(document.querySelectorAll<HTMLElement>('.portfolio-card'));
     const overlapSections = Array.from(document.querySelectorAll<HTMLElement>('.overlap-section')).map((section) => ({
       section,
       title: section.querySelector<HTMLElement>('.overlap-heading'),
@@ -91,6 +92,15 @@ export default function WorkPage() {
         const distance = rect.top + rect.height / 2 - viewportCenter;
         const shift = Math.max(-24, Math.min(24, -distance * strengths[index % strengths.length]));
         card.style.setProperty('--card-shift', `${shift}px`);
+      });
+      portfolioCards.forEach((card, index) => {
+        const rect = card.getBoundingClientRect();
+        const stagger = (index % 2) * .14;
+        const rawReveal = (window.innerHeight * .9 - rect.top) / (window.innerHeight * .34) - stagger;
+        const reveal = Math.max(0, Math.min(1, rawReveal));
+        const eased = reveal * reveal * (3 - 2 * reveal);
+        card.style.setProperty('--portfolio-reveal', `${eased}`);
+        card.style.setProperty('--portfolio-enter-y', `${(1 - eased) * 42}px`);
       });
       overlapSections.forEach(({ section, title }) => {
         if (!title) return;
@@ -188,7 +198,7 @@ export default function WorkPage() {
         </div>
       </section>
       <section className="portfolio-section overlap-section" aria-labelledby="portfolio-title">
-        <div className="overlap-heading">
+        <div className="overlap-heading portfolio-heading">
           <h2 id="portfolio-title">{zh ? '作品集' : 'Portfolio'}</h2>
         </div>
         <div className="portfolio-grid">

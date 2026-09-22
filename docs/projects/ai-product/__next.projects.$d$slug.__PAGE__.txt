@@ -2,5 +2,5 @@
 2:I[28514,["/shanyao-portfolio/_next/static/chunks/1268b-q_mqfzr.js","/shanyao-portfolio/_next/static/chunks/115ys9n9~n2-u.js","/shanyao-portfolio/_next/static/chunks/0olhfuqeimplf.js","/shanyao-portfolio/_next/static/chunks/074c93.rzm1~j.js"],"ProjectDetailClient"]
 3:I[19162,["/shanyao-portfolio/_next/static/chunks/1268b-q_mqfzr.js","/shanyao-portfolio/_next/static/chunks/115ys9n9~n2-u.js","/shanyao-portfolio/_next/static/chunks/0olhfuqeimplf.js"],"OutletBoundary"]
 4:"$Sreact.suspense"
-0:{"rsc":["$","$1","c",{"children":[["$","$L2",null,{"project":{"slug":"ai-product","en":"AI product","zh":"AI 产品","tone":"cyan"}}],[["$","script","script-0",{"src":"/shanyao-portfolio/_next/static/chunks/074c93.rzm1~j.js","async":true}]],["$","$L3",null,{"children":["$","$4",null,{"name":"Next.MetadataOutlet","children":"$@5"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"CecR2J-edAq7SS10IhpYE"}
+0:{"rsc":["$","$1","c",{"children":[["$","$L2",null,{"project":{"slug":"ai-product","en":"AI product","zh":"AI 产品","tone":"cyan"}}],[["$","script","script-0",{"src":"/shanyao-portfolio/_next/static/chunks/074c93.rzm1~j.js","async":true}]],["$","$L3",null,{"children":["$","$4",null,{"name":"Next.MetadataOutlet","children":"$@5"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"-DeUvqzrn9oceo2zIOfwN"}
 5:null
