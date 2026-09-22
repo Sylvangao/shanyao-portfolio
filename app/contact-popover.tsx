@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useEffect, useId, useRef, useState, type PointerEvent as ReactPointerEvent } from 'react';
+import { useCallback, useEffect, useId, useRef, useState } from 'react';
 
 export function ContactPopover({ lang, variant = 'hero' }: { lang: 'zh' | 'en'; variant?: 'hero' | 'footer' }) {
   const [open, setOpen] = useState(false);
@@ -17,20 +17,6 @@ export function ContactPopover({ lang, variant = 'hero' }: { lang: 'zh' | 'en'; 
     const requiredSpace = popover.offsetHeight + 20;
     setPlacement(triggerRect.top < requiredSpace ? 'below' : 'above');
   }, []);
-  const followPointer = useCallback((event: ReactPointerEvent<HTMLDivElement>) => {
-    if (variant !== 'footer' || window.matchMedia('(hover: none), (pointer: coarse)').matches) return;
-    const popover = root.current?.querySelector<HTMLElement>('.contact-popover');
-    if (!popover) return;
-    const margin = 20;
-    const gap = 24;
-    const width = popover.offsetWidth;
-    const height = popover.offsetHeight;
-    const left = Math.max(margin, Math.min(window.innerWidth - width - margin, event.clientX + gap));
-    const above = event.clientY - height - gap;
-    const top = above >= margin ? above : Math.min(window.innerHeight - height - margin, event.clientY + gap);
-    popover.style.setProperty('--footer-popover-x', `${left}px`);
-    popover.style.setProperty('--footer-popover-y', `${Math.max(margin, top)}px`);
-  }, [variant]);
 
   useEffect(() => {
     const close = (event: PointerEvent) => {
@@ -59,7 +45,7 @@ export function ContactPopover({ lang, variant = 'hero' }: { lang: 'zh' | 'en'; 
   }, [open, placePopover]);
 
   return (
-    <div className={variant === 'footer' ? 'footer-contact-root' : 'hero-actions'} ref={root} onPointerMove={followPointer}>
+    <div className={variant === 'footer' ? 'footer-contact-root' : 'hero-actions'} ref={root}>
       {variant === 'hero' && <a className="social-trigger" href="https://dribbble.com/nealgao" target="_blank" rel="noreferrer" aria-label="View Shanyao on Dribbble">
         <img src={`${basePath}/icons/dribbble.svg`} alt="" aria-hidden="true" />
       </a>}

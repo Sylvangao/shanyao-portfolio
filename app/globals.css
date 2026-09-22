@@ -618,10 +618,7 @@ main[lang="zh-CN"] .overlap-heading h2{letter-spacing:-.00625em}
 .footer-contact-popover .wechat-qr{border-color:#fff;background:#fff}
 .footer-contact-popover .contact-popover-copy span{color:rgba(255,255,255,.66)}
 .site-footer>div:last-child{margin-top:auto}
-@media(hover:hover) and (pointer:fine){
-  .footer-contact-popover{position:fixed;z-index:80;left:var(--footer-popover-x,20px);top:var(--footer-popover-y,20px);bottom:auto;transform:scale(.97);transform-origin:center}
-  .footer-contact-root .contact-action:hover .footer-contact-popover,.footer-contact-root .contact-action:focus-within .footer-contact-popover,.footer-contact-root .contact-action[data-open="true"] .footer-contact-popover{transform:scale(1)}
-}
+.footer-contact-popover{left:0;right:auto;top:auto;bottom:calc(100% + 20px);transform-origin:left bottom}
 
 /* Project detail placeholders */
 .project-detail-page{min-height:100vh;padding-bottom:100px}
