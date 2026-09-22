@@ -100,12 +100,14 @@ export default function WorkPage() {
           const rect = section.getBoundingClientRect();
           const progress = Math.max(0, Math.min(1, (window.innerHeight * .72 - rect.top) / (window.innerHeight * .62)));
           const eased = progress * progress * (3 - 2 * progress);
-          valueTitle.style.setProperty('--value-progress', `${eased}`);
+          const titleReveal = Math.max(0, Math.min(1, (progress - .55) / .35));
+          const titleRevealEased = titleReveal * titleReveal * (3 - 2 * titleReveal);
+          valueTitle.style.setProperty('--value-progress', `${titleRevealEased}`);
           valueTitle.style.setProperty('--value-title-shift', `${(1 - eased) * 100}px`);
           valueCards.forEach((card, index) => {
             const shell = Math.max(0, Math.min(1, (progress - .08) / .3));
             const shellEased = shell * shell * (3 - 2 * shell);
-            const blur = Math.max(0, Math.min(1, (progress - .62) / .22));
+            const blur = Math.max(0, Math.min(1, (progress - .72) / .18));
             const blurEased = blur * blur * (3 - 2 * blur);
             const start = .36 + index * .05;
             const reveal = Math.max(0, Math.min(1, (progress - start) / .22));
