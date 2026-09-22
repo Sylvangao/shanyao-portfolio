@@ -112,7 +112,7 @@ export default function WorkPage() {
             const start = .36 + index * .05;
             const reveal = Math.max(0, Math.min(1, (progress - start) / .22));
             const revealEased = reveal * reveal * (3 - 2 * reveal);
-            const copyStart = .46 + index * .065;
+            const copyStart = start + .16;
             const copyReveal = Math.max(0, Math.min(1, (progress - copyStart) / .26));
             const copyEased = copyReveal * copyReveal * (3 - 2 * copyReveal);
             card.style.setProperty('--value-shell-reveal', `${shellEased}`);
