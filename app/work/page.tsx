@@ -103,12 +103,18 @@ export default function WorkPage() {
           valueTitle.style.setProperty('--value-progress', `${eased}`);
           valueTitle.style.setProperty('--value-title-shift', `${(1 - eased) * 100}px`);
           valueCards.forEach((card, index) => {
-            const start = .23 + index * .04;
-            const reveal = Math.max(0, Math.min(1, (progress - start) / .18));
+            const shell = Math.max(0, Math.min(1, (progress - .08) / .3));
+            const shellEased = shell * shell * (3 - 2 * shell);
+            const blur = Math.max(0, Math.min(1, (progress - .62) / .22));
+            const blurEased = blur * blur * (3 - 2 * blur);
+            const start = .36 + index * .05;
+            const reveal = Math.max(0, Math.min(1, (progress - start) / .22));
             const revealEased = reveal * reveal * (3 - 2 * reveal);
-            const copyStart = .29 + index * .08;
-            const copyReveal = Math.max(0, Math.min(1, (progress - copyStart) / .28));
+            const copyStart = .46 + index * .065;
+            const copyReveal = Math.max(0, Math.min(1, (progress - copyStart) / .26));
             const copyEased = copyReveal * copyReveal * (3 - 2 * copyReveal);
+            card.style.setProperty('--value-shell-reveal', `${shellEased}`);
+            card.style.setProperty('--value-blur-reveal', `${blurEased}`);
             card.style.setProperty('--value-card-reveal', `${revealEased}`);
             card.style.setProperty('--value-copy-reveal', `${copyEased}`);
             card.style.setProperty('--value-card-shift', `${eased * 28}px`);
