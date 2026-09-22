@@ -3,7 +3,6 @@
 import { useEffect, useState } from 'react';
 import { SiteHeader } from '../site-header';
 import { FocusHeadline } from '../focus-headline';
-import { MeshBackground } from '../mesh-background';
 import { ContactPopover } from '../contact-popover';
 import { projects } from '../project-data';
 
@@ -151,7 +150,6 @@ export default function WorkPage() {
     <main className="work-page" lang={lang === 'zh' ? 'zh-CN' : 'en'}>
       <SiteHeader active="work" lang={lang} />
       <section className="work-hero">
-        <MeshBackground />
         <div className="hero-copy">
           <FocusHeadline words={zh ? ['化繁为简，','设计真正有效的产品。'] : ['Complexity made clear.','Products designed to grow.']} label={zh ? '化繁为简，设计真正有效的产品' : 'Complexity made clear. Products designed to grow'} href={zh ? '/work?lang=zh' : '/work'} emphasis={zh ? ['化繁为简', '有效', '产品'] : ['Complexity', 'clear', 'grow']} />
           <div className="intro-row">

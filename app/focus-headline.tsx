@@ -26,7 +26,11 @@ export function FocusHeadline({ words, label, href, emphasis = [] }: { words: st
         const index = wordIndex++;
         const normalized = word.replace(/[，。！？、；：,.!?;:]/g, '').toLowerCase();
         const strong = emphasis.some((term) => term.toLowerCase().includes(normalized));
-        return <span className={`headline-word${strong ? ' is-strong' : ''}`} style={animated ? { '--word-delay': `${index * 75}ms` } as CSSProperties : undefined} key={`${line}-${index}`}>{word}</span>;
+        return (
+          <span className="headline-word-mask" key={`${line}-${index}`}>
+            <span className={`headline-word${strong ? ' is-strong' : ''}`} style={animated ? { '--word-delay': `${index * 55}ms` } as CSSProperties : undefined}>{word}</span>
+          </span>
+        );
       })}
     </span>
   ));

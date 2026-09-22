@@ -183,16 +183,17 @@
 @media(max-width:760px){.hero-note p{font-size:15px}}
 @media(max-width:560px){.hero-note p{font-size:14px}}
 
-/* Intro reveal: each word follows the previous one in a continuous sequence. */
+/* Intro reveal: clipped words rise into place, following the reference's clean line-mask motion. */
 .focus-title .headline-line{display:flex;width:max-content;max-width:100%;gap:0 .19em;white-space:nowrap}
-.focus-title .headline-word{display:inline-block;width:auto;max-width:none;white-space:nowrap}
-.focus-base .headline-word{animation:hero-title-in 300ms ease-in-out var(--word-delay,0ms) both;animation-play-state:paused}
+.focus-title .headline-word-mask{display:inline-block;width:auto;max-width:none;padding:.05em .02em .1em;margin:-.05em -.02em -.1em;overflow:hidden;white-space:nowrap}
+.focus-title .headline-word{display:block;width:auto;max-width:none;white-space:nowrap}
+.focus-base .headline-word{animation:hero-title-in 680ms cubic-bezier(.76,0,.24,1) var(--word-delay,0ms) both;animation-play-state:paused}
 .intro-row{animation:hero-support-in 400ms ease-in-out 680ms both;animation-play-state:paused}
 .hero-actions{animation:hero-actions-in 400ms ease-in-out 1080ms both;animation-play-state:paused}
 .fonts-ready .focus-base .headline-word,.fonts-ready .intro-row,.fonts-ready .hero-actions{animation-play-state:running}
 @keyframes hero-title-in{
-  from{opacity:.001;transform:translate3d(0,10px,0);filter:blur(10px)}
-  to{opacity:1;transform:translate3d(0,0,0);filter:blur(0)}
+  from{transform:translate3d(0,115%,0)}
+  to{transform:translate3d(0,0,0)}
 }
 @keyframes hero-support-in{
   from{opacity:0}
