@@ -160,7 +160,15 @@ export default function WorkPage() {
         </div>
         <div className="value-cards">
           {advantages.map((item) => (
-            <article className="value-card" key={item.en}>
+            <article
+              className="value-card"
+              key={item.en}
+              data-backdrop={zh ? '为什么是我' : 'Why me'}
+              style={{
+                backdropFilter: 'blur(72px) saturate(112%) brightness(1.08)',
+                WebkitBackdropFilter: 'blur(72px) saturate(112%) brightness(1.08)',
+              }}
+            >
               <h3>{zh ? item.zh : item.en}</h3>
               <p>{zh ? item.zhCopy : item.enCopy}</p>
             </article>
