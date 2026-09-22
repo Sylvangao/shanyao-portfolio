@@ -197,7 +197,7 @@ export default function WorkPage() {
           ))}
         </div>
       </section>
-      <footer className="site-footer"><p>{zh ? '有项目想聊聊？' : 'Have a project in mind?'}</p><ContactPopover lang={lang} variant="footer" /><div><span>Shanyao</span><span>© 2026</span></div></footer>
+      <footer className="site-footer"><p>{zh ? '有项目想聊聊？' : 'Have a project in mind?'}</p><ContactPopover lang={lang} variant="footer" /><div><span>© 2026 Shanyao.</span><span>All rights reserved.</span></div></footer>
     </main>
   );
 }
