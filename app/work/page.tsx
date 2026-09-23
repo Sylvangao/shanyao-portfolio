@@ -215,18 +215,23 @@ export default function WorkPage() {
       </section>
       <footer className="site-footer">
         <div className="footer-cta">
-          <div className="footer-heading">
-            <img src={`${basePath}/profile/shanyao-avatar.jpg`} alt={zh ? '山药头像' : 'Portrait of Shanyao'} />
+          <div className="footer-message">
+            <div className="footer-avatar-line">
+              <img src={`${basePath}/profile/shanyao-avatar.jpg`} alt={zh ? '山药头像' : 'Portrait of Shanyao'} />
+              <span aria-hidden="true" />
+            </div>
             <h2>{zh ? <>一起打造<br />更好的产品</> : <>Let’s work<br />together</>}</h2>
+            <div className="footer-contacts">
+              <a href="mailto:nealgao@163.com">nealgao@163.com</a>
+              <a href="tel:+8615319925652">+86 153 1992 5652</a>
+            </div>
           </div>
           <ContactPopover lang={lang} variant="footer" />
         </div>
         <div className="footer-meta">
-          <div className="footer-contacts">
-            <a href="mailto:nealgao@163.com">nealgao@163.com</a>
-            <a href="tel:+8615319925652">+86 153 1992 5652</a>
-          </div>
-          <div className="footer-legal"><span>© 2026 Shanyao.</span><span>All rights reserved.</span></div>
+          <span>© 2026 Shanyao.</span>
+          <span>{zh ? '上海 · 中国' : 'Shanghai · China'}</span>
+          <span>All rights reserved.</span>
         </div>
       </footer>
     </main>
