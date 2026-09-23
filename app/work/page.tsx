@@ -144,9 +144,9 @@ export default function WorkPage() {
         const progress = Math.max(0, Math.min(1, (window.innerHeight - rect.top) / window.innerHeight));
         const eased = progress * progress * (3 - 2 * progress);
         const curveHeight = window.innerHeight * .1 * (1 - eased);
-        const contentShift = -Math.min(260, window.innerHeight * .42) * (1 - eased);
+        const contentShift = -Math.min(210, window.innerHeight * .34) * (1 - eased);
         const buttonShift = -75 * (1 - eased);
-        const clarityRaw = Math.max(0, Math.min(1, (progress - .72) / .28));
+        const clarityRaw = Math.max(0, Math.min(1, (progress - .55) / .28));
         const clarity = clarityRaw * clarityRaw * (3 - 2 * clarityRaw);
         footer.style.setProperty('--footer-curve-height', `${curveHeight}px`);
         footer.style.setProperty('--footer-content-shift', `${contentShift}px`);
@@ -244,7 +244,10 @@ export default function WorkPage() {
           </div>
           <ContactPopover lang={lang} variant="footer" />
         </div>
-        <div className="footer-meta">Copyright © 2026 Shanyao Gao. All rights reserved.</div>
+        <div className="footer-meta">
+          <small>COPYRIGHT</small>
+          <span>© 2026 Shanyao Gao. All rights reserved.</span>
+        </div>
       </footer>
     </main>
   );
