@@ -73,14 +73,18 @@ export function ContactPopover({ lang, variant = 'hero' }: { lang: 'zh' | 'en'; 
             const y = ((event.clientY - rect.top) / rect.height - .5) * 22;
             event.currentTarget.style.setProperty('--contact-x', `${x}px`);
             event.currentTarget.style.setProperty('--contact-y', `${y}px`);
+            event.currentTarget.style.setProperty('--contact-label-x', `${x * .42}px`);
+            event.currentTarget.style.setProperty('--contact-label-y', `${y * .42}px`);
           }}
           onPointerLeave={(event) => {
             event.currentTarget.style.setProperty('--contact-x', '0px');
             event.currentTarget.style.setProperty('--contact-y', '0px');
+            event.currentTarget.style.setProperty('--contact-label-x', '0px');
+            event.currentTarget.style.setProperty('--contact-label-y', '0px');
           }}
         >
           {variant === 'hero' && <img src={`${basePath}/icons/wechat.svg`} alt="" aria-hidden="true" />}
-          <span>{zh ? '聊一聊' : 'Let’s talk'}</span>
+          <span className="contact-label">{zh ? '聊一聊' : 'Let’s talk'}</span>
         </button>
         <div className={`contact-popover${variant === 'footer' ? ' footer-contact-popover' : ''}`} id={popoverId} role="dialog" aria-label={zh ? '微信联系方式' : 'WeChat contact'}>
           <img className="wechat-qr" src={`${basePath}/profile/shanyao-wechat-qr.jpg`} alt={zh ? '山药的微信二维码' : 'Shanyao’s WeChat QR code'} />

@@ -146,9 +146,12 @@ export default function WorkPage() {
         const curveHeight = window.innerHeight * .1 * (1 - eased);
         const contentShift = -Math.min(260, window.innerHeight * .42) * (1 - eased);
         const buttonShift = -75 * (1 - eased);
+        const clarityRaw = Math.max(0, Math.min(1, (progress - .72) / .28));
+        const clarity = clarityRaw * clarityRaw * (3 - 2 * clarityRaw);
         footer.style.setProperty('--footer-curve-height', `${curveHeight}px`);
         footer.style.setProperty('--footer-content-shift', `${contentShift}px`);
         footer.style.setProperty('--footer-button-shift', `${buttonShift}px`);
+        footer.style.setProperty('--footer-text-clarity', `${clarity}`);
       }
       if (Math.abs(lag) > .1) {
         frame = window.requestAnimationFrame(updateParallax);
@@ -231,9 +234,8 @@ export default function WorkPage() {
           <div className="footer-message">
             <div className="footer-heading">
               <img src={`${basePath}/profile/shanyao-avatar.jpg`} alt={zh ? '山药头像' : 'Portrait of Shanyao'} />
-              <h2>{zh ? <>一起打造<br />更好的产品</> : <>Let’s work<br />together</>}</h2>
+              <h2>{zh ? '一起打造更好的产品' : 'Let’s work together'}</h2>
             </div>
-            <span className="footer-direction" aria-hidden="true">↙</span>
             <div className="footer-rule" aria-hidden="true" />
             <div className="footer-contacts">
               <a href="mailto:nealgao@163.com">nealgao@163.com</a>
@@ -242,11 +244,7 @@ export default function WorkPage() {
           </div>
           <ContactPopover lang={lang} variant="footer" />
         </div>
-        <div className="footer-meta">
-          <div><small>{zh ? '版本' : 'VERSION'}</small><span>2026 © Shanyao</span></div>
-          <div><small>{zh ? '所在地' : 'LOCAL TIME'}</small><span>{zh ? '上海 · GMT+8' : 'Shanghai · GMT+8'}</span></div>
-          <div><small>{zh ? '社交平台' : 'SOCIALS'}</small><a href="https://dribbble.com/nealgao" target="_blank" rel="noreferrer">Dribbble</a></div>
-        </div>
+        <div className="footer-meta">Copyright © 2026 Shanyao Gao. All rights reserved.</div>
       </footer>
     </main>
   );
