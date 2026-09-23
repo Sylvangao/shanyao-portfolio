@@ -213,14 +213,15 @@ export default function WorkPage() {
           ))}
         </div>
       </section>
-      <footer className="site-footer">
+      <footer className="site-footer" id="contact">
         <div className="footer-cta">
           <div className="footer-message">
-            <div className="footer-avatar-line">
+            <div className="footer-heading">
               <img src={`${basePath}/profile/shanyao-avatar.jpg`} alt={zh ? '山药头像' : 'Portrait of Shanyao'} />
-              <span aria-hidden="true" />
+              <h2>{zh ? <>一起打造<br />更好的产品</> : <>Let’s work<br />together</>}</h2>
             </div>
-            <h2>{zh ? <>一起打造<br />更好的产品</> : <>Let’s work<br />together</>}</h2>
+            <span className="footer-direction" aria-hidden="true">↙</span>
+            <div className="footer-rule" aria-hidden="true" />
             <div className="footer-contacts">
               <a href="mailto:nealgao@163.com">nealgao@163.com</a>
               <a href="tel:+8615319925652">+86 153 1992 5652</a>
@@ -229,9 +230,9 @@ export default function WorkPage() {
           <ContactPopover lang={lang} variant="footer" />
         </div>
         <div className="footer-meta">
-          <span>© 2026 Shanyao.</span>
-          <span>{zh ? '上海 · 中国' : 'Shanghai · China'}</span>
-          <span>All rights reserved.</span>
+          <div><small>{zh ? '版本' : 'VERSION'}</small><span>2026 © Shanyao</span></div>
+          <div><small>{zh ? '所在地' : 'LOCAL TIME'}</small><span>{zh ? '上海 · GMT+8' : 'Shanghai · GMT+8'}</span></div>
+          <div><small>{zh ? '社交平台' : 'SOCIALS'}</small><a href="https://dribbble.com/nealgao" target="_blank" rel="noreferrer">Dribbble</a></div>
         </div>
       </footer>
     </main>
