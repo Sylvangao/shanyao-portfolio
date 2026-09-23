@@ -62,6 +62,7 @@ export default function WorkPage() {
     }));
     const valueSection = document.querySelector<HTMLElement>('.value-section');
     const valueCards = Array.from(document.querySelectorAll<HTMLElement>('.value-card'));
+    const footer = document.querySelector<HTMLElement>('.site-footer');
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
     let frame = 0;
     let targetScroll = window.scrollY;
@@ -137,6 +138,17 @@ export default function WorkPage() {
             card.style.setProperty('--value-copy-reveal', `${copyEased}`);
             card.style.setProperty('--value-card-shift', `${(1 - motionEased) * 44 + eased * 16}px`);
           });
+      }
+      if (footer) {
+        const rect = footer.getBoundingClientRect();
+        const progress = Math.max(0, Math.min(1, (window.innerHeight - rect.top) / window.innerHeight));
+        const eased = progress * progress * (3 - 2 * progress);
+        const curveHeight = window.innerHeight * .1 * (1 - eased);
+        const contentShift = -Math.min(260, window.innerHeight * .42) * (1 - eased);
+        const buttonShift = -75 * (1 - eased);
+        footer.style.setProperty('--footer-curve-height', `${curveHeight}px`);
+        footer.style.setProperty('--footer-content-shift', `${contentShift}px`);
+        footer.style.setProperty('--footer-button-shift', `${buttonShift}px`);
       }
       if (Math.abs(lag) > .1) {
         frame = window.requestAnimationFrame(updateParallax);
@@ -214,6 +226,7 @@ export default function WorkPage() {
         </div>
       </section>
       <footer className="site-footer" id="contact">
+        <div className="footer-curve" aria-hidden="true"><span /></div>
         <div className="footer-cta">
           <div className="footer-message">
             <div className="footer-heading">
