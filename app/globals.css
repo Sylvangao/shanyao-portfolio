@@ -613,7 +613,7 @@ main[lang="zh-CN"] .overlap-heading h2{letter-spacing:-.00625em}
 .site-footer>.footer-contact-root{margin:auto 0}
 .footer-contact-root .contact-action{width:max-content;margin:0}
 .footer-contact-trigger.contact-trigger{height:auto;padding:0;border:0;border-radius:0;background:none;color:#fff;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none;gap:0;font-size:clamp(76px,10vw,150px);font-weight:640;line-height:.9;letter-spacing:-.07em}
-.footer-contact-trigger.contact-trigger:hover,.footer-contact-root .contact-action[data-open="true"] .footer-contact-trigger{background:none;box-shadow:none;transform:none}
+.footer-contact-trigger.contact-trigger:hover,.footer-contact-root .contact-action[data-open="true"] .footer-contact-trigger{background:none;color:#fff;box-shadow:none;transform:none}
 .footer-contact-popover{border-color:rgba(255,255,255,.14);background:linear-gradient(145deg,rgba(43,43,47,.96),rgba(22,22,24,.93));box-shadow:inset 0 1px 0 rgba(255,255,255,.11),0 24px 70px rgba(0,0,0,.42);color:#fff}
 .footer-contact-popover .wechat-qr{border-color:#fff;background:#fff}
 .footer-contact-popover .contact-popover-copy span{color:rgba(255,255,255,.66)}
