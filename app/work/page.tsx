@@ -141,7 +141,8 @@ export default function WorkPage() {
       }
       if (footer) {
         const rect = footer.getBoundingClientRect();
-        const progress = Math.max(0, Math.min(1, (window.innerHeight - rect.top) / window.innerHeight));
+        const footerTravel = Math.min(window.innerHeight, rect.height);
+        const progress = Math.max(0, Math.min(1, (window.innerHeight - rect.top) / footerTravel));
         const eased = progress * progress * (3 - 2 * progress);
         const curveHeight = window.innerHeight * .1 * (1 - eased);
         const contentShift = -Math.min(210, window.innerHeight * .34) * (1 - eased);
@@ -245,8 +246,8 @@ export default function WorkPage() {
           <ContactPopover lang={lang} variant="footer" />
         </div>
         <div className="footer-meta">
-          <small>COPYRIGHT</small>
-          <span>© 2026 Shanyao Gao. All rights reserved.</span>
+          <div><small>COPYRIGHT</small><span>© 2026 Shanyao Gao.</span></div>
+          <div><small>RIGHTS</small><span>All rights reserved.</span></div>
         </div>
       </footer>
     </main>
