@@ -53,9 +53,19 @@ export function ContactPopover({ lang, variant = 'hero' }: { lang: 'zh' | 'en'; 
         <button
           className={`contact-trigger${variant === 'footer' ? ' footer-contact-trigger' : ''}`}
           type="button"
+          aria-haspopup="dialog"
           aria-expanded={open}
           aria-controls={popoverId}
-          onClick={() => { placePopover(); setOpen(true); }}
+          onPointerDown={(event) => {
+            event.preventDefault();
+            event.stopPropagation();
+            placePopover();
+            setOpen(true);
+          }}
+          onClick={(event) => {
+            event.preventDefault();
+            setOpen(true);
+          }}
         >
           {variant === 'hero' && <img src={`${basePath}/icons/wechat.svg`} alt="" aria-hidden="true" />}
           <span>{zh ? '聊一聊' : 'Let’s talk'}</span>
