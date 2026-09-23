@@ -247,7 +247,7 @@ export default function WorkPage() {
         </div>
         <div className="footer-meta">
           <div><small>COPYRIGHT</small><span>© 2026 Shanyao Gao.</span></div>
-          <div><small>RIGHTS</small><span>All rights reserved.</span></div>
+          <div><small>LEGAL</small><span>All rights reserved.</span></div>
         </div>
       </footer>
     </main>

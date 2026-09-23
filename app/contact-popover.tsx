@@ -84,7 +84,7 @@ export function ContactPopover({ lang, variant = 'hero' }: { lang: 'zh' | 'en'; 
           }}
         >
           {variant === 'hero' && <img src={`${basePath}/icons/wechat.svg`} alt="" aria-hidden="true" />}
-          <span className="contact-label">{zh ? '聊一聊' : 'Let’s talk'}</span>
+          <span className="contact-label">{variant === 'footer' ? (zh ? '联系我' : 'Get in touch') : (zh ? '聊一聊' : 'Let’s talk')}</span>
         </button>
         <div className={`contact-popover${variant === 'footer' ? ' footer-contact-popover' : ''}`} id={popoverId} role="dialog" aria-label={zh ? '微信联系方式' : 'WeChat contact'}>
           <img className="wechat-qr" src={`${basePath}/profile/shanyao-wechat-qr.jpg`} alt={zh ? '山药的微信二维码' : 'Shanyao’s WeChat QR code'} />

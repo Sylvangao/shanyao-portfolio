@@ -610,15 +610,15 @@ main[lang="zh-CN"] .overlap-heading h2{letter-spacing:-.00625em}
 .portfolio-card:focus-visible{outline:3px solid rgba(0,102,204,.35);outline-offset:6px;border-radius:38px}
 
 /* Dark contact footer */
-.site-footer{--footer-curve-height:10vh;--footer-content-shift:-210px;--footer-button-shift:-75px;--footer-text-clarity:0;position:relative;isolation:isolate;min-height:500px;margin-top:0;padding:115px max(40px,calc((100vw - 1200px)/2)) 22px;border-radius:0 0 22px 22px;background:#ededee;overflow:hidden;content-visibility:visible;contain-intrinsic-size:none}
+.site-footer{--footer-curve-height:10vh;--footer-content-shift:-210px;--footer-button-shift:-75px;--footer-text-clarity:0;position:relative;isolation:isolate;min-height:570px;margin-top:0;padding:145px max(40px,calc((100vw - 1200px)/2)) 24px;border-radius:0 0 22px 22px;background:#ededee;overflow:hidden;content-visibility:visible;contain-intrinsic-size:none}
 .site-footer::before{display:none}
 .footer-curve{position:absolute!important;z-index:2;top:0;left:0;width:100%;height:var(--footer-curve-height);padding:0!important;border:0!important;overflow:hidden;pointer-events:none;will-change:height}
 .footer-curve span{position:absolute;left:50%;top:0;display:block;width:150%;height:750%;border-radius:50%;background:#fff;transform:translate(-50%,-86.666%)}
 .footer-cta{position:relative;z-index:1;display:block;width:100%;max-width:1200px;margin:0 auto;padding:0;border:0;color:inherit;font-size:inherit;transform:translateY(var(--footer-content-shift));will-change:transform}
 .footer-message{min-width:0}
 .footer-heading{display:flex;align-items:center;gap:.22em;opacity:calc(.16 + var(--footer-text-clarity) * .84);filter:blur(calc((1 - var(--footer-text-clarity)) * 11px));transition:opacity .12s linear,filter .12s linear}
-.footer-heading img{flex:0 0 auto;width:.85em;height:.85em;margin-top:.09em;border:0;border-radius:50%;object-fit:cover;box-shadow:none;font-size:clamp(70px,6.125vw,98px)}
-.footer-heading h2{margin:0;white-space:nowrap;color:#171717;font-size:clamp(58px,5.55vw,89px);font-weight:400;line-height:1.04;letter-spacing:var(--display-title-tracking)}
+.footer-heading img{flex:0 0 auto;width:.85em;height:.85em;margin-top:0;border:0;border-radius:50%;object-fit:cover;box-shadow:none;font-size:clamp(70px,6.125vw,98px)}
+.footer-heading h2{margin:0;white-space:nowrap;color:#171717;font-size:clamp(58px,5.55vw,89px);font-weight:400;line-height:1.04;letter-spacing:var(--display-title-tracking);transform:translateY(.035em)}
 main[lang="zh-CN"] .footer-heading h2{letter-spacing:var(--display-title-tracking-zh)}
 .footer-rule{height:1px;margin-top:62px;background:rgba(23,23,23,.075)}
 .footer-cta>.footer-contact-root{position:absolute;z-index:3;right:8%;top:calc(clamp(58px,5.55vw,89px) + 62px);margin:0;transform:translate(var(--footer-button-shift),-50%);will-change:transform}
@@ -634,7 +634,7 @@ main[lang="zh-CN"] .footer-heading h2{letter-spacing:var(--display-title-trackin
 .footer-contacts{display:flex;flex-wrap:wrap;gap:12px;margin-top:56px;opacity:calc(.16 + var(--footer-text-clarity) * .84);filter:blur(calc((1 - var(--footer-text-clarity)) * 9px));transition:opacity .12s linear,filter .12s linear}
 .footer-contacts a{min-width:190px;padding:17px 24px;border:1px solid rgba(255,255,255,.8);border-radius:999px;background:linear-gradient(145deg,rgba(255,255,255,.72),rgba(225,227,232,.42));color:#171717;box-shadow:inset 0 1px 1px rgba(255,255,255,.96),0 12px 28px rgba(23,23,23,.08);backdrop-filter:blur(22px) saturate(160%);-webkit-backdrop-filter:blur(22px) saturate(160%);font-size:15px;text-align:center;transition:background .25s ease,border-color .25s ease,transform .25s ease}
 .footer-contacts a:hover{border-color:#fff;background:linear-gradient(145deg,rgba(255,255,255,.92),rgba(233,235,239,.62));transform:translateY(-2px)}
-.footer-meta{position:relative;z-index:1;display:flex;justify-content:space-between;gap:40px;width:100%;max-width:1200px;margin:46px auto 0;color:#171717;opacity:calc(.16 + var(--footer-text-clarity) * .84);filter:blur(calc((1 - var(--footer-text-clarity)) * 7px));transform:translateY(var(--footer-content-shift));transition:opacity .12s linear,filter .12s linear;will-change:transform}
+.footer-meta{position:relative;z-index:1;display:flex;justify-content:space-between;gap:40px;width:100%;max-width:1200px;margin:66px auto 0;color:#171717;opacity:calc(.16 + var(--footer-text-clarity) * .84);filter:blur(calc((1 - var(--footer-text-clarity)) * 7px));transform:translateY(var(--footer-content-shift));transition:opacity .12s linear,filter .12s linear;will-change:transform}
 .footer-meta>div{display:grid;gap:8px}.footer-meta>div:last-child{text-align:right}
 .footer-meta small{color:rgba(23,23,23,.45);font-size:10px;font-weight:600;letter-spacing:.08em}
 .footer-meta span{font-size:14px;color:rgba(23,23,23,.72)}
@@ -656,7 +656,7 @@ main[lang="zh-CN"] .footer-heading h2{letter-spacing:var(--display-title-trackin
   .portfolio-grid{grid-template-columns:1fr;gap:24px}
   .portfolio-thumb{border-radius:28px}
   .portfolio-arrow{top:17px;right:17px;width:48px;height:48px;opacity:1;transform:none;font-size:21px}
-  .site-footer{min-height:470px;margin-top:0;padding:82px 20px 20px;border-radius:0 0 18px 18px}
+  .site-footer{min-height:520px;margin-top:0;padding:104px 20px 22px;border-radius:0 0 18px 18px}
   .footer-curve span{width:180%}
   .footer-heading{gap:14px}
   .footer-heading img{width:.9em;height:.9em;margin-top:.08em;font-size:15vw}
@@ -666,7 +666,7 @@ main[lang="zh-CN"] .footer-heading h2{letter-spacing:var(--display-title-trackin
   .footer-cta>.footer-contact-root{right:12px;top:calc(clamp(30px,9vw,58px) + 52px);margin:0}
   .footer-contact-trigger.contact-trigger{width:124px;height:124px;padding:0 18px;font-size:17px}
   .footer-contacts a{min-width:170px;padding:11px 15px;font-size:12px}
-  .footer-meta{max-width:none;gap:20px;margin-top:36px}.footer-meta>div{gap:5px}.footer-meta span{font-size:11px}
+  .footer-meta{max-width:none;gap:20px;margin-top:50px}.footer-meta>div{gap:5px}.footer-meta span{font-size:11px}
   .project-detail-hero{padding:90px 20px 50px}
   .project-back{margin-bottom:60px}
   .project-detail-hero h1{font-size:19vw}
@@ -681,5 +681,5 @@ main[lang="zh-CN"] .footer-heading h2{letter-spacing:var(--display-title-trackin
 @media(prefers-reduced-motion:reduce){.site-footer{--footer-curve-height:0px!important;--footer-content-shift:0px!important;--footer-button-shift:0px!important;--footer-text-clarity:1!important}}
 
 /* One tracking system for every display-scale title. */
-.focus-title,.overlap-heading h2,.footer-contact-trigger.contact-trigger,.project-detail-hero h1{letter-spacing:var(--display-title-tracking)}
-main[lang="zh-CN"] .focus-title,main[lang="zh-CN"] .overlap-heading h2,main[lang="zh-CN"] .footer-contact-trigger.contact-trigger,main[lang="zh-CN"] .project-detail-hero h1{letter-spacing:var(--display-title-tracking-zh)}
+.focus-title,.overlap-heading h2,.footer-heading h2,.footer-contact-trigger.contact-trigger,.project-detail-hero h1{letter-spacing:var(--display-title-tracking)}
+main[lang="zh-CN"] .focus-title,main[lang="zh-CN"] .overlap-heading h2,main[lang="zh-CN"] .footer-heading h2,main[lang="zh-CN"] .footer-contact-trigger.contact-trigger,main[lang="zh-CN"] .project-detail-hero h1{letter-spacing:var(--display-title-tracking-zh)}
