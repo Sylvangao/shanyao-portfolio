@@ -66,6 +66,18 @@ export function ContactPopover({ lang, variant = 'hero' }: { lang: 'zh' | 'en'; 
             event.preventDefault();
             setOpen(true);
           }}
+          onPointerMove={(event) => {
+            if (variant !== 'footer' || event.pointerType === 'touch') return;
+            const rect = event.currentTarget.getBoundingClientRect();
+            const x = ((event.clientX - rect.left) / rect.width - .5) * 22;
+            const y = ((event.clientY - rect.top) / rect.height - .5) * 22;
+            event.currentTarget.style.setProperty('--contact-x', `${x}px`);
+            event.currentTarget.style.setProperty('--contact-y', `${y}px`);
+          }}
+          onPointerLeave={(event) => {
+            event.currentTarget.style.setProperty('--contact-x', '0px');
+            event.currentTarget.style.setProperty('--contact-y', '0px');
+          }}
         >
           {variant === 'hero' && <img src={`${basePath}/icons/wechat.svg`} alt="" aria-hidden="true" />}
           <span>{zh ? '聊一聊' : 'Let’s talk'}</span>

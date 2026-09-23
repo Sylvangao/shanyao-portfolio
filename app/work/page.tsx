@@ -213,7 +213,22 @@ export default function WorkPage() {
           ))}
         </div>
       </section>
-      <footer className="site-footer"><p>{zh ? '有项目想聊聊？' : 'Have a project in mind?'}</p><ContactPopover lang={lang} variant="footer" /><div><span>© 2026 Shanyao.</span><span>All rights reserved.</span></div></footer>
+      <footer className="site-footer">
+        <div className="footer-cta">
+          <div className="footer-heading">
+            <img src={`${basePath}/profile/shanyao-avatar.jpg`} alt={zh ? '山药头像' : 'Portrait of Shanyao'} />
+            <h2>{zh ? <>一起打造<br />更好的产品</> : <>Let’s work<br />together</>}</h2>
+          </div>
+          <ContactPopover lang={lang} variant="footer" />
+        </div>
+        <div className="footer-meta">
+          <div className="footer-contacts">
+            <a href="mailto:nealgao@163.com">nealgao@163.com</a>
+            <a href="tel:+8615319925652">+86 153 1992 5652</a>
+          </div>
+          <div className="footer-legal"><span>© 2026 Shanyao.</span><span>All rights reserved.</span></div>
+        </div>
+      </footer>
     </main>
   );
 }

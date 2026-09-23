@@ -610,15 +610,28 @@ main[lang="zh-CN"] .overlap-heading h2{letter-spacing:-.00625em}
 .portfolio-card:focus-visible{outline:3px solid rgba(0,102,204,.35);outline-offset:6px;border-radius:38px}
 
 /* Dark contact footer */
-.site-footer>.footer-contact-root{margin:auto 0}
+.site-footer{position:relative;isolation:isolate;min-height:650px;margin-top:90px;padding:116px max(40px,calc((100vw - 1200px)/2)) 30px;border-radius:0;background:#161617;overflow:visible;content-visibility:visible;contain-intrinsic-size:none}
+.site-footer::before{content:"";position:absolute;z-index:0;left:0;right:0;top:-74px;height:150px;border-radius:50% 50% 0 0/100% 100% 0 0;background:#161617;pointer-events:none}
+.footer-cta{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:64px;padding-top:0;border-top:0;color:inherit;font-size:inherit}
+.footer-cta,.footer-meta{position:relative;z-index:1}
+.footer-heading{display:flex;align-items:flex-start;gap:28px}
+.footer-heading img{flex:0 0 auto;width:86px;height:86px;margin-top:10px;border:3px solid rgba(255,255,255,.9);border-radius:50%;object-fit:cover;box-shadow:0 14px 35px rgba(0,0,0,.32)}
+.footer-heading h2{margin:0;color:#fff;font-size:clamp(74px,9vw,138px);font-weight:590;line-height:.84;letter-spacing:var(--display-title-tracking)}
+main[lang="zh-CN"] .footer-heading h2{letter-spacing:var(--display-title-tracking-zh)}
+.site-footer>.footer-contact-root{margin:0}
 .footer-contact-root .contact-action{width:max-content;margin:0}
-.footer-contact-trigger.contact-trigger{height:auto;padding:0;border:0;border-radius:0;background:none;color:#fff;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none;gap:0;font-size:clamp(76px,10vw,150px);font-weight:640;line-height:.9;letter-spacing:-.07em}
-.footer-contact-trigger.contact-trigger:hover,.footer-contact-root .contact-action[data-open="true"] .footer-contact-trigger{background:none;color:#fff;box-shadow:none;transform:none}
+.footer-contact-trigger.contact-trigger{--contact-x:0px;--contact-y:0px;width:clamp(144px,14vw,190px);height:clamp(144px,14vw,190px);padding:0 24px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.17);border-radius:50%;background:#ff596b;color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.28),0 25px 55px rgba(0,0,0,.28);backdrop-filter:none;-webkit-backdrop-filter:none;font-size:clamp(18px,1.6vw,24px);font-weight:520;line-height:1;letter-spacing:-.025em;transform:translate3d(var(--contact-x),var(--contact-y),0);transition:transform .45s cubic-bezier(.2,.8,.2,1),background .3s ease,box-shadow .3s ease}
+.footer-contact-trigger.contact-trigger:hover,.footer-contact-root .contact-action[data-open="true"] .footer-contact-trigger{background:#ff6b7b;color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.32),0 30px 70px rgba(0,0,0,.35);transform:translate3d(var(--contact-x),var(--contact-y),0) scale(1.035)}
 .footer-contact-popover{border-color:rgba(255,255,255,.14);background:linear-gradient(145deg,rgba(43,43,47,.96),rgba(22,22,24,.93));box-shadow:inset 0 1px 0 rgba(255,255,255,.11),0 24px 70px rgba(0,0,0,.42);color:#fff}
 .footer-contact-popover .wechat-qr{border-color:#fff;background:#fff}
 .footer-contact-popover .contact-popover-copy span{color:rgba(255,255,255,.66)}
-.site-footer>div:last-child{margin-top:auto}
-.footer-contact-popover{left:0;right:auto;top:auto;bottom:calc(100% + 20px);transform-origin:left bottom}
+.footer-contact-popover{left:auto;right:0;top:auto;bottom:calc(100% + 22px);transform:translateY(8px) scale(.97);transform-origin:right bottom}
+.footer-contact-root .contact-action:hover .footer-contact-popover,.footer-contact-root .contact-action:focus-within .footer-contact-popover,.footer-contact-root .contact-action[data-open="true"] .footer-contact-popover{transform:translateY(0) scale(1)}
+.footer-meta{display:flex;justify-content:space-between;align-items:flex-end;margin-top:auto;padding-top:24px;border-top:1px solid rgba(255,255,255,.2)}
+.footer-contacts{display:flex;flex-wrap:wrap;gap:12px}
+.footer-contacts a{padding:12px 17px;border:1px solid rgba(255,255,255,.2);border-radius:999px;color:#fff;font-size:14px;transition:background .25s ease,border-color .25s ease}
+.footer-contacts a:hover{border-color:rgba(255,255,255,.42);background:rgba(255,255,255,.08)}
+.footer-legal{display:flex;gap:18px;color:#a1a1a6;font-size:12px}
 
 /* Project detail placeholders */
 .project-detail-page{min-height:100vh;padding-bottom:100px}
@@ -637,13 +650,27 @@ main[lang="zh-CN"] .overlap-heading h2{letter-spacing:-.00625em}
   .portfolio-grid{grid-template-columns:1fr;gap:24px}
   .portfolio-thumb{border-radius:28px}
   .portfolio-arrow{top:17px;right:17px;width:48px;height:48px;opacity:1;transform:none;font-size:21px}
-  .footer-contact-trigger.contact-trigger{gap:15px;font-size:18vw}
-  .site-footer>.footer-contact-root{margin:auto 0}
+  .site-footer{min-height:560px;margin-top:58px;padding:76px 20px 24px}
+  .site-footer::before{top:-38px;height:78px}
+  .footer-cta{grid-template-columns:1fr;gap:34px}
+  .footer-heading{gap:15px}
+  .footer-heading img{width:56px;height:56px;margin-top:5px;border-width:2px}
+  .footer-heading h2{font-size:15vw;line-height:.88}
+  .site-footer>.footer-contact-root{justify-self:end;margin:-18px 6px 0 0}
+  .footer-contact-trigger.contact-trigger{width:124px;height:124px;padding:0 18px;font-size:17px}
+  .footer-meta{align-items:flex-start;gap:22px}
+  .footer-contacts{flex-direction:column;gap:8px}
+  .footer-contacts a{padding:10px 13px;font-size:12px}
+  .footer-legal{flex-direction:column;gap:4px;text-align:right}
   .project-detail-hero{padding:90px 20px 50px}
   .project-back{margin-bottom:60px}
   .project-detail-hero h1{font-size:19vw}
   .project-detail-cover{margin:0 14px;border-radius:30px;aspect-ratio:1/1}
   .project-detail-placeholder{margin-top:40px;padding:0 20px;font-size:17px}
+}
+@media(max-width:560px){
+  .footer-contact-popover{position:fixed;left:50%;right:auto;top:50%;bottom:auto;width:min(360px,calc(100vw - 40px));transform:translate(-50%,calc(-50% + 8px)) scale(.97);transform-origin:center}
+  .footer-contact-root .contact-action:hover .footer-contact-popover,.footer-contact-root .contact-action:focus-within .footer-contact-popover,.footer-contact-root .contact-action[data-open="true"] .footer-contact-popover{transform:translate(-50%,-50%) scale(1)}
 }
 @media(prefers-reduced-motion:reduce){.overlap-heading{top:0;opacity:1}.portfolio-card,.portfolio-card:first-child{opacity:1;transform:none}}
 
