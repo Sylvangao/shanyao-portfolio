@@ -147,11 +147,14 @@ export default function WorkPage() {
         const curveHeight = window.innerHeight * .1 * (1 - eased);
         const contentShift = -Math.min(210, window.innerHeight * .34) * (1 - eased);
         const buttonShift = -75 * (1 - eased);
+        const chromeRaw = Math.max(0, Math.min(1, (progress - .12) / .48));
+        const chromeReveal = chromeRaw * chromeRaw * (3 - 2 * chromeRaw);
         const clarityRaw = Math.max(0, Math.min(1, (progress - .55) / .28));
         const clarity = clarityRaw * clarityRaw * (3 - 2 * clarityRaw);
         footer.style.setProperty('--footer-curve-height', `${curveHeight}px`);
         footer.style.setProperty('--footer-content-shift', `${contentShift}px`);
         footer.style.setProperty('--footer-button-shift', `${buttonShift}px`);
+        footer.style.setProperty('--footer-chrome-reveal', `${chromeReveal}`);
         footer.style.setProperty('--footer-text-clarity', `${clarity}`);
       }
       if (Math.abs(lag) > .1) {
