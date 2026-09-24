@@ -610,7 +610,7 @@ main[lang="zh-CN"] .overlap-heading h2{letter-spacing:-.00625em}
 .portfolio-card:focus-visible{outline:3px solid rgba(0,102,204,.35);outline-offset:6px;border-radius:38px}
 
 /* Dark contact footer */
-.site-footer{--footer-curve-height:10vh;--footer-content-shift:-210px;--footer-button-shift:-75px;--footer-chrome-reveal:0;--footer-text-clarity:0;position:relative;isolation:isolate;min-height:640px;margin-top:0;padding:145px max(40px,calc((100vw - 1200px)/2)) 24px;border-radius:0 0 22px 22px;background:#fff;overflow:hidden;content-visibility:visible;contain-intrinsic-size:none}
+.site-footer{--footer-curve-height:10vh;--footer-content-shift:-210px;--footer-button-shift:-75px;--footer-chrome-reveal:0;--footer-text-clarity:0;position:relative;isolation:isolate;min-height:640px;margin-top:0;padding:145px max(40px,calc((100vw - 1200px)/2)) 24px;display:flex;flex-direction:column;justify-content:flex-start;border-radius:0 0 22px 22px;background:#fff;overflow:hidden;content-visibility:visible;contain-intrinsic-size:none}
 .site-footer::before{content:"";position:absolute;z-index:0;inset:0;display:block;background:#ededee;opacity:var(--footer-chrome-reveal);pointer-events:none;will-change:opacity}
 .footer-curve{position:absolute!important;z-index:2;top:0;left:0;width:100%;height:var(--footer-curve-height);padding:0!important;border:0!important;overflow:hidden;pointer-events:none;will-change:height}
 .footer-curve span{position:absolute;left:50%;top:0;display:block;width:150%;height:750%;border-radius:50%;background:#fff;transform:translate(-50%,-86.666%)}
@@ -620,8 +620,9 @@ main[lang="zh-CN"] .overlap-heading h2{letter-spacing:-.00625em}
 .footer-heading img{flex:0 0 auto;width:clamp(52px,4.6vw,68px);height:clamp(52px,4.6vw,68px);margin-top:0;border:0;border-radius:50%;object-fit:cover;box-shadow:none}
 .footer-heading h2{margin:0;white-space:nowrap;color:#171717;font-size:clamp(52px,4.9vw,78px);font-weight:600;line-height:1.04;letter-spacing:var(--display-title-tracking);transform:translateY(.025em)}
 main[lang="zh-CN"] .footer-heading h2{letter-spacing:var(--display-title-tracking-zh)}
-.footer-rule{height:1px;margin-top:62px;background:rgba(23,23,23,.075);opacity:var(--footer-chrome-reveal);will-change:opacity}
-.footer-cta>.footer-contact-root{position:absolute;z-index:3;right:8%;top:calc(clamp(52px,4.9vw,78px) + 62px);margin:0;opacity:var(--footer-chrome-reveal);transform:translate(var(--footer-button-shift),-50%);will-change:transform,opacity}
+.footer-divider{position:relative;margin-top:62px}
+.footer-rule{height:1px;margin:0;background:rgba(23,23,23,.075);opacity:var(--footer-chrome-reveal);will-change:opacity}
+.footer-divider>.footer-contact-root{position:absolute;z-index:3;right:8%;top:50%;margin:0;opacity:var(--footer-chrome-reveal);transform:translate(var(--footer-button-shift),-50%);will-change:transform,opacity}
 .footer-contact-root .contact-action{width:max-content;margin:0}
 .footer-contact-trigger.contact-trigger{--contact-x:0px;--contact-y:0px;--contact-label-x:0px;--contact-label-y:0px;width:clamp(156px,11vw,176px);height:clamp(156px,11vw,176px);padding:0 24px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.18);border-radius:50%;background:linear-gradient(145deg,rgba(20,20,22,.98),rgba(0,0,0,.96));color:#fff;box-shadow:inset 0 1px 1px rgba(255,255,255,.18),0 25px 54px rgba(0,0,0,.2);backdrop-filter:blur(25px) saturate(130%);-webkit-backdrop-filter:blur(25px) saturate(130%);font-size:clamp(18px,1.25vw,20px);font-weight:400;line-height:1;letter-spacing:-.025em;transform:translate3d(var(--contact-x),var(--contact-y),0);transition:transform .45s cubic-bezier(.2,.8,.2,1),background .3s ease,box-shadow .3s ease}
 .footer-contact-trigger .contact-label{transform:translate3d(var(--contact-label-x),var(--contact-label-y),0);transition:transform .5s cubic-bezier(.2,.8,.2,1)}
@@ -661,12 +662,12 @@ main[lang="zh-CN"] .footer-heading h2{letter-spacing:var(--display-title-trackin
   .footer-heading{gap:22px}
   .footer-heading img{width:46px;height:46px;margin-top:0}
   .footer-heading h2{font-size:clamp(28px,8vw,52px);line-height:1.02}
-  .footer-rule{margin-top:52px}
+  .footer-divider{margin-top:52px}
   .footer-contacts{flex-direction:column;align-items:flex-start;gap:8px;margin-top:68px}
-  .footer-cta>.footer-contact-root{right:12px;top:calc(clamp(28px,8vw,52px) + 52px);margin:0}
+  .footer-divider>.footer-contact-root{right:12px}
   .footer-contact-trigger.contact-trigger{width:124px;height:124px;padding:0 18px;font-size:17px}
   .footer-contacts a{min-width:170px;padding:11px 15px;font-size:12px}
-  .footer-meta{max-width:none;gap:20px;margin-top:92px}.footer-meta>div{gap:5px}.footer-meta span{font-size:11px}
+  .footer-meta{max-width:none;gap:20px;margin-top:72px}.footer-meta>div{gap:5px}.footer-meta span{font-size:11px}
   .project-detail-hero{padding:90px 20px 50px}
   .project-back{margin-bottom:60px}
   .project-detail-hero h1{font-size:19vw}
@@ -678,13 +679,13 @@ main[lang="zh-CN"] .footer-heading h2{letter-spacing:var(--display-title-trackin
   .footer-heading{align-items:flex-start;gap:16px}
   .footer-heading img{width:42px;height:42px}
   .footer-heading h2{max-width:calc(100% - 58px);white-space:normal;font-size:clamp(32px,9vw,42px);line-height:1.04}
-  .footer-rule{margin-top:36px}
-  .footer-cta>.footer-contact-root{right:4px;top:150px}
+  .footer-divider{margin-top:36px}
+  .footer-divider>.footer-contact-root{right:4px}
   .footer-contact-trigger.contact-trigger{width:108px;height:108px;padding:0 14px;font-size:15px}
   .footer-contact-trigger .contact-label{white-space:nowrap}
   .footer-contacts{margin-top:76px}
   .footer-contacts a{min-width:166px}
-  .footer-meta{margin-top:88px}
+  .footer-meta{margin-top:64px}
   .footer-contact-popover{position:fixed;left:50%;right:auto;top:50%;bottom:auto;width:min(360px,calc(100vw - 40px));transform:translate(-50%,calc(-50% + 8px)) scale(.97);transform-origin:center}
   .footer-contact-root .contact-action:hover .footer-contact-popover,.footer-contact-root .contact-action:focus-within .footer-contact-popover,.footer-contact-root .contact-action[data-open="true"] .footer-contact-popover{transform:translate(-50%,-50%) scale(1)}
 }
