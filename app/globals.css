@@ -378,7 +378,7 @@ main[lang="zh-CN"] .resume-profile p{letter-spacing:-.0175em}
   .site-header>.wordmark{position:absolute;left:9px;top:50%;transform:translateY(-50%)}
   .site-header>.page-tabs{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%)}
   .site-header>.language-switch{position:absolute;right:6px;top:50%;transform:translateY(-50%)}
-  .work-hero{height:520px;min-height:0;padding-block:62px 30px}
+  .work-hero{height:700px;min-height:0;padding-block:62px 30px}
 }
 @media(max-width:560px){
   .work-hero{height:460px;min-height:0;padding-block:50px 24px}
