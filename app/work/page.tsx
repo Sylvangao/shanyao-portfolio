@@ -110,8 +110,11 @@ export default function WorkPage() {
         const eased = progress * progress * (3 - 2 * progress);
         const titleReveal = Math.max(0, Math.min(1, (progress - .55) / .35));
         const titleRevealEased = titleReveal * titleReveal * (3 - 2 * titleReveal);
+        const titleShiftDistance = title.classList.contains('portfolio-heading')
+          ? (window.innerWidth <= 760 ? 100 : 180)
+          : 100;
         title.style.setProperty('--overlap-progress', `${titleRevealEased}`);
-        title.style.setProperty('--overlap-title-shift', `${(1 - eased) * 100}px`);
+        title.style.setProperty('--overlap-title-shift', `${(1 - eased) * titleShiftDistance}px`);
       });
       if (valueSection) {
           const rect = valueSection.getBoundingClientRect();
