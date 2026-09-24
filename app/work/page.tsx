@@ -36,8 +36,8 @@ export default function WorkPage() {
     };
     if ('fonts' in document) {
       Promise.all([
-        document.fonts.load('200 82px "Google Sans"'),
-        document.fonts.load('700 82px "Google Sans"'),
+        document.fonts.load('100 82px "Google Sans"'),
+        document.fonts.load('850 82px "Google Sans"'),
       ]).then(reveal, reveal);
     } else {
       reveal();
