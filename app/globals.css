@@ -173,10 +173,8 @@
 @media(max-width:560px){.hero-ambience{filter:blur(11px) saturate(130%)}}
 
 /* Compact fixed-height introduction: keeps the first project visible sooner. */
-.work-hero{height:900px;min-height:0;padding-block:64px}
+.work-hero{height:780px;min-height:0;padding-block:64px}
 .focus-title{font-weight:700;font-variation-settings:"wght" 700}
-@media(max-width:760px){.work-hero{height:640px;min-height:0;padding-block:54px 40px}}
-@media(max-width:560px){.work-hero{height:570px;min-height:0;padding-block:44px 30px}}
 
 /* More legible introduction copy across breakpoints. */
 .hero-note p{font-size:17px}
@@ -358,7 +356,7 @@ main[lang="zh-CN"] .resume-profile p{letter-spacing:-.0175em}
 
 /* Let the colour field continue behind the initially transparent header. */
 @media(min-width:761px){
-  .work-hero{height:600px;margin-top:-86px;padding-block:122px 48px;overflow:hidden}
+  .work-hero{margin-top:-86px;padding-block:122px 48px;overflow:hidden}
   .work-page .page-tabs,.work-page .language-switch{
     background:rgba(255,255,255,calc(.52 * var(--header-progress,0)));
     box-shadow:0 8px 24px rgba(24,34,57,calc(.08 * var(--header-progress,0)));
