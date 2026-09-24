@@ -106,7 +106,8 @@ export default function WorkPage() {
       overlapSections.forEach(({ section, title }) => {
         if (!title) return;
         const rect = section.getBoundingClientRect();
-        const progress = Math.max(0, Math.min(1, (window.innerHeight * .72 - rect.top) / (window.innerHeight * .62)));
+        const completionOffset = section.classList.contains('value-section') ? 100 : 0;
+        const progress = Math.max(0, Math.min(1, (window.innerHeight * .72 + completionOffset - rect.top) / (window.innerHeight * .62)));
         const eased = progress * progress * (3 - 2 * progress);
         const titleReveal = Math.max(0, Math.min(1, (progress - .55) / .35));
         const titleRevealEased = titleReveal * titleReveal * (3 - 2 * titleReveal);
@@ -118,7 +119,7 @@ export default function WorkPage() {
       });
       if (valueSection) {
           const rect = valueSection.getBoundingClientRect();
-          const progress = Math.max(0, Math.min(1, (window.innerHeight * .72 - rect.top) / (window.innerHeight * .62)));
+          const progress = Math.max(0, Math.min(1, (window.innerHeight * .72 + 100 - rect.top) / (window.innerHeight * .62)));
           const eased = progress * progress * (3 - 2 * progress);
           valueCards.forEach((card, index) => {
             const motionStart = .08 + index * .09;
