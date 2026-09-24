@@ -675,17 +675,17 @@ main[lang="zh-CN"] .footer-heading h2{letter-spacing:var(--display-title-trackin
   .project-detail-placeholder{margin-top:40px;padding:0 20px;font-size:17px}
 }
 @media(max-width:560px){
-  .site-footer{min-height:690px;padding:92px 16px 22px}
-  .footer-heading{align-items:flex-start;gap:16px}
+  .site-footer{min-height:0;padding:92px 16px 22px}
+  .footer-heading{align-items:flex-start;gap:11px}
   .footer-heading img{width:42px;height:42px}
   .footer-heading h2{max-width:calc(100% - 58px);white-space:normal;font-size:clamp(32px,9vw,42px);line-height:1.04}
-  .footer-divider{margin-top:36px}
+  .footer-divider{margin-top:56px}
   .footer-divider>.footer-contact-root{right:4px}
   .footer-contact-trigger.contact-trigger{width:108px;height:108px;padding:0 14px;font-size:15px}
   .footer-contact-trigger .contact-label{white-space:nowrap}
   .footer-contacts{margin-top:76px}
   .footer-contacts a{min-width:166px}
-  .footer-meta{margin-top:64px}
+  .footer-meta{margin-top:56px}
   .footer-contact-popover{position:fixed;left:50%;right:auto;top:50%;bottom:auto;width:min(360px,calc(100vw - 40px));transform:translate(-50%,calc(-50% + 8px)) scale(.97);transform-origin:center}
   .footer-contact-root .contact-action:hover .footer-contact-popover,.footer-contact-root .contact-action:focus-within .footer-contact-popover,.footer-contact-root .contact-action[data-open="true"] .footer-contact-popover{transform:translate(-50%,-50%) scale(1)}
 }
