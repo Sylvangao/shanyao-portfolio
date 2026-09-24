@@ -587,7 +587,7 @@ main[lang="zh-CN"] .value-card p{letter-spacing:-.006em}
 /* Portfolio archive */
 .portfolio-section{max-width:1280px;margin:0 auto;padding:118px 40px 150px}
 .overlap-heading{position:relative;z-index:0;margin:0 28px calc(clamp(96px,14vw,204px) * -.41);top:var(--overlap-title-shift,100px);opacity:var(--overlap-progress,0);will-change:top,opacity;transition:opacity .12s linear}
-.overlap-heading.portfolio-heading{margin-bottom:calc(clamp(96px,14vw,204px) * -.3)}
+.overlap-heading.portfolio-heading{margin-bottom:clamp(36px,4vw,60px)}
 .overlap-heading h2{margin:0;white-space:nowrap;text-align:center;color:#171717;font-size:clamp(96px,14vw,204px);font-weight:650;line-height:.82;letter-spacing:-.025em}
 main[lang="zh-CN"] .overlap-heading h2{letter-spacing:-.00625em}
 .portfolio-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:36px}
@@ -651,7 +651,7 @@ main[lang="zh-CN"] .footer-heading h2{letter-spacing:var(--display-title-trackin
 @media(max-width:760px){
   .portfolio-section{padding:80px 14px 90px}
   .overlap-heading{margin:0 14px calc(clamp(54px,16vw,74px) * -.41);top:0}
-  .overlap-heading.portfolio-heading{margin-bottom:calc(clamp(54px,16vw,74px) * -.3)}
+  .overlap-heading.portfolio-heading{margin-bottom:28px}
   .overlap-heading h2{font-size:clamp(54px,16vw,74px);line-height:.88}
   .portfolio-grid{grid-template-columns:1fr;gap:24px}
   .portfolio-thumb{border-radius:28px}
