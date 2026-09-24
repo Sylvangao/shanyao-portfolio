@@ -569,6 +569,7 @@ main[lang="zh-CN"] .value-card p{letter-spacing:-.006em}
   .value-heading h2{white-space:normal;font-size:clamp(70px,13vw,118px)}
   .value-card{height:300px;min-height:300px;padding:42px 27px 62px;transform:none}
   .value-card h3{margin-top:0}
+  .value-card p{max-width:60ch}
   .value-card::after{display:none}
 }
 @media(max-width:560px){
