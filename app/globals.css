@@ -691,6 +691,41 @@ main[lang="zh-CN"] .footer-heading h2{letter-spacing:var(--display-title-trackin
 @media(prefers-reduced-motion:reduce){.overlap-heading{top:0;opacity:1}.portfolio-card,.portfolio-card:first-child{opacity:1;transform:none}}
 @media(prefers-reduced-motion:reduce){.site-footer{--footer-curve-height:0px!important;--footer-content-shift:0px!important;--footer-button-shift:0px!important;--footer-chrome-reveal:1!important;--footer-text-clarity:1!important}}
 
+/* Banner ambient gradient, adapted from the supplied standalone preview. */
+.work-hero::before{
+  content:"";
+  position:absolute;
+  z-index:0;
+  left:39%;
+  top:47%;
+  width:min(700px,70vw);
+  aspect-ratio:1;
+  border-radius:48% 52% 55% 45%/45% 48% 52% 55%;
+  pointer-events:none;
+  opacity:.64;
+  background:
+    radial-gradient(circle at 31% 43%,rgba(38,31,205,.95) 0%,rgba(66,59,216,.62) 18%,rgba(81,103,222,.24) 36%,transparent 56%),
+    radial-gradient(circle at 69% 29%,rgba(75,198,240,.74) 0%,rgba(102,201,239,.34) 28%,transparent 58%),
+    radial-gradient(circle at 54% 73%,rgba(80,174,229,.32) 0%,transparent 52%);
+  filter:blur(42px);
+  will-change:transform,border-radius;
+  animation:banner-ambient-main 3s ease-in-out infinite alternate;
+}
+@keyframes banner-ambient-main{
+  0%{transform:translate(-57%,-48%) rotate(-8deg) scale(.91,1.05);border-radius:48% 52% 55% 45%/45% 48% 52% 55%}
+  50%{transform:translate(-44%,-56%) rotate(9deg) scale(1.09,.94);border-radius:56% 44% 46% 54%/52% 58% 42% 48%}
+  100%{transform:translate(-52%,-43%) rotate(-4deg) scale(.97,1.09);border-radius:43% 57% 53% 47%/58% 44% 56% 42%}
+}
+@media(max-width:760px){
+  .work-hero::before{left:36%;top:46%;width:94vw;filter:blur(34px)}
+}
+@media(max-width:560px){
+  .work-hero::before{left:31%;top:44%;width:112vw;opacity:.58;filter:blur(28px)}
+}
+@media(prefers-reduced-motion:reduce){
+  .work-hero::before{animation:none;transform:translate(-50%,-50%)}
+}
+
 /* One tracking system for every display-scale title. */
 .focus-title,.overlap-heading h2,.footer-heading h2,.footer-contact-trigger.contact-trigger,.project-detail-hero h1{letter-spacing:var(--display-title-tracking)}
 main[lang="zh-CN"] .focus-title,main[lang="zh-CN"] .overlap-heading h2,main[lang="zh-CN"] .footer-heading h2,main[lang="zh-CN"] .footer-contact-trigger.contact-trigger,main[lang="zh-CN"] .project-detail-hero h1{letter-spacing:var(--display-title-tracking-zh)}
