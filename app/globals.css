@@ -705,8 +705,8 @@ main[lang="zh-CN"] .footer-heading h2{letter-spacing:var(--display-title-trackin
   opacity:.64;
   background:
     radial-gradient(circle at 31% 43%,rgba(38,31,205,.95) 0%,rgba(66,59,216,.62) 18%,rgba(81,103,222,.24) 36%,transparent 56%),
-    radial-gradient(circle at 69% 29%,rgba(75,198,240,.74) 0%,rgba(102,201,239,.34) 28%,transparent 58%),
-    radial-gradient(circle at 54% 73%,rgba(80,174,229,.32) 0%,transparent 52%);
+    radial-gradient(circle at 69% 29%,rgba(91,116,246,.7) 0%,rgba(132,119,240,.32) 28%,transparent 58%),
+    radial-gradient(circle at 54% 73%,rgba(139,104,235,.3) 0%,transparent 52%);
   -webkit-mask-image:radial-gradient(ellipse at center,#000 0 48%,rgba(0,0,0,.76) 66%,rgba(0,0,0,.24) 84%,transparent 100%);
   mask-image:radial-gradient(ellipse at center,#000 0 48%,rgba(0,0,0,.76) 66%,rgba(0,0,0,.24) 84%,transparent 100%);
   filter:blur(54px);
@@ -739,7 +739,7 @@ main[lang="zh-CN"] .footer-heading h2{letter-spacing:var(--display-title-trackin
   50%{transform:translate(-44%,-56%) rotate(9deg) scale(1.09,.94);border-radius:56% 44% 46% 54%/52% 58% 42% 48%}
   100%{transform:translate(-52%,-43%) rotate(-4deg) scale(.97,1.09);border-radius:43% 57% 53% 47%/58% 44% 56% 42%}
 }
-@keyframes banner-cool-cycle{0%,100%{opacity:.64}50%{opacity:.12}}
+@keyframes banner-cool-cycle{0%,100%{opacity:.64}50%{opacity:0}}
 @keyframes banner-warm-cycle{0%,100%{opacity:0}50%{opacity:.62}}
 @media(max-width:760px){
   .work-hero::before,.work-hero::after{left:36%;top:46%;width:94vw;filter:blur(44px)}
