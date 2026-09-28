@@ -697,8 +697,8 @@ main[lang="zh-CN"] .footer-heading h2{letter-spacing:var(--display-title-trackin
   position:absolute;
   z-index:0;
   left:39%;
-  top:47%;
-  width:min(700px,70vw);
+  top:39%;
+  width:min(620px,64vw);
   aspect-ratio:1;
   border-radius:48% 52% 55% 45%/45% 48% 52% 55%;
   pointer-events:none;
@@ -718,8 +718,8 @@ main[lang="zh-CN"] .footer-heading h2{letter-spacing:var(--display-title-trackin
   position:absolute;
   z-index:0;
   left:39%;
-  top:47%;
-  width:min(700px,70vw);
+  top:39%;
+  width:min(620px,64vw);
   aspect-ratio:1;
   border-radius:48% 52% 55% 45%/45% 48% 52% 55%;
   pointer-events:none;
@@ -742,10 +742,10 @@ main[lang="zh-CN"] .footer-heading h2{letter-spacing:var(--display-title-trackin
 @keyframes banner-cool-cycle{0%,100%{opacity:.64}50%{opacity:0}}
 @keyframes banner-warm-cycle{0%,100%{opacity:0}50%{opacity:.62}}
 @media(max-width:760px){
-  .work-hero::before,.work-hero::after{left:36%;top:46%;width:94vw;filter:blur(44px)}
+  .work-hero::before,.work-hero::after{left:35%;top:37%;width:88vw;filter:blur(44px)}
 }
 @media(max-width:560px){
-  .work-hero::before,.work-hero::after{left:31%;top:44%;width:112vw;filter:blur(36px)}
+  .work-hero::before,.work-hero::after{left:31%;top:36%;width:100vw;filter:blur(36px)}
 }
 @media(prefers-reduced-motion:reduce){
   .work-hero::before{animation:none;transform:translate(-50%,-50%);opacity:.64}
