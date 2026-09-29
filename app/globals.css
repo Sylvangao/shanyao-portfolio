@@ -770,6 +770,25 @@ main[lang="zh-CN"] .footer-heading h2{letter-spacing:var(--display-title-trackin
 .work-page{overflow-x:clip}
 .work-hero{overflow:visible}
 
+/* Restore the pointer-following sharp window over the softly blurred headline. */
+.focus-clear{
+  display:block;
+  opacity:0;
+  -webkit-mask-image:radial-gradient(circle 185px at var(--pointer-x) var(--pointer-y),#000 0,#000 37%,rgba(0,0,0,.82) 54%,rgba(0,0,0,.28) 76%,transparent 100%);
+  mask-image:radial-gradient(circle 185px at var(--pointer-x) var(--pointer-y),#000 0,#000 37%,rgba(0,0,0,.82) 54%,rgba(0,0,0,.28) 76%,transparent 100%);
+}
+.focus-stage:hover .focus-base{
+  filter:blur(1.8px);
+  opacity:.64;
+  -webkit-mask-image:radial-gradient(circle 185px at var(--pointer-x) var(--pointer-y),transparent 0,transparent 37%,rgba(0,0,0,.18) 54%,rgba(0,0,0,.72) 76%,#000 100%);
+  mask-image:radial-gradient(circle 185px at var(--pointer-x) var(--pointer-y),transparent 0,transparent 37%,rgba(0,0,0,.18) 54%,rgba(0,0,0,.72) 76%,#000 100%);
+}
+.focus-stage:hover .focus-clear{opacity:1}
+@media(hover:none){
+  .focus-base{filter:none;opacity:1;-webkit-mask-image:none;mask-image:none}
+  .focus-clear{display:none}
+}
+
 /* One tracking system for every display-scale title. */
 .focus-title,.overlap-heading h2,.footer-heading h2,.footer-contact-trigger.contact-trigger,.project-detail-hero h1{letter-spacing:var(--display-title-tracking)}
 main[lang="zh-CN"] .focus-title,main[lang="zh-CN"] .overlap-heading h2,main[lang="zh-CN"] .footer-heading h2,main[lang="zh-CN"] .footer-contact-trigger.contact-trigger,main[lang="zh-CN"] .project-detail-hero h1{letter-spacing:var(--display-title-tracking-zh)}
