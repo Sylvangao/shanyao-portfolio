@@ -22,7 +22,10 @@ export default function ResumePage() {
         <div className="resume-row"><h2>{zh ? '教育经历' : 'Education'}</h2><div className="empty-state"><strong>{zh ? '教育信息待补充' : 'Education details to be added'}</strong><p>{zh ? '后续可补充院校、专业与毕业年份。' : 'Add school, subject and graduation year.'}</p></div></div>
         <div className="resume-row"><h2>{zh ? '联系方式' : 'Contact'}</h2><div className="contact-list"><a href="mailto:hello@example.com">{zh?'邮箱':'Email'} ↗</a><span>{zh?'中国 · 上海':'Shanghai, China'}</span><span>{zh?'期待新的机会':'Available for opportunities'}</span></div></div>
       </section>
-      <footer className="resume-footer"><span>Shanyao — Designer</span><span>{zh?'简历':'Resume'} / 2026</span></footer>
+      <footer className="resume-footer">
+        <div><small>COPYRIGHT</small><span>© 2026 Shanyao Gao.</span></div>
+        <div><small>LEGAL</small><span>All rights reserved.</span></div>
+      </footer>
     </main>
   );
 }
