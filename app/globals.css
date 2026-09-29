@@ -735,9 +735,9 @@ main[lang="zh-CN"] .footer-heading h2{letter-spacing:var(--display-title-trackin
   animation:banner-ambient-main 3s ease-in-out infinite alternate,banner-warm-cycle 3s ease-in-out infinite;
 }
 @keyframes banner-ambient-main{
-  0%{transform:translate(-57%,-48%) rotate(-8deg) scale(.91,1.05);border-radius:48% 52% 55% 45%/45% 48% 52% 55%}
-  50%{transform:translate(-44%,-56%) rotate(9deg) scale(1.09,.94);border-radius:56% 44% 46% 54%/52% 58% 42% 48%}
-  100%{transform:translate(-52%,-43%) rotate(-4deg) scale(.97,1.09);border-radius:43% 57% 53% 47%/58% 44% 56% 42%}
+  0%{transform:translate(-72%,-51%) rotate(-8deg) scale(.91,1.05);border-radius:48% 52% 55% 45%/45% 48% 52% 55%}
+  50%{transform:translate(-48%,-56%) rotate(9deg) scale(1.09,.94);border-radius:56% 44% 46% 54%/52% 58% 42% 48%}
+  100%{transform:translate(-28%,-43%) rotate(-4deg) scale(.97,1.09);border-radius:43% 57% 53% 47%/58% 44% 56% 42%}
 }
 @keyframes banner-cool-cycle{0%,100%{opacity:.64}50%{opacity:0}}
 @keyframes banner-warm-cycle{0%,100%{opacity:0}50%{opacity:.62}}
@@ -751,6 +751,10 @@ main[lang="zh-CN"] .footer-heading h2{letter-spacing:var(--display-title-trackin
   .work-hero::before{animation:none;transform:translate(-50%,-50%);opacity:.64;filter:blur(70px)}
   .work-hero::after{display:none}
 }
+
+/* Let the blurred field extend past the hero so its top edge is never clipped. */
+.work-page{overflow-x:clip}
+.work-hero{overflow:visible}
 
 /* One tracking system for every display-scale title. */
 .focus-title,.overlap-heading h2,.footer-heading h2,.footer-contact-trigger.contact-trigger,.project-detail-hero h1{letter-spacing:var(--display-title-tracking)}
