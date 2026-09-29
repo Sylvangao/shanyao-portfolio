@@ -715,6 +715,9 @@ main[lang="zh-CN"] .footer-heading h2{letter-spacing:var(--display-title-trackin
   will-change:transform,opacity;
   backface-visibility:hidden;
   transform-style:preserve-3d;
+  offset-path:ellipse(30% 18% at 50% 50%);
+  offset-anchor:center;
+  offset-rotate:0deg;
   animation:banner-ambient-main 6.8s linear infinite,banner-cool-cycle 14s ease-in-out infinite;
 }
 .work-hero::after{
@@ -739,11 +742,14 @@ main[lang="zh-CN"] .footer-heading h2{letter-spacing:var(--display-title-trackin
   will-change:transform,opacity;
   backface-visibility:hidden;
   transform-style:preserve-3d;
+  offset-path:ellipse(30% 18% at 50% 50%);
+  offset-anchor:center;
+  offset-rotate:0deg;
   animation:banner-ambient-main 6.8s linear infinite,banner-warm-cycle 14s ease-in-out infinite;
 }
 @keyframes banner-ambient-main{
-  0%{transform:translate3d(-50%,-50%,0) rotate(0deg) translateX(30%) scale(.98,1.06)}
-  100%{transform:translate3d(-50%,-50%,0) rotate(360deg) translateX(30%) scale(.98,1.06)}
+  0%{offset-distance:0%;transform:translate3d(-50%,-50%,0) scale(.98,1.06)}
+  100%{offset-distance:100%;transform:translate3d(-50%,-50%,0) scale(.98,1.06)}
 }
 @keyframes banner-cool-cycle{0%,100%{opacity:.96}50%{opacity:0}}
 @keyframes banner-warm-cycle{0%,100%{opacity:0}50%{opacity:.94}}
