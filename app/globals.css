@@ -712,7 +712,7 @@ main[lang="zh-CN"] .footer-heading h2{letter-spacing:var(--display-title-trackin
   mask-image:none;
   filter:blur(70px) saturate(1.65);
   will-change:transform,border-radius,opacity;
-  animation:banner-ambient-main 3s ease-in-out infinite alternate,banner-cool-cycle 3s ease-in-out infinite;
+  animation:banner-ambient-main 5.4s linear infinite,banner-cool-cycle 5.4s ease-in-out infinite;
 }
 .work-hero::after{
   content:"";
@@ -734,12 +734,12 @@ main[lang="zh-CN"] .footer-heading h2{letter-spacing:var(--display-title-trackin
   mask-image:none;
   filter:blur(70px) saturate(1.65);
   will-change:transform,border-radius,opacity;
-  animation:banner-ambient-main 3s ease-in-out infinite alternate,banner-warm-cycle 3s ease-in-out infinite;
+  animation:banner-ambient-main 5.4s linear infinite,banner-warm-cycle 5.4s ease-in-out infinite;
 }
 @keyframes banner-ambient-main{
-  0%{transform:translate(-72%,-51%) rotate(-8deg) scale(.91,1.05);border-radius:48% 52% 55% 45%/45% 48% 52% 55%}
-  50%{transform:translate(-48%,-56%) rotate(9deg) scale(1.09,.94);border-radius:56% 44% 46% 54%/52% 58% 42% 48%}
-  100%{transform:translate(-28%,-43%) rotate(-4deg) scale(.97,1.09);border-radius:43% 57% 53% 47%/58% 44% 56% 42%}
+  0%,100%{transform:translate(-72%,-51%) rotate(-8deg) scale(.91,1.05);border-radius:48% 52% 55% 45%/45% 48% 52% 55%}
+  33%{transform:translate(-48%,-57%) rotate(7deg) scale(1.08,.95);border-radius:56% 44% 46% 54%/52% 58% 42% 48%}
+  66%{transform:translate(-28%,-43%) rotate(-4deg) scale(.97,1.09);border-radius:43% 57% 53% 47%/58% 44% 56% 42%}
 }
 @keyframes banner-cool-cycle{0%,100%{opacity:.96}50%{opacity:0}}
 @keyframes banner-warm-cycle{0%,100%{opacity:0}50%{opacity:.94}}
