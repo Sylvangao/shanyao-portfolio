@@ -704,6 +704,7 @@ main[lang="zh-CN"] .footer-heading h2{letter-spacing:var(--display-title-trackin
   pointer-events:none;
   opacity:.64;
   background:
+    radial-gradient(circle at 76% 66%,rgba(255,118,79,.78) 0%,rgba(255,159,99,.48) 13%,rgba(249,115,151,.18) 29%,transparent 45%),
     radial-gradient(circle at 31% 43%,rgba(38,31,205,.95) 0%,rgba(66,59,216,.62) 18%,rgba(81,103,222,.24) 36%,transparent 56%),
     radial-gradient(circle at 69% 29%,rgba(91,116,246,.7) 0%,rgba(132,119,240,.32) 28%,transparent 58%),
     radial-gradient(circle at 54% 73%,rgba(139,104,235,.3) 0%,transparent 52%);
@@ -725,6 +726,7 @@ main[lang="zh-CN"] .footer-heading h2{letter-spacing:var(--display-title-trackin
   pointer-events:none;
   opacity:0;
   background:
+    radial-gradient(circle at 76% 66%,rgba(48,64,214,.82) 0%,rgba(83,104,235,.5) 13%,rgba(128,104,237,.2) 29%,transparent 45%),
     radial-gradient(circle at 34% 42%,rgba(255,107,78,.88) 0%,rgba(255,148,92,.56) 24%,rgba(255,190,117,.2) 45%,transparent 66%),
     radial-gradient(circle at 68% 32%,rgba(255,196,105,.72) 0%,rgba(255,149,120,.32) 32%,transparent 63%),
     radial-gradient(circle at 54% 72%,rgba(244,113,157,.3) 0%,transparent 55%);
