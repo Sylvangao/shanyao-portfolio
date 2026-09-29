@@ -222,7 +222,7 @@ export default function WorkPage() {
       </section>
       <section className="portfolio-section overlap-section" aria-labelledby="portfolio-title">
         <div className="overlap-heading portfolio-heading">
-          <h2 id="portfolio-title">{zh ? '作品集' : 'Portfolio'}</h2>
+          <h2 id="portfolio-title">{zh ? '精选作品' : 'Selected work'}</h2>
         </div>
         <div className="portfolio-grid">
           {projects.map((project) => (
