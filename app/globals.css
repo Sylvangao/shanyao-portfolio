@@ -762,12 +762,14 @@ main[lang="zh-CN"] .footer-heading h2{letter-spacing:var(--display-title-trackin
 .focus-clear{
   display:block;
   opacity:0;
+  transition:none;
   -webkit-mask-image:radial-gradient(circle 185px at var(--pointer-x) var(--pointer-y),#000 0,#000 37%,rgba(0,0,0,.82) 54%,rgba(0,0,0,.28) 76%,transparent 100%);
   mask-image:radial-gradient(circle 185px at var(--pointer-x) var(--pointer-y),#000 0,#000 37%,rgba(0,0,0,.82) 54%,rgba(0,0,0,.28) 76%,transparent 100%);
 }
 .focus-stage:hover .focus-base{
   filter:blur(1.8px);
   opacity:.64;
+  transition:none;
   -webkit-mask-image:radial-gradient(circle 185px at var(--pointer-x) var(--pointer-y),transparent 0,transparent 37%,rgba(0,0,0,.18) 54%,rgba(0,0,0,.72) 76%,#000 100%);
   mask-image:radial-gradient(circle 185px at var(--pointer-x) var(--pointer-y),transparent 0,transparent 37%,rgba(0,0,0,.18) 54%,rgba(0,0,0,.72) 76%,#000 100%);
 }
