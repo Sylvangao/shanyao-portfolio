@@ -697,8 +697,8 @@ main[lang="zh-CN"] .footer-heading h2{letter-spacing:var(--display-title-trackin
   content:"";
   position:absolute;
   z-index:0;
-  left:39%;
-  top:39%;
+  left:0;
+  top:0;
   width:min(620px,64vw);
   aspect-ratio:1;
   border-radius:48% 52% 55% 45%/45% 48% 52% 55%;
@@ -715,7 +715,8 @@ main[lang="zh-CN"] .footer-heading h2{letter-spacing:var(--display-title-trackin
   will-change:transform,opacity;
   backface-visibility:hidden;
   transform-style:preserve-3d;
-  offset-path:ellipse(30% 18% at 50% 50%);
+  offset-position:0 0;
+  offset-path:ellipse(18% 10% at 40% 46%);
   offset-anchor:center;
   offset-rotate:0deg;
   animation:banner-ambient-main 6.8s linear infinite,banner-cool-cycle 14s ease-in-out infinite;
@@ -724,8 +725,8 @@ main[lang="zh-CN"] .footer-heading h2{letter-spacing:var(--display-title-trackin
   content:"";
   position:absolute;
   z-index:0;
-  left:39%;
-  top:39%;
+  left:0;
+  top:0;
   width:min(620px,64vw);
   aspect-ratio:1;
   border-radius:48% 52% 55% 45%/45% 48% 52% 55%;
@@ -742,7 +743,8 @@ main[lang="zh-CN"] .footer-heading h2{letter-spacing:var(--display-title-trackin
   will-change:transform,opacity;
   backface-visibility:hidden;
   transform-style:preserve-3d;
-  offset-path:ellipse(30% 18% at 50% 50%);
+  offset-position:0 0;
+  offset-path:ellipse(18% 10% at 40% 46%);
   offset-anchor:center;
   offset-rotate:0deg;
   animation:banner-ambient-main 6.8s linear infinite,banner-warm-cycle 14s ease-in-out infinite;
@@ -754,10 +756,10 @@ main[lang="zh-CN"] .footer-heading h2{letter-spacing:var(--display-title-trackin
 @keyframes banner-cool-cycle{0%,100%{opacity:.96}50%{opacity:0}}
 @keyframes banner-warm-cycle{0%,100%{opacity:0}50%{opacity:.94}}
 @media(max-width:760px){
-  .work-hero::before,.work-hero::after{left:35%;top:37%;width:88vw;filter:blur(58px) saturate(1.6)}
+  .work-hero::before,.work-hero::after{left:0;top:0;width:88vw;offset-path:ellipse(22% 11% at 43% 45%);filter:blur(58px) saturate(1.6)}
 }
 @media(max-width:560px){
-  .work-hero::before,.work-hero::after{left:31%;top:36%;width:100vw;filter:blur(48px) saturate(1.55)}
+  .work-hero::before,.work-hero::after{left:0;top:0;width:100vw;offset-path:ellipse(22% 10% at 44% 44%);filter:blur(48px) saturate(1.55)}
 }
 @media(prefers-reduced-motion:reduce){
   .work-hero::before{animation:none;transform:translate(-50%,-50%);opacity:.9;filter:blur(70px) saturate(1.65)}
