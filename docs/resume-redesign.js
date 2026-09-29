@@ -1,4 +1,4 @@
-window.addEventListener('load', () => {
+const renderResume = () => {
   const main = document.querySelector('main');
   if (!main) return;
   const zh = new URLSearchParams(location.search).get('lang') === 'zh';
@@ -22,4 +22,7 @@ window.addEventListener('load', () => {
     <section class="resume-section resume-capabilities"><div class="resume-section-heading"><span>03</span><h2>${copy.caps}</h2></div><div class="resume-capability-cloud">${capabilities.map(item=>`<span>${item}</span>`).join('')}</div></section>
     <section class="resume-contact-panel"><p>${copy.question}</p><h2>${copy.talk}</h2><div><a href="mailto:nealgao@163.com">nealgao@163.com</a><a href="tel:+8615319925652">+86 153 1992 5652</a></div></section>
     <footer class="resume-footer"><div><small>COPYRIGHT</small><span>© 2026 Shanyao Gao.</span></div><div><small>LEGAL</small><span>All rights reserved.</span></div></footer>`);
-});
+};
+
+if (document.readyState === 'loading') window.addEventListener('DOMContentLoaded', renderResume, { once: true });
+else renderResume();
