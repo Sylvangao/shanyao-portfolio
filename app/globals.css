@@ -819,3 +819,13 @@ main[lang="zh-CN"] .hero-note{--intro-tracking:-.003em}
 @media(max-width:760px){.hero-note{--intro-font-size:14px}.service-tags{gap:7px}.service-tags li{padding:6px 11px}}
 @media(max-width:560px){.hero-note{--intro-font-size:13px}.service-summary{margin-top:12px}.service-tags{gap:6px}.service-tags li{padding:6px 10px}}
 @media(prefers-reduced-motion:reduce){.service-tags li{animation:none}}
+
+/* Scroll motion stays on compositor transforms instead of changing layout. */
+.overlap-heading{top:0;transform:translate3d(0,var(--overlap-title-shift,100px),0);will-change:transform,opacity;transition:none}
+.value-card{top:0;transform:translate3d(0,var(--value-card-shift,42px),0);will-change:transform}
+@media(max-width:760px){.overlap-heading{transform:none}}
+@media(prefers-reduced-motion:reduce){.overlap-heading,.value-card{transform:none}}
+/* Let unusually small or short viewports grow rather than overlap later sections. */
+.work-hero{height:auto;min-height:780px}
+@media(max-width:760px){.work-hero{min-height:700px}}
+@media(max-width:560px){.work-hero{min-height:460px}}

@@ -73,6 +73,19 @@ export default function WorkPage() {
         frame = 0;
         return;
       }
+      // Read layout once before writing animated styles. Offset positions exclude
+      // transforms, so an animation never changes its own next input.
+      const measured = new Map<HTMLElement, { top: number; height: number }>();
+      [hero, ...cards, ...portfolioCards, ...overlapSections.map(({ section }) => section), valueSection, ...valueCards, footer].forEach((element) => {
+        if (!element || measured.has(element)) return;
+        let top = 0;
+        let ancestor: HTMLElement | null = element;
+        while (ancestor) {
+          top += ancestor.offsetTop;
+          ancestor = ancestor.offsetParent as HTMLElement | null;
+        }
+        measured.set(element, { top: top - targetScroll, height: element.offsetHeight });
+      });
       smoothScroll += (targetScroll - smoothScroll) * .11;
       const lag = targetScroll - smoothScroll;
       const heroShift = Math.max(-78, Math.min(78, lag * .38));
@@ -89,13 +102,13 @@ export default function WorkPage() {
       const viewportCenter = window.innerHeight / 2;
       const strengths = [.022, .034, .026];
       cards.forEach((card, index) => {
-        const rect = card.getBoundingClientRect();
+        const rect = measured.get(card)!;
         const distance = rect.top + rect.height / 2 - viewportCenter;
         const shift = Math.max(-24, Math.min(24, -distance * strengths[index % strengths.length]));
         card.style.setProperty('--card-shift', `${shift}px`);
       });
       portfolioCards.forEach((card, index) => {
-        const rect = card.getBoundingClientRect();
+        const rect = measured.get(card)!;
         const stagger = (index % 2) * .14;
         const rawReveal = (window.innerHeight * .9 - rect.top) / (window.innerHeight * .34) - stagger;
         const reveal = Math.max(0, Math.min(1, rawReveal));
@@ -105,7 +118,7 @@ export default function WorkPage() {
       });
       overlapSections.forEach(({ section, title }) => {
         if (!title) return;
-        const rect = section.getBoundingClientRect();
+        const rect = measured.get(section)!;
         const completionOffset = section.classList.contains('value-section') ? 240 : 0;
         const progress = Math.max(0, Math.min(1, (window.innerHeight * .72 + completionOffset - rect.top) / (window.innerHeight * .62)));
         const eased = progress * progress * (3 - 2 * progress);
@@ -118,23 +131,29 @@ export default function WorkPage() {
         title.style.setProperty('--overlap-title-shift', `${(1 - eased) * titleShiftDistance}px`);
       });
       if (valueSection) {
-          const rect = valueSection.getBoundingClientRect();
+          const rect = measured.get(valueSection)!;
           const progress = Math.max(0, Math.min(1, (window.innerHeight * .72 + 240 - rect.top) / (window.innerHeight * .62)));
           const eased = progress * progress * (3 - 2 * progress);
           valueCards.forEach((card, index) => {
-            const motionStart = .08 + index * .09;
-            const motion = Math.max(0, Math.min(1, (progress - motionStart) / .32));
+            // Stacked cards must reveal as each card enters the viewport.
+            const cardRect = measured.get(card)!;
+            const cardProgress = window.innerWidth <= 1024
+              ? Math.max(0, Math.min(1, (window.innerHeight * .94 - cardRect.top) / Math.min(window.innerHeight * .65, cardRect.height)))
+              : progress;
+            const staggerIndex = window.innerWidth <= 1024 ? 0 : index;
+            const motionStart = .08 + staggerIndex * .09;
+            const motion = Math.max(0, Math.min(1, (cardProgress - motionStart) / .32));
             const motionEased = motion * motion * (3 - 2 * motion);
-            const shellStart = .06 + index * .08;
-            const shell = Math.max(0, Math.min(1, (progress - shellStart) / .28));
+            const shellStart = .06 + staggerIndex * .08;
+            const shell = Math.max(0, Math.min(1, (cardProgress - shellStart) / .28));
             const shellEased = shell * shell * (3 - 2 * shell);
-            const blur = Math.max(0, Math.min(1, (progress - .72) / .18));
+            const blur = Math.max(0, Math.min(1, (cardProgress - .72) / .18));
             const blurEased = blur * blur * (3 - 2 * blur);
-            const start = .36 + index * .05;
-            const reveal = Math.max(0, Math.min(1, (progress - start) / .22));
+            const start = .36 + staggerIndex * .05;
+            const reveal = Math.max(0, Math.min(1, (cardProgress - start) / .22));
             const revealEased = reveal * reveal * (3 - 2 * reveal);
             const copyStart = start + .16;
-            const copyReveal = Math.max(0, Math.min(1, (progress - copyStart) / .26));
+            const copyReveal = Math.max(0, Math.min(1, (cardProgress - copyStart) / .26));
             const copyEased = copyReveal * copyReveal * (3 - 2 * copyReveal);
             card.style.setProperty('--value-shell-reveal', `${shellEased}`);
             card.style.setProperty('--value-blur-reveal', `${blurEased}`);
@@ -144,7 +163,7 @@ export default function WorkPage() {
           });
       }
       if (footer) {
-        const rect = footer.getBoundingClientRect();
+        const rect = measured.get(footer)!;
         const footerTravel = Math.min(window.innerHeight, rect.height);
         const progress = Math.max(0, Math.min(1, (window.innerHeight - rect.top) / footerTravel));
         const eased = progress * progress * (3 - 2 * progress);
