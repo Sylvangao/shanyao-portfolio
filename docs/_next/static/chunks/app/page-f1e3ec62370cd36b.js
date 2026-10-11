@@ -1,0 +1,1 @@
+(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[974],{6642:(e,n,o)=>{Promise.resolve().then(o.bind(o,6919))},6919:(e,n,o)=>{"use strict";o.r(n),o.d(n,{default:()=>s});var r=o(2115);function s(){return(0,r.useEffect)(()=>{window.location.replace("/shanyao-portfolio/work/")},[]),null}}},e=>{e.O(0,[441,794,358],()=>e(e.s=6642)),_N_E=e.O()}]);

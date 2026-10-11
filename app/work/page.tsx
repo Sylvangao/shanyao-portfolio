@@ -196,6 +196,15 @@ export default function WorkPage() {
             <img className="profile-avatar" src={`${basePath}/profile/shanyao-avatar.jpg`} width="58" height="58" alt={zh ? '山药的头像' : 'Portrait of Shanyao'} />
             <div className="hero-note"><p>{zh ? <><span>我是山药，一名拥有 13 年经验的独立产品设计师，曾就职于百度、魅族、知乎与腾讯。</span><span>我专注于将复杂想法转化为清晰、有效的数字产品。</span></> : <><span>I’m Shanyao, an independent product designer.</span><span>Across 13 years at Baidu, Meizu, Zhihu and Tencent, I’ve turned complex ideas into clear digital products that work.</span></>}</p></div>
           </div>
+          <div className="service-summary" aria-label={zh ? '设计服务范围' : 'Design services'}>
+            <span className="service-label">{zh ? '设计服务' : 'Design services'}</span>
+            <ul className="service-tags">
+              {(zh
+                ? ['App 与网站', 'SaaS 与企业产品', 'AI 产品', '设计系统']
+                : ['Apps & websites', 'SaaS & enterprise', 'AI products', 'Design systems']
+              ).map((service) => <li key={service}>{service}</li>)}
+            </ul>
+          </div>
           <ContactPopover lang={lang} />
         </div>
       </section>
