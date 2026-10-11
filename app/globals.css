@@ -829,3 +829,13 @@ main[lang="zh-CN"] .hero-note{--intro-tracking:-.003em}
 .work-hero{height:auto;min-height:780px}
 @media(max-width:760px){.work-hero{min-height:700px}}
 @media(max-width:560px){.work-hero{min-height:460px}}
+
+/* Frost the entire sticky navigation surface once content scrolls behind it. */
+@media(min-width:761px){
+  .work-page .site-header[data-scrolled="true"]{
+    background:rgba(248,249,251,.72);
+    backdrop-filter:blur(28px) saturate(155%);
+    -webkit-backdrop-filter:blur(28px) saturate(155%);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.9),0 8px 28px rgba(24,34,57,.08);
+  }
+}
