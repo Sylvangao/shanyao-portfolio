@@ -4,7 +4,7 @@ export const metadata: Metadata = {
   metadataBase:new URL('https://shanyao-portfolio.pages.dev'),
   title:'Shanyao — Designer',
   description:'Thoughtful design for useful things. Portfolio of Shanyao, an independent designer.',
-  icons:{ icon:`${process.env.NEXT_PUBLIC_BASE_PATH ?? ''}/favicon-avatar.jpg`, shortcut:`${process.env.NEXT_PUBLIC_BASE_PATH ?? ''}/favicon-avatar.jpg` },
+  icons:{ icon:`${process.env.NEXT_PUBLIC_BASE_PATH ?? ''}/favicon-avatar-circle.svg`, shortcut:`${process.env.NEXT_PUBLIC_BASE_PATH ?? ''}/favicon-avatar-circle.svg` },
   openGraph:{ title:'Shanyao — Designer', description:'Thoughtful design for useful things.', type:'website', images:['/og.png'] },
   twitter:{ card:'summary_large_image', title:'Shanyao — Designer', description:'Thoughtful design for useful things.', images:['/og.png'] },
 };
