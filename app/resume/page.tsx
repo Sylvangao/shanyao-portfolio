@@ -16,7 +16,7 @@ export default function ResumePage(){
  return <main className="resume-page" lang={zh?'zh-CN':'en'}>
   <SiteHeader active="resume" lang={lang}/>
   <div className="resume-layout">
-   <aside className="resume-photo"><img src={`${base}/profile/shanyao-avatar.jpg`} alt={zh?'山药的照片':'Portrait of Shanyao'} width="512" height="512"/><div><span>SHANYAO GAO</span><span>{zh?'设计 · 思考 · 探索':'Design · Think · Explore'}</span></div></aside>
+   <aside className="resume-photo"><img src={`${base}/profile/shanyao-portrait.jpg`} alt={zh?'山药的照片':'Portrait of Shanyao'} width="1620" height="1080"/><div><span>SHANYAO GAO</span><span>{zh?'设计 · 思考 · 探索':'Design · Think · Explore'}</span></div></aside>
    <div className="resume-body">
     <section className="resume-about"><p className="resume-eyebrow">{zh?'关于我':'ABOUT ME'}</p><h1>{zh?'你好，我是山药。':'Hi, I’m Shanyao.'}</h1><p className="resume-role">{zh?'独立产品设计师 / 产品设计与团队管理':'Independent product designer / Design & leadership'}</p>
      <p>{zh?'我是一名拥有 13 年互联网产品设计经验的设计师，曾就职于腾讯、知乎、魅族和百度。在消费产品与企业服务之间，我将复杂的业务逻辑转化为清晰、有效的体验。':'I’m a product designer with 13 years of experience across Tencent, Zhihu, Meizu and Baidu. Working across consumer products and enterprise services, I turn complex business logic into clear, effective experiences.'}</p>

@@ -905,3 +905,7 @@ main[lang="zh-CN"] .hero-note{--intro-tracking:-.003em}
 .resume-education{margin-top:48px;padding-bottom:16px}.resume-education>.resume-job-heading{padding-top:24px;border-top:1px solid var(--line)}.resume-education>p{margin-top:15px}
 @media(max-width:1024px){.resume-layout{gap:42px;padding:80px 28px 110px;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr)}}
 @media(max-width:760px){.resume-layout{grid-template-columns:1fr;padding:50px 22px 90px;gap:48px}.resume-photo{position:static;max-width:460px;width:100%;margin:auto}.resume-photo>img{aspect-ratio:1/1;border-radius:22px}.resume-about h1{font-size:38px}.resume-history{margin-top:58px}.resume-body p{font-size:15px}.resume-job-heading h3{font-size:22px}}
+
+/* Portrait crop keeps the subject and road visible on every screen. */
+.resume-photo>img{aspect-ratio:3/4;object-position:57% center}
+@media(max-width:760px){.resume-photo>img{aspect-ratio:3/4;object-position:57% center}}
