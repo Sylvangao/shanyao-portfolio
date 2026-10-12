@@ -2,5 +2,5 @@
 2:I[7121,[],""]
 3:I[4581,[],""]
 :HL["/shanyao-portfolio/_next/static/css/e38c2a25c9754503.css","style"]
-:HL["/shanyao-portfolio/_next/static/css/f931ad377d40dbc3.css","style"]
-0:{"rsc":["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/shanyao-portfolio/_next/static/css/e38c2a25c9754503.css","precedence":"next"}],["$","link","1",{"rel":"stylesheet","href":"/shanyao-portfolio/_next/static/css/f931ad377d40dbc3.css","precedence":"next"}]],["$","html",null,{"lang":"en","children":["$","body",null,{"children":["$","$L2",null,{"parallelRouterKey":"children","template":["$","$L3",null,{}]}]}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"MqJHn1Ojx-gbrdrpiR45r"}
+:HL["/shanyao-portfolio/_next/static/css/1d38a4bae989edde.css","style"]
+0:{"rsc":["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/shanyao-portfolio/_next/static/css/e38c2a25c9754503.css","precedence":"next"}],["$","link","1",{"rel":"stylesheet","href":"/shanyao-portfolio/_next/static/css/1d38a4bae989edde.css","precedence":"next"}]],["$","html",null,{"lang":"en","children":["$","body",null,{"children":["$","$L2",null,{"parallelRouterKey":"children","template":["$","$L3",null,{}]}]}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"sVuDACjt48cYzzWrpXJcv"}
