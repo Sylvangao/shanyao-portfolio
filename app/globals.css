@@ -875,3 +875,8 @@ main[lang="zh-CN"] .hero-note{--intro-tracking:-.003em}
   background:linear-gradient(to bottom,rgba(255,255,255,0),rgba(255,255,255,.12) 22%,rgba(255,255,255,.5) 54%,rgba(255,255,255,.88) 80%,#fff);
 }
 @media(min-width:1025px){.ambient-feather{bottom:40px}}
+
+/* Align the first label's text, rather than its outline, with the intro copy. */
+.service-summary{margin-left:-14px;max-width:calc(100% + 14px)}
+@media(max-width:760px){.service-summary{margin-left:-12px;max-width:calc(100% + 12px)}}
+@media(max-width:560px){.service-summary{margin-left:-11px;max-width:calc(100% + 11px)}}
