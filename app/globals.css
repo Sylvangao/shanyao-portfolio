@@ -929,3 +929,6 @@ main[lang="zh-CN"] .resume-body h1,main[lang="zh-CN"] .resume-body h2,main[lang=
 .resume-tencent-mark{height:46px;border-radius:11px;background:#0052d9;box-shadow:0 6px 14px rgba(0,82,217,.24),inset 0 1px 0 rgba(255,255,255,.18)}
 .resume-tencent-mark .resume-org-logo{width:52px;height:32px;flex:0 0 52px;object-fit:contain}
 @media(max-width:560px){.resume-org-mark{width:52px;flex-basis:52px}.resume-tencent-mark{height:40px;border-radius:10px}.resume-tencent-mark .resume-org-logo{width:43px;height:28px;flex-basis:43px}}
+
+.resume-tencent-mark{height:64px;border-radius:14px}
+@media(max-width:560px){.resume-tencent-mark{height:52px;border-radius:12px}}
