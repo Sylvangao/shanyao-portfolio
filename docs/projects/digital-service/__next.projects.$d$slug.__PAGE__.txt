@@ -2,5 +2,5 @@
 2:I[8112,["419","static/chunks/app/projects/%5Bslug%5D/page-be81cb5e6e4c3aae.js"],"ProjectDetailClient"]
 3:I[484,[],"OutletBoundary"]
 4:"$Sreact.suspense"
-0:{"rsc":["$","$1","c",{"children":[["$","$L2",null,{"project":{"slug":"digital-service","en":"Digital service","zh":"数字化服务","tone":"green"}}],null,["$","$L3",null,{"children":["$","$4",null,{"name":"Next.MetadataOutlet","children":"$@5"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"QLZ6xMxnF512EcRd3hIuh"}
+0:{"rsc":["$","$1","c",{"children":[["$","$L2",null,{"project":{"slug":"digital-service","en":"Digital service","zh":"数字化服务","tone":"green"}}],null,["$","$L3",null,{"children":["$","$4",null,{"name":"Next.MetadataOutlet","children":"$@5"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"RtlSPK2-Sz-_l4_mb-dtY"}
 5:null

@@ -64,6 +64,20 @@ export default function WorkPage() {
     const valueCards = Array.from(document.querySelectorAll<HTMLElement>('.value-card'));
     const footer = document.querySelector<HTMLElement>('.site-footer');
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const alignOrbit = () => {
+      if (!hero || !headline) return;
+      let top = 0;
+      let element: HTMLElement | null = headline;
+      while (element && element !== hero) {
+        top += element.offsetTop;
+        element = element.offsetParent as HTMLElement | null;
+      }
+      hero.style.setProperty('--orbit-center-y', `${top + headline.offsetHeight / 2}px`);
+    };
+    const orbitObserver = new ResizeObserver(alignOrbit);
+    if (hero) orbitObserver.observe(hero);
+    if (headline) orbitObserver.observe(headline);
+    alignOrbit();
     let frame = 0;
     let targetScroll = window.scrollY;
     let smoothScroll = targetScroll;
@@ -198,6 +212,7 @@ export default function WorkPage() {
     window.addEventListener('scroll', requestParallax, { passive: true });
     window.addEventListener('resize', requestParallax);
     return () => {
+      orbitObserver.disconnect();
       if (frame) window.cancelAnimationFrame(frame);
       window.removeEventListener('scroll', requestParallax);
       window.removeEventListener('resize', requestParallax);
