@@ -37,7 +37,7 @@ export function SiteFooter({lang}: {lang:'zh'|'en'}) {
         <div className="footer-cta">
           <div className="footer-message">
             <div className="footer-heading">
-              <img src={`${basePath}/profile/shanyao-avatar.jpg`} alt={zh ? '山药头像' : 'Portrait of Shanyao'} />
+              <img src={`${basePath}/profile/shanyao-avatar-optimized.svg`} alt={zh ? '山药头像' : 'Portrait of Shanyao'} />
               <h2>{zh ? '一起打造更好的产品' : 'Let’s work together'}</h2>
             </div>
             <div className="footer-divider">

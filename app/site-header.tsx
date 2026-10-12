@@ -15,8 +15,7 @@ export function SiteHeader({ active, lang }: { active: 'work' | 'resume'; lang: 
     >
       <span className="liquid-glass__refraction" aria-hidden="true" />
       <a className="wordmark" href={`${basePath}/work/${suffix}`} aria-label="Shanyao work">
-        <img src={`${basePath}/favicon.svg`} alt="" aria-hidden="true" />
-        <b>Shanyao<span className="registered-mark">®</span></b>
+        <b>Shanyao</b>
       </a>
       <nav className={`page-tabs active-${active}`} aria-label="Primary navigation">
         <span className="tab-glider" aria-hidden="true" />
