@@ -73,6 +73,7 @@ export default function WorkPage() {
         element = element.offsetParent as HTMLElement | null;
       }
       hero.style.setProperty('--orbit-center-y', `${top + headline.offsetHeight / 2}px`);
+
     };
     const orbitObserver = new ResizeObserver(alignOrbit);
     if (hero) orbitObserver.observe(hero);
@@ -224,6 +225,7 @@ export default function WorkPage() {
     <main className="work-page" lang={lang === 'zh' ? 'zh-CN' : 'en'}>
       <SiteHeader active="work" lang={lang} />
       <section className="work-hero">
+        <div className="ambient-feather" aria-hidden="true" />
         <div className="hero-copy">
           <FocusHeadline words={zh ? ['化繁为简，','设计真正有效的产品。'] : ['Complexity made clear.','Products designed to grow.']} label={zh ? '化繁为简，设计真正有效的产品' : 'Complexity made clear. Products designed to grow'} href={zh ? '/work?lang=zh' : '/work'} emphasis={zh ? ['化繁为简', '有效', '产品'] : ['Complexity', 'clear', 'grow']} />
           <div className="intro-row">
