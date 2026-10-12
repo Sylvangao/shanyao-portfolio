@@ -1,57 +1,33 @@
 'use client';
-
 import { useEffect, useState } from 'react';
 import { SiteHeader } from '../site-header';
-
-const companies = ['Baidu', 'Meizu', 'Zhihu', 'Tencent'];
-const principles = [
-  { index: '01', en: 'Find the signal', zh: '找到关键信号', enCopy: 'Turn ambiguity, competing inputs and complex workflows into a problem the team can act on.', zhCopy: '从模糊信息、不同诉求与复杂流程中找到真正的问题，让团队能够清晰行动。' },
-  { index: '02', en: 'Shape the system', zh: '建立产品系统', enCopy: 'Connect product logic, interaction and visual language so the experience works as one coherent system.', zhCopy: '连接产品逻辑、交互与视觉语言，让体验成为一个连贯且可持续的系统。' },
-  { index: '03', en: 'Make it real', zh: '推动真实落地', enCopy: 'Work closely with product and engineering, staying involved from early direction to the final detail.', zhCopy: '与产品和研发紧密协作，从早期方向到最终细节持续参与，推动设计真正落地。' },
+import { SiteFooter } from '../site-footer';
+const experience = [
+ {company:['Tencent','腾讯'],date:'2023.05 — Present',role:['Senior Visual Designer · CSIG','高级视觉设计师 · CSIG'],team:['Enterprise Platform / Tencent Lexiang','企业中台产品部 / 乐享产品中心'],copy:['Designed the initial AI framework for Tencent Lexiang and its 2.0 redesign. Led zero-to-one design for Yunji, an internally incubated knowledge and collaboration product, alongside product and operational design for Tencent Yunzhi.','负责腾讯乐享 AI 一期框架及乐享 2.0 改版，推动云迹知识库与协作产品从零到一，并参与腾讯云知产品与运营设计管理。'],points:[['Built foundational AI assistant capabilities and pricing experiences.','完成 AI 助手初步能力建设与定价设计。'],['Developed knowledge-base workflows later incorporated into Lexiang 2.0.','搭建知识库核心体验，后续融入乐享 2.0 持续迭代。'],['Recognized as an outstanding employee in 2023, with an S performance rating.','2023 年优秀员工，年度绩效 S。']]},
+ {company:['Zhihu','知乎'],date:'2016.06 — 2023.05',role:['Senior Product Design Manager · L1–2','高级产品设计经理 · L1–2'],team:['Education & Membership / User Experience Center','教育会员事业部 / 用户体验中心'],copy:['Built and led a product design team of 10–13 designers, establishing workflows and design standards. Led end-to-end design across paid membership, education, content consumption and creator tools.','从零搭建并管理 10–13 人产品设计团队，建立设计流程与标准，负责会员、教育、内容消费及创作者工具的全链路体验。'],points:[['Led major cross-team initiatives including Zhihu 7.0 and the emotional design program for Zhihu 8.0.','推动知乎 7.0 改版与知乎 8.0 情感化设计等跨团队项目。'],['Designed Yan Stories, Zhihu Classroom and civil-service AI courses from zero to launch. Yan Stories received an App Store reading recommendation.','推动盐言故事、知乎学堂、公考 AI 课从零到一上线；盐言故事获 App Store 阅读类推荐。'],['Worked on membership experiences as the effective membership base passed 15 million in 2023.','持续设计会员体验，2023 年业务有效会员数突破 1500 万。'],['Previously led a four-person commercial design team, advertising platforms and Zhihu Bookstore; contributed to PC 2.0 and its design system.','此前管理 4 人商业设计团队，负责广告平台、知乎书店，并参与 PC 2.0 与设计系统建设。']]},
+ {company:['Meizu · Flyme','魅族 · Flyme'],date:'2014.11 — 2016.06',role:['Senior UI Designer','高级 UI 设计师'],team:['Flyme Design Center','Flyme 设计中心'],copy:['Designed core Flyme 5.0 tools including Weather, Notes and Maps. Led a four-person team for incubated apps and worked on LifeKit and Dayu, including their brand identities.','负责 Flyme 5.0 天气、便签、地图等核心工具设计，管理 4 人内部孵化 App 设计团队，参与 LifeKit 与大鱼产品及品牌设计。'],points:[['LifeKit connected more than ten smart hardware products; Dayu reached 300,000 monthly active users.','LifeKit 接入十余款智能硬件；大鱼稳定达到 30 万月活。']]},
+ {company:['Baidu · Dianxin Mobile','百度 · 点心移动'],date:'2013.11 — 2014.11',role:['UI Designer','UI 设计师'],team:['Baidu Mobile Guardian','百度手机卫士产品组'],copy:['Designed core mobile security experiences including the home screen, one-tap optimization, acceleration and cleanup, and contributed to the product’s brand redesign.','负责百度手机卫士首页、一键优化、手机加速与垃圾清理等核心体验，以及产品品牌变更设计。'],points:[['Recognized as an outstanding individual in 2014.','获 2014 年公司年度优秀个人。']]},
+ {company:['Blue Eagle Design','西安蓝鹰设计'],date:'2013.03 — 2013.11',role:['UI Designer','UI 设计师'],team:['Mobile product design','移动产品设计'],copy:['Designed interfaces for a range of mobile products.','负责多款移动端产品的 UI 设计。'],points:[]},
 ];
-const capabilities = [
-  ['Product strategy', '产品策略'], ['Experience design', '体验设计'], ['Complex systems', '复杂系统'], ['Interaction design', '交互设计'],
-  ['Visual direction', '视觉方向'], ['Prototyping', '原型设计'], ['Design systems', '设计系统'], ['AI products', 'AI 产品'],
-];
-
-export default function ResumePage() {
-  const [lang, setLang] = useState<'zh' | 'en'>('en');
-  useEffect(() => setLang(new URLSearchParams(window.location.search).get('lang') === 'zh' ? 'zh' : 'en'), []);
-  const zh = lang === 'zh';
-  return (
-    <main className="resume-page" lang={zh ? 'zh-CN' : 'en'}>
-      <SiteHeader active="resume" lang={lang} />
-      <section className="resume-editorial-hero">
-        <div className="resume-hero-meta"><span>{zh ? '独立产品设计师' : 'Independent product designer'}</span><span>{zh ? '中国 · 上海' : 'Shanghai · China'}</span></div>
-        <h1><span>{zh ? '让复杂' : 'Designing clarity'}</span><span className="resume-hero-outline">{zh ? '变得清晰。' : 'into complexity.'}</span></h1>
-        <div className="resume-hero-intro">
-          <img src="/shanyao-portfolio/profile/shanyao-avatar.jpg" alt={zh ? '山药头像' : 'Portrait of Shanyao'} />
-          <p>{zh ? '我是山药，一名拥有 13 年互联网经验的产品设计师。我在消费产品、复杂系统、SaaS 与 AI 之间工作，将业务目标和用户需求转化为清晰、可靠且具有辨识度的数字体验。' : 'I’m Shanyao, a product designer with 13 years of internet industry experience. I work across consumer products, complex systems, SaaS and AI—turning business goals and user needs into clear, reliable and distinctive digital experiences.'}</p>
-        </div>
-      </section>
-      <section className="resume-snapshot" aria-label={zh ? '经验概览' : 'Experience snapshot'}>
-        <div><strong>13</strong><span>{zh ? '年产品设计经验' : 'Years in product design'}</span></div>
-        <div><strong>04</strong><span>{zh ? '段互联网公司经历' : 'Internet companies'}</span></div>
-        <div><strong>01</strong><span>{zh ? '位全程负责的设计伙伴' : 'Accountable design partner'}</span></div>
-      </section>
-      <section className="resume-section resume-career">
-        <div className="resume-section-heading"><span>01</span><h2>{zh ? '经验所至' : 'Where I’ve worked'}</h2></div>
-        <div className="resume-company-list">{companies.map((company, index) => <div className="resume-company" key={company}><span>{String(index + 1).padStart(2, '0')}</span><strong>{company}</strong><small>{zh ? '产品与体验设计' : 'Product & experience design'}</small></div>)}</div>
-        <p className="resume-career-note">{zh ? '从大型平台到快速变化的产品团队，这些经历塑造了我在规模、协作与落地之间做判断的方式。具体职位、时间与项目成果将在完整履历确认后补充。' : 'From large platforms to fast-moving product teams, these experiences shaped how I make decisions across scale, collaboration and delivery. Roles, dates and project outcomes will be added after the full résumé is confirmed.'}</p>
-      </section>
-      <section className="resume-section resume-method">
-        <div className="resume-section-heading"><span>02</span><h2>{zh ? '我如何工作' : 'How I work'}</h2></div>
-        <div className="resume-principles">{principles.map((principle) => <article key={principle.index}><span>{principle.index}</span><h3>{zh ? principle.zh : principle.en}</h3><p>{zh ? principle.zhCopy : principle.enCopy}</p></article>)}</div>
-      </section>
-      <section className="resume-section resume-capabilities">
-        <div className="resume-section-heading"><span>03</span><h2>{zh ? '核心能力' : 'Capabilities'}</h2></div>
-        <div className="resume-capability-cloud">{capabilities.map(([en, cn]) => <span key={en}>{zh ? cn : en}</span>)}</div>
-      </section>
-      <section className="resume-contact-panel">
-        <p>{zh ? '有复杂的问题需要一起梳理？' : 'Have a complex product to make clear?'}</p><h2>{zh ? '聊聊你的项目。' : 'Let’s talk.'}</h2>
-        <div><a href="mailto:nealgao@163.com">nealgao@163.com</a><a href="tel:+8615319925652">+86 153 1992 5652</a></div>
-      </section>
-      <footer className="resume-footer"><div><small>COPYRIGHT</small><span>© 2026 Shanyao Gao.</span></div><div><small>LEGAL</small><span>All rights reserved.</span></div></footer>
-    </main>
-  );
+export default function ResumePage(){
+ const [lang,setLang]=useState<'en'|'zh'>('en');
+ useEffect(()=>setLang(new URLSearchParams(window.location.search).get('lang')==='zh'?'zh':'en'),[]);
+ const zh=lang==='zh', n=zh?1:0, base=process.env.NEXT_PUBLIC_BASE_PATH??'';
+ return <main className="resume-page" lang={zh?'zh-CN':'en'}>
+  <SiteHeader active="resume" lang={lang}/>
+  <div className="resume-layout">
+   <aside className="resume-photo"><img src={`${base}/profile/shanyao-avatar.jpg`} alt={zh?'山药的照片':'Portrait of Shanyao'} width="512" height="512"/><div><span>SHANYAO GAO</span><span>{zh?'设计 · 思考 · 探索':'Design · Think · Explore'}</span></div></aside>
+   <div className="resume-body">
+    <section className="resume-about"><p className="resume-eyebrow">{zh?'关于我':'ABOUT ME'}</p><h1>{zh?'你好，我是山药。':'Hi, I’m Shanyao.'}</h1><p className="resume-role">{zh?'独立产品设计师 / 产品设计与团队管理':'Independent product designer / Design & leadership'}</p>
+     <p>{zh?'我是一名拥有 13 年互联网产品设计经验的设计师，曾就职于腾讯、知乎、魅族和百度。在消费产品与企业服务之间，我将复杂的业务逻辑转化为清晰、有效的体验。':'I’m a product designer with 13 years of experience across Tencent, Zhihu, Meizu and Baidu. Working across consumer products and enterprise services, I turn complex business logic into clear, effective experiences.'}</p>
+     <p>{zh?'我的工作涵盖用户研究、交互与视觉设计，以及品牌建设。拥有 5 年团队管理经验，擅长从零到一搭建产品与设计团队，并基于用户调研和数据分析推动设计决策。':'My practice spans user research, interaction and visual design, and brand identity. With five years of team management experience, I build products and design teams from the ground up, using research and data to inform decisions.'}</p>
+     <p>{zh?'我喜欢拆解问题、梳理系统，也乐于跨越角色边界，与产品和研发一起把想法落地。从业务目标到最终细节，我关注设计如何为用户和团队持续创造价值。':'I enjoy breaking down problems and making systems understandable. I work closely with product and engineering, connecting business goals with the details that make an experience useful and coherent.'}</p>
+     <a className="resume-email" href="mailto:nealgao@163.com">nealgao@163.com ↗</a>
+    </section>
+    <section className="resume-history"><h2>{zh?'工作经历':'Experience'}</h2>{experience.map(e=><article className="resume-job" key={e.company[0]}><div className="resume-job-heading"><h3>{e.company[n]}</h3><span>{e.date}</span></div><h4>{e.role[n]}</h4><p className="resume-team">{e.team[n]}</p><p>{e.copy[n]}</p>{e.points.length>0&&<ul>{e.points.map(p=><li key={p[0]}>{p[n]}</li>)}</ul>}</article>)}</section>
+    <section className="resume-education"><h2>{zh?'教育经历':'Education'}</h2><div className="resume-job-heading"><h3>{zh?'西安工业大学':'Xi’an Technological University'}</h3><span>2009.09 — 2013.06</span></div><p>{zh?'通信工程 · 学士学位':'B.Eng. in Communication Engineering'}</p></section>
+   </div>
+  </div>
+  <SiteFooter lang={lang}/>
+ </main>;
 }

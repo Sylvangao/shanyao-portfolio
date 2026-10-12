@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { SiteHeader } from '../site-header';
 import { FocusHeadline } from '../focus-headline';
 import { ContactPopover } from '../contact-popover';
+import { SiteFooter } from '../site-footer';
 import { projects } from '../project-data';
 
 const advantages = [
@@ -62,7 +63,6 @@ export default function WorkPage() {
     }));
     const valueSection = document.querySelector<HTMLElement>('.value-section');
     const valueCards = Array.from(document.querySelectorAll<HTMLElement>('.value-card'));
-    const footer = document.querySelector<HTMLElement>('.site-footer');
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
     const alignOrbit = () => {
       if (!hero || !headline) return;
@@ -91,7 +91,7 @@ export default function WorkPage() {
       // Read layout once before writing animated styles. Offset positions exclude
       // transforms, so an animation never changes its own next input.
       const measured = new Map<HTMLElement, { top: number; height: number }>();
-      [hero, ...cards, ...portfolioCards, ...overlapSections.map(({ section }) => section), valueSection, ...valueCards, footer].forEach((element) => {
+      [hero, ...cards, ...portfolioCards, ...overlapSections.map(({ section }) => section), valueSection, ...valueCards].forEach((element) => {
         if (!element || measured.has(element)) return;
         let top = 0;
         let ancestor: HTMLElement | null = element;
@@ -176,24 +176,6 @@ export default function WorkPage() {
             card.style.setProperty('--value-copy-reveal', `${copyEased}`);
             card.style.setProperty('--value-card-shift', `${(1 - motionEased) * 44 + eased * 16}px`);
           });
-      }
-      if (footer) {
-        const rect = measured.get(footer)!;
-        const footerTravel = Math.min(window.innerHeight, rect.height);
-        const progress = Math.max(0, Math.min(1, (window.innerHeight - rect.top) / footerTravel));
-        const eased = progress * progress * (3 - 2 * progress);
-        const curveHeight = window.innerHeight * .1 * (1 - eased);
-        const contentShift = -Math.min(210, window.innerHeight * .34) * (1 - eased);
-        const buttonShift = -75 * (1 - eased);
-        const chromeRaw = Math.max(0, Math.min(1, (progress - .12) / .48));
-        const chromeReveal = chromeRaw * chromeRaw * (3 - 2 * chromeRaw);
-        const clarityRaw = Math.max(0, Math.min(1, (progress - .55) / .28));
-        const clarity = clarityRaw * clarityRaw * (3 - 2 * clarityRaw);
-        footer.style.setProperty('--footer-curve-height', `${curveHeight}px`);
-        footer.style.setProperty('--footer-content-shift', `${contentShift}px`);
-        footer.style.setProperty('--footer-button-shift', `${buttonShift}px`);
-        footer.style.setProperty('--footer-chrome-reveal', `${chromeReveal}`);
-        footer.style.setProperty('--footer-text-clarity', `${clarity}`);
       }
       if (Math.abs(lag) > .1) {
         frame = window.requestAnimationFrame(updateParallax);
@@ -281,29 +263,7 @@ export default function WorkPage() {
           ))}
         </div>
       </section>
-      <footer className="site-footer" id="contact">
-        <div className="footer-curve" aria-hidden="true"><span /></div>
-        <div className="footer-cta">
-          <div className="footer-message">
-            <div className="footer-heading">
-              <img src={`${basePath}/profile/shanyao-avatar.jpg`} alt={zh ? '山药头像' : 'Portrait of Shanyao'} />
-              <h2>{zh ? '一起打造更好的产品' : 'Let’s work together'}</h2>
-            </div>
-            <div className="footer-divider">
-              <div className="footer-rule" aria-hidden="true" />
-              <ContactPopover lang={lang} variant="footer" />
-            </div>
-            <div className="footer-contacts">
-              <a href="mailto:nealgao@163.com">nealgao@163.com</a>
-              <a href="tel:+8615319925652">+86 153 1992 5652</a>
-            </div>
-          </div>
-        </div>
-        <div className="footer-meta">
-          <div><small>COPYRIGHT</small><span>© 2026 Shanyao Gao.</span></div>
-          <div><small>LEGAL</small><span>All rights reserved.</span></div>
-        </div>
-      </footer>
+      <SiteFooter lang={lang} />
     </main>
   );
 }
