@@ -1,6 +1,7 @@
 'use client';
 import { useEffect, useState } from 'react';
 import { SiteHeader } from '../site-header';
+import { ContactPopover } from '../contact-popover';
 import { SiteFooter } from '../site-footer';
 const experience = [
  {company:['Tencent','腾讯'],date:'2023.05 — Present',role:['Senior Visual Designer · CSIG','高级视觉设计师 · CSIG'],team:['Enterprise Platform / Tencent Lexiang','企业中台产品部 / 乐享产品中心'],copy:['Designed the initial AI framework for Tencent Lexiang and its 2.0 redesign. Led zero-to-one design for Yunji, an internally incubated knowledge and collaboration product, alongside product and operational design for Tencent Yunzhi.','负责腾讯乐享 AI 一期框架及乐享 2.0 改版，推动云迹知识库与协作产品从零到一，并参与腾讯云知产品与运营设计管理。'],points:[['Built foundational AI assistant capabilities and pricing experiences.','完成 AI 助手初步能力建设与定价设计。'],['Developed knowledge-base workflows later incorporated into Lexiang 2.0.','搭建知识库核心体验，后续融入乐享 2.0 持续迭代。'],['Recognized as an outstanding employee in 2023, with an S performance rating.','2023 年优秀员工，年度绩效 S。']]},
@@ -22,7 +23,7 @@ export default function ResumePage(){
      <p>{zh?'我是一名拥有 13 年互联网产品设计经验的设计师，曾就职于腾讯、知乎、魅族和百度。在消费产品与企业服务之间，我将复杂的业务逻辑转化为清晰、有效的体验。':'I’m a product designer with 13 years of experience across Tencent, Zhihu, Meizu and Baidu. Working across consumer products and enterprise services, I turn complex business logic into clear, effective experiences.'}</p>
      <p>{zh?'我的工作涵盖用户研究、交互与视觉设计，以及品牌建设。拥有 5 年团队管理经验，擅长从零到一搭建产品与设计团队，并基于用户调研和数据分析推动设计决策。':'My practice spans user research, interaction and visual design, and brand identity. With five years of team management experience, I build products and design teams from the ground up, using research and data to inform decisions.'}</p>
      <p>{zh?'我喜欢拆解问题、梳理系统，也乐于跨越角色边界，与产品和研发一起把想法落地。从业务目标到最终细节，我关注设计如何为用户和团队持续创造价值。':'I enjoy breaking down problems and making systems understandable. I work closely with product and engineering, connecting business goals with the details that make an experience useful and coherent.'}</p>
-     <a className="resume-email" href="mailto:nealgao@163.com">nealgao@163.com ↗</a>
+     <ContactPopover lang={lang} variant="resume" />
     </section>
     <section className="resume-history"><h2>{zh?'工作经历':'Experience'}</h2>{experience.map(e=><article className="resume-job" key={e.company[0]}><div className="resume-job-heading"><h3>{e.company[n]}</h3><span>{e.date}</span></div><h4>{e.role[n]}</h4><p className="resume-team">{e.team[n]}</p><p>{e.copy[n]}</p>{e.points.length>0&&<ul>{e.points.map(p=><li key={p[0]}>{p[n]}</li>)}</ul>}</article>)}</section>
     <section className="resume-education"><h2>{zh?'教育经历':'Education'}</h2><div className="resume-job-heading"><h3>{zh?'西安工业大学':'Xi’an Technological University'}</h3><span>2009.09 — 2013.06</span></div><p>{zh?'通信工程 · 学士学位':'B.Eng. in Communication Engineering'}</p></section>

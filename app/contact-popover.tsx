@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useId, useRef, useState } from 'react';
 
-export function ContactPopover({ lang, variant = 'hero' }: { lang: 'zh' | 'en'; variant?: 'hero' | 'footer' }) {
+export function ContactPopover({ lang, variant = 'hero' }: { lang: 'zh' | 'en'; variant?: 'hero' | 'footer' | 'resume' }) {
   const [open, setOpen] = useState(false);
   const [placement, setPlacement] = useState<'above' | 'below'>('above');
   const root = useRef<HTMLDivElement>(null);
@@ -45,7 +45,7 @@ export function ContactPopover({ lang, variant = 'hero' }: { lang: 'zh' | 'en'; 
   }, [open, placePopover]);
 
   return (
-    <div className={variant === 'footer' ? 'footer-contact-root' : 'hero-actions'} ref={root}>
+    <div className={variant === 'footer' ? 'footer-contact-root' : variant === 'resume' ? 'resume-wechat' : 'hero-actions'} ref={root}>
       {variant === 'hero' && <a className="social-trigger" href="https://dribbble.com/nealgao" target="_blank" rel="noreferrer" aria-label="View Shanyao on Dribbble">
         <img src={`${basePath}/icons/dribbble.svg`} alt="" aria-hidden="true" />
       </a>}
@@ -83,8 +83,8 @@ export function ContactPopover({ lang, variant = 'hero' }: { lang: 'zh' | 'en'; 
             event.currentTarget.style.setProperty('--contact-label-y', '0px');
           }}
         >
-          {variant === 'hero' && <img src={`${basePath}/icons/wechat.svg`} alt="" aria-hidden="true" />}
-          <span className="contact-label">{variant === 'footer' ? (zh ? '联系我' : 'Get in touch') : (zh ? '聊一聊' : 'Let’s talk')}</span>
+          {variant !== 'footer' && <img src={`${basePath}/icons/wechat.svg`} alt="" aria-hidden="true" />}
+          <span className="contact-label">{variant === 'footer' ? (zh ? '联系我' : 'Get in touch') : variant === 'resume' ? (zh ? '加我微信' : 'Let’s talk') : (zh ? '聊一聊' : 'Let’s talk')}</span>
         </button>
         <div className={`contact-popover${variant === 'footer' ? ' footer-contact-popover' : ''}`} id={popoverId} role="dialog" aria-label={zh ? '微信联系方式' : 'WeChat contact'}>
           <img className="wechat-qr" src={`${basePath}/profile/shanyao-wechat-qr.jpg`} alt={zh ? '山药的微信二维码' : 'Shanyao’s WeChat QR code'} />
