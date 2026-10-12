@@ -10,6 +10,29 @@ const experience = [
  {logo:'baidu',company:['Baidu · Dianxin Mobile','百度 · 点心移动'],date:'2013.11 — 2014.11',role:['UI Designer','UI 设计师'],team:['Baidu Mobile Guardian','百度手机卫士产品组'],copy:['Designed core mobile security experiences including the home screen, one-tap optimization, acceleration and cleanup, and contributed to the product’s brand redesign.','负责百度手机卫士首页、一键优化、手机加速与垃圾清理等核心体验，以及产品品牌变更设计。'],points:[['Recognized as an outstanding individual in 2014.','获 2014 年公司年度优秀个人。']]},
  {logo:'blue-eagle',company:['Blue Eagle Design','西安蓝鹰设计'],date:'2013.03 — 2013.11',role:['UI Designer','UI 设计师'],team:['Mobile product design','移动产品设计'],copy:['Designed interfaces for a range of mobile products.','负责多款移动端产品的 UI 设计。'],points:[]},
 ];
+const companyContext: Record<string,string[]> = {
+ tencent:['Enterprise software for knowledge sharing, collaboration and AI-assisted work.','面向企业的知识管理与协作产品，结合 AI 能力提升组织效率。'],
+ zhihu:['A knowledge and content community, spanning membership, education and creator tools.','知识与内容社区，业务涵盖付费会员、在线教育及创作者工具。'],
+ meizu:['Flyme brings together mobile system experiences, everyday apps and connected devices.','Flyme 围绕移动操作系统、日常工具与智能设备，构建完整的用户体验。'],
+ baidu:['Mobile security tools focused on device performance, optimisation and cleanup.','移动安全工具，围绕手机性能、一键优化与清理提供核心服务。'],
+ 'blue-eagle':['A design studio working on interfaces for mobile products.','为移动产品提供界面设计的设计团队。'],
+};
+const awards = [
+ ['Tencent','腾讯',[
+ ['2024','Invited design talk on Yunji at CSIG Enterprise Platform','受邀进行 CSIG 企业中台云迹设计分享'],
+ ['2023','Tencent Xi’an H2 Outstanding Employee · S performance','腾讯（西安）H2 优秀员工 · S 绩效']]],
+ ['Zhihu','知乎',[
+ ['2022','Invited talk at Baidu: Content Business Product Design at Zhihu','受邀百度交流《知乎内容商业产品设计》'],
+ ['2021','Annual Excellence in Service Award','知乎年度极致服务奖'],
+ ['2020','Annual Outstanding Team Award','知乎年度优秀团队奖'],
+ ['2020','Cultural Representative Award','知乎个人文化之星'],
+ ['2019','Polaris Award · Community Integration Project','知乎北极星奖 · 社区融合项目'],
+ ['2018','China Red Star Design Original Award · Zhihu University','中国设计红星原创奖 · 知乎大学全流程设计'],
+ ['2017','Outstanding Individual in Team · Two S performance ratings','知乎年度团队优秀个人 · 双 S 绩效'],
+ ['2016–2017','6 design patents successfully filed','成功申请 6 项设计专利（知乎）']]],
+ ['Meizu','魅族',[['2015–2016','20 design patents successfully filed','成功申请 20 项设计专利（魅族）']]],
+ ['Baidu','百度',[['2014','Dianxin Mobile Annual Outstanding Individual','百度（点心移动）年度优秀个人']]],
+] as const;
 export default function ResumePage(){
  const [lang,setLang]=useState<'en'|'zh'>('en');
  useEffect(()=>setLang(new URLSearchParams(window.location.search).get('lang')==='zh'?'zh':'en'),[]);
@@ -25,8 +48,9 @@ export default function ResumePage(){
      <p>{zh?'我喜欢拆解问题、梳理系统，也乐于跨越角色边界，与产品和研发一起把想法落地。从业务目标到最终细节，我关注设计如何为用户和团队持续创造价值。':'I enjoy breaking down problems and making systems understandable. I work closely with product and engineering, connecting business goals with the details that make an experience useful and coherent.'}</p>
      <ContactPopover lang={lang} variant="resume" />
     </section>
-    <section className="resume-history"><h2>{zh?'工作经历':'Experience'}</h2>{experience.map(e=><article className="resume-job" key={e.company[0]}><div className="resume-entry-header"><span className={`resume-org-mark resume-brand-mark resume-brand-${e.logo}`}><img className="resume-org-logo" src={`${base}/logos/${e.logo}.${['tencent','zhihu','meizu','baidu','blue-eagle'].includes(e.logo) ? 'svg' : 'png'}`} alt={e.company[n]} /></span><div className="resume-entry-info"><h4>{e.role[n]}</h4><p className="resume-team">{e.team[n]}</p></div><span className="resume-entry-date">{e.date}</span></div><p>{e.copy[n]}</p>{e.points.length>0&&<ul>{e.points.map(p=><li key={p[0]}>{p[n]}</li>)}</ul>}</article>)}</section>
-    <section className="resume-education"><h2>{zh?'教育经历':'Education'}</h2><div className="resume-entry-header"><span className="resume-org-mark"><img className="resume-org-logo resume-school-logo" src={`${base}/logos/nwpu.png`} alt="" aria-hidden="true" /></span><div className="resume-entry-info"><h3>{zh?'西北工业大学':'Northwestern Polytechnical University'}</h3><p className="resume-team">{zh?'通信工程 · 学士学位':'B.Eng. in Communication Engineering'}</p></div><span className="resume-entry-date">2009.09 — 2013.06</span></div></section>
+    <section className="resume-history"><h2>{zh?'工作经历':'Experience'}</h2>{experience.map(e=><article className="resume-job" key={e.company[0]}><div className="resume-entry-header"><span className={`resume-org-mark resume-brand-mark resume-brand-${e.logo}`}><img className="resume-org-logo" src={`${base}/logos/${e.logo}.${['tencent','zhihu','meizu','baidu','blue-eagle'].includes(e.logo) ? 'svg' : 'png'}`} alt={e.company[n]} /></span><div className="resume-entry-info"><h4>{e.role[n]}</h4><p className="resume-team">{e.team[n]}</p></div><span className="resume-entry-date">{e.date}</span></div><div className="resume-company-context"><p>{companyContext[e.logo][n]}</p></div><p>{e.copy[n]}</p>{e.points.length>0&&<ul>{e.points.map(p=><li key={p[0]}>{p[n]}</li>)}</ul>}</article>)}</section>
+    <section className="resume-education"><h2>{zh?'教育经历':'Education'}</h2><div className="resume-entry-header"><span className="resume-org-mark resume-school-mark"><img className="resume-org-logo resume-school-logo" src={`${base}/logos/nwpu-large.png`} alt="" aria-hidden="true" /></span><div className="resume-entry-info"><h3>{zh?'西北工业大学':'Northwestern Polytechnical University'}</h3><p className="resume-team">{zh?'通信工程 · 学士学位':'B.Eng. in Communication Engineering'}</p></div><span className="resume-entry-date">2009.09 — 2013.06</span></div></section>
+    <section className="resume-awards"><h2>{zh?'获奖与分享':'Awards & sharing'}</h2><figure className="resume-awards-gallery"><img src={`${base}/profile/awards-collage.png`} alt={zh?'设计分享、奖项与团队荣誉照片合集':'Design talks, awards and team recognition'} width="5456" height="2884" loading="lazy"/><figcaption>{zh?'设计分享、团队荣誉与个人认可':'Design talks, team achievements and personal recognition'}</figcaption></figure>{awards.map(group=><div className="resume-award-group" key={group[0]}><h3>{group[n]}</h3><ul>{group[2].map(a=><li key={a[0]+a[1]}><span className="resume-award-year">{a[0]}</span><span>{a[zh?2:1]}</span></li>)}</ul></div>)}</section>
    </div>
   </div>
   <SiteFooter lang={lang}/>
