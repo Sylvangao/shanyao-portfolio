@@ -2,5 +2,5 @@
 2:I[8112,["419","static/chunks/app/projects/%5Bslug%5D/page-be81cb5e6e4c3aae.js"],"ProjectDetailClient"]
 3:I[484,[],"OutletBoundary"]
 4:"$Sreact.suspense"
-0:{"rsc":["$","$1","c",{"children":[["$","$L2",null,{"project":{"slug":"product-experience","en":"Product experience","zh":"产品体验设计","tone":"blue"}}],null,["$","$L3",null,{"children":["$","$4",null,{"name":"Next.MetadataOutlet","children":"$@5"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"jLqch1jMii3J2Y3apwyeq"}
+0:{"rsc":["$","$1","c",{"children":[["$","$L2",null,{"project":{"slug":"product-experience","en":"Product experience","zh":"产品体验设计","tone":"blue"}}],null,["$","$L3",null,{"children":["$","$4",null,{"name":"Next.MetadataOutlet","children":"$@5"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"7WuB5Bbu0SESI0F74tQ6F"}
 5:null
