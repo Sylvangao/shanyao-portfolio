@@ -919,3 +919,8 @@ main[lang="zh-CN"] .resume-body h1,main[lang="zh-CN"] .resume-body h2,main[lang=
 .resume-wechat .contact-trigger>img{width:24px;height:24px}
 .resume-wechat .contact-popover{width:min(330px,calc(100vw - 44px));left:0;right:auto}
 @media(max-width:560px){.resume-wechat .contact-trigger{height:44px}.resume-wechat .contact-popover{grid-template-columns:96px 1fr}.resume-wechat .wechat-qr{width:96px;height:96px}}
+
+.resume-job-heading h3{display:flex;align-items:center;gap:12px;min-width:0}
+.resume-org-logo{width:64px;height:28px;object-fit:contain;flex:0 0 64px}
+.resume-school-logo{width:64px;height:32px}
+@media(max-width:560px){.resume-job-heading h3{gap:10px;font-size:20px}.resume-org-logo{width:52px;height:25px;flex-basis:52px}.resume-school-logo{height:28px}}
