@@ -932,3 +932,14 @@ main[lang="zh-CN"] .resume-body h1,main[lang="zh-CN"] .resume-body h2,main[lang=
 
 .resume-tencent-mark{height:64px;border-radius:14px}
 @media(max-width:560px){.resume-tencent-mark{height:52px;border-radius:12px}}
+
+/* Shared organization / role / date alignment for every resume entry. */
+.resume-entry-header{display:grid;grid-template-columns:64px minmax(0,1fr) auto;align-items:center;gap:16px;margin-bottom:24px}
+.resume-entry-info{min-width:0}
+.resume-entry-info h3{font-size:20px;font-weight:550;line-height:1.25;margin:0 0 6px;letter-spacing:var(--display-title-tracking)}
+.resume-entry-info h4{font-size:15px;line-height:1.4;font-weight:500;margin:0 0 5px}
+.resume-entry-info .resume-team{margin:0!important;font-size:13px;line-height:1.5}
+.resume-entry-date{text-align:right;justify-self:end;font-size:12px;color:var(--muted);white-space:nowrap}
+.resume-education .resume-entry-header{border-top:1px solid var(--line);padding-top:24px}
+@media(max-width:1024px){.resume-entry-header{grid-template-columns:64px minmax(0,1fr);gap:12px 16px}.resume-entry-date{grid-column:2;justify-self:end}}
+@media(max-width:560px){.resume-entry-header{grid-template-columns:52px minmax(0,1fr);gap:10px 12px}.resume-entry-info h3{font-size:19px}.resume-entry-info h4{font-size:14px}.resume-entry-date{font-size:11px}}
