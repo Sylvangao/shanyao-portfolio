@@ -1,0 +1,5 @@
+import patents from './patents.json';
+export function PatentDisclosure({company,lang}:{company:'zhihu'|'meizu';lang:'en'|'zh'}){
+ const zh=lang==='zh', records=patents.filter(p=>p.company===company);
+ return <details className="resume-patents"><summary><span>{zh?`参与申请 ${records.length} 项专利`:`Contributed to ${records.length} patent applications`}</span><span className="patent-disclosure-hint">{zh?'查看明细':'View patents'}<span className="patent-chevron" aria-hidden="true">⌄</span></span></summary><div className="patent-records"><p className="patent-note">{zh?'按公开记录整理 · 包含发明与外观设计 · 名称沿用官方中文':'Public records · Invention & design patents · Official Chinese titles'}</p><ul>{records.map(p=><li key={p.number}><a href={`https://patents.google.com/patent/${p.number}/${zh?'zh':'en'}`} target="_blank" rel="noopener noreferrer" aria-label={`${p.title}, ${p.number}${zh?'，新标签页打开':' — opens in a new tab'}`}><span className="patent-name" lang="zh-CN">{p.title}<span aria-hidden="true">↗</span></span><span className="patent-meta"><span>{zh?'申请号':'Application'} {p.application}</span><span>{zh?'公开号':'Publication'} {p.number}</span></span></a></li>)}</ul></div></details>;
+}

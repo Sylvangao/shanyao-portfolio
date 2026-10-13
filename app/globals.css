@@ -977,3 +977,22 @@ main[lang="zh-CN"] .resume-body h1,main[lang="zh-CN"] .resume-body h2,main[lang=
 .resume-award-group li:last-child{margin-bottom:0}
 .resume-award-year{color:var(--muted);font-size:13px;padding-top:2px}
 @media(max-width:560px){.footer-heading h2{font-size:clamp(28px,7vw,36px)}.resume-school-mark{height:52px;border-radius:12px}.resume-school-mark .resume-school-logo{width:44px;height:44px;flex-basis:44px}.resume-company-context{padding:16px;border-radius:14px}.resume-job li{font-size:15px}.resume-award-group{grid-template-columns:1fr;gap:12px}.resume-award-group li{grid-template-columns:78px minmax(0,1fr);gap:10px}.resume-awards-gallery img{border-radius:12px}}
+
+.resume-patents{min-width:0}
+.resume-patents summary{display:flex;align-items:baseline;justify-content:space-between;gap:12px;cursor:pointer;list-style:none;border-radius:6px;transition:color .2s}
+.resume-patents summary::-webkit-details-marker{display:none}
+.resume-patents summary:hover{color:#0066ff}
+.resume-patents summary:focus-visible{outline:2px solid #0066ff;outline-offset:5px}
+.patent-disclosure-hint{display:inline-flex;align-items:center;gap:7px;white-space:nowrap;font-size:11px;color:var(--muted)}
+.patent-chevron{display:inline-block;font-size:18px;transition:transform .2s}
+.resume-patents[open] .patent-chevron{transform:rotate(180deg)}
+.patent-records{margin-top:16px;padding:0 16px;border:1px solid rgba(23,23,23,.07);border-radius:14px;background:#f7f8fa}
+.resume-body .patent-note{font-size:11px;line-height:1.6;color:var(--muted);margin:14px 0}
+.resume-award-group .patent-records li{display:block;margin:0;border-top:1px solid rgba(23,23,23,.07)}
+.patent-records a{display:block;padding:14px 0;color:inherit;transition:color .2s}
+.patent-records a:hover{color:#0066ff}
+.patent-records a:focus-visible{outline:2px solid #0066ff;outline-offset:3px;border-radius:4px}
+.patent-name{display:flex;align-items:baseline;justify-content:space-between;gap:12px;font-size:14px;line-height:1.6}
+.patent-name>span{flex-shrink:0;color:var(--muted)}
+.patent-meta{display:flex;flex-wrap:wrap;gap:4px 12px;margin-top:6px;font-size:11px;line-height:1.6;color:var(--muted);overflow-wrap:anywhere}
+@media(max-width:560px){.resume-patents summary{align-items:flex-start;flex-direction:column;gap:4px}.patent-records{padding:0 12px}.patent-meta{flex-direction:column}}
