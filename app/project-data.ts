@@ -1,4 +1,6 @@
-export const projects = [
+type Project = { slug:string; en:string; zh:string; tone:string; cover?:string };
+
+export const projects: readonly Project[] = [
   { slug: 'product-experience', en: 'Product experience', zh: '产品体验设计', tone: 'blue' },
   { slug: 'brand-identity', en: 'Brand identity', zh: '品牌焕新', tone: 'coral' },
   { slug: 'digital-service', en: 'Digital service', zh: '数字化服务', tone: 'green' },

@@ -249,15 +249,14 @@ export default function WorkPage() {
       </section>
       <section className="portfolio-section overlap-section" aria-labelledby="portfolio-title">
         <div className="overlap-heading portfolio-heading">
-          <h2 id="portfolio-title">{zh ? '精选作品' : 'Work'}</h2>
+          <h2 id="portfolio-title">{zh ? '精选项目' : 'Projects'}</h2>
         </div>
         <div className="portfolio-grid">
           {projects.map((project) => (
             <a className="project-card portfolio-card" href={`${basePath}/projects/${project.slug}/?lang=${lang}`} aria-label={zh ? `查看${project.zh}` : `View ${project.en}`} key={project.slug}>
-              <div className={`portfolio-thumb portfolio-${project.tone}`}>
-                <span className="portfolio-orb portfolio-orb-a" />
-                <span className="portfolio-orb portfolio-orb-b" />
-                <span className="portfolio-arrow" aria-hidden="true">↗</span>
+              <div className="portfolio-thumb portfolio-glass" data-backdrop={zh ? '精选项目' : 'Projects'}>
+                {project.cover && <img className="portfolio-cover" src={`${basePath}${project.cover}`} alt={zh ? project.zh : project.en} loading="lazy" decoding="async" />}
+                <span className="portfolio-arrow" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.65" strokeLinecap="round" strokeLinejoin="round"><path d="M6 14 14 6M6.5 6H14v7.5"/></svg></span>
               </div>
             </a>
           ))}
