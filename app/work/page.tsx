@@ -5,6 +5,7 @@ import { SiteHeader } from '../site-header';
 import { FocusHeadline } from '../focus-headline';
 import { ContactPopover } from '../contact-popover';
 import { SiteFooter } from '../site-footer';
+import { GlassSection } from '../glass-section';
 import { projects } from '../project-data';
 
 const advantages = [
@@ -60,6 +61,7 @@ export default function WorkPage() {
     const overlapSections = Array.from(document.querySelectorAll<HTMLElement>('.overlap-section')).map((section) => ({
       section,
       title: section.querySelector<HTMLElement>('.overlap-heading'),
+      cards: Array.from(section.querySelectorAll<HTMLElement>('.value-card, .portfolio-card')),
     }));
     const valueSection = document.querySelector<HTMLElement>('.value-section');
     const valueCards = Array.from(document.querySelectorAll<HTMLElement>('.value-card'));
@@ -122,40 +124,23 @@ export default function WorkPage() {
         const shift = Math.max(-24, Math.min(24, -distance * strengths[index % strengths.length]));
         card.style.setProperty('--card-shift', `${shift}px`);
       });
-      portfolioCards.forEach((card, index) => {
-        const rect = measured.get(card)!;
-        const stagger = (index % 2) * .14;
-        const rawReveal = (window.innerHeight * .9 - rect.top) / (window.innerHeight * .34) - stagger;
-        const reveal = Math.max(0, Math.min(1, rawReveal));
-        const eased = reveal * reveal * (3 - 2 * reveal);
-        card.style.setProperty('--portfolio-reveal', `${eased}`);
-        card.style.setProperty('--portfolio-enter-y', `${(1 - eased) * 42}px`);
-      });
-      overlapSections.forEach(({ section, title }) => {
+      overlapSections.forEach(({ section, title, cards: sectionCards }) => {
         if (!title) return;
         const rect = measured.get(section)!;
-        const completionOffset = section.classList.contains('value-section') ? 240 : 0;
-        const progress = Math.max(0, Math.min(1, (window.innerHeight * .72 + completionOffset - rect.top) / (window.innerHeight * .62)));
+        const progress = Math.max(0, Math.min(1, (window.innerHeight * .72 + 240 - rect.top) / (window.innerHeight * .62)));
         const eased = progress * progress * (3 - 2 * progress);
         const titleReveal = Math.max(0, Math.min(1, (progress - .55) / .35));
         const titleRevealEased = titleReveal * titleReveal * (3 - 2 * titleReveal);
-        const titleShiftDistance = title.classList.contains('portfolio-heading')
-          ? (window.innerWidth <= 760 ? 100 : 180)
-          : 100;
         title.style.setProperty('--overlap-progress', `${titleRevealEased}`);
-        title.style.setProperty('--overlap-title-shift', `${(1 - eased) * titleShiftDistance}px`);
-      });
-      if (valueSection) {
-          const rect = measured.get(valueSection)!;
-          const progress = Math.max(0, Math.min(1, (window.innerHeight * .72 + 240 - rect.top) / (window.innerHeight * .62)));
-          const eased = progress * progress * (3 - 2 * progress);
-          valueCards.forEach((card, index) => {
+        title.style.setProperty('--overlap-title-shift', `${(1 - eased) * 100}px`);
+          sectionCards.forEach((card, index) => {
             // Stacked cards must reveal as each card enters the viewport.
             const cardRect = measured.get(card)!;
             const cardProgress = window.innerWidth <= 1024
               ? Math.max(0, Math.min(1, (window.innerHeight * .94 - cardRect.top) / Math.min(window.innerHeight * .65, cardRect.height)))
-              : progress;
-            const staggerIndex = window.innerWidth <= 1024 ? 0 : index;
+              : index < (section.classList.contains('portfolio-section') ? 2 : 3) ? progress : Math.max(0, Math.min(1, (window.innerHeight * .94 - cardRect.top) / Math.min(window.innerHeight * .65, cardRect.height)));
+            const columns = section.classList.contains('portfolio-section') ? 2 : 3;
+            const staggerIndex = window.innerWidth <= 1024 ? 0 : index % columns;
             const motionStart = .08 + staggerIndex * .09;
             const motion = Math.max(0, Math.min(1, (cardProgress - motionStart) / .32));
             const motionEased = motion * motion * (3 - 2 * motion);
@@ -176,7 +161,7 @@ export default function WorkPage() {
             card.style.setProperty('--value-copy-reveal', `${copyEased}`);
             card.style.setProperty('--value-card-shift', `${(1 - motionEased) * 44 + eased * 16}px`);
           });
-      }
+      });
       if (Math.abs(lag) > .1) {
         frame = window.requestAnimationFrame(updateParallax);
       } else {
@@ -226,10 +211,7 @@ export default function WorkPage() {
           <ContactPopover lang={lang} />
         </div>
       </section>
-      <section className="value-section overlap-section" aria-labelledby="value-title">
-        <div className="overlap-heading">
-          <h2 id="value-title">{zh ? '为什么是我' : 'Why me'}</h2>
-        </div>
+      <GlassSection className="value-section" id="value-title" title={zh ? '为什么是我' : 'Why me'}>
         <div className="value-cards">
           {advantages.map((item) => (
             <article
@@ -246,11 +228,8 @@ export default function WorkPage() {
             </article>
           ))}
         </div>
-      </section>
-      <section className="portfolio-section overlap-section" aria-labelledby="portfolio-title">
-        <div className="overlap-heading portfolio-heading">
-          <h2 id="portfolio-title">{zh ? '精选项目' : 'Projects'}</h2>
-        </div>
+      </GlassSection>
+      <GlassSection className="portfolio-section" id="portfolio-title" title={zh ? '精选项目' : 'Projects'}>
         <div className="portfolio-grid">
           {projects.map((project) => (
             <a className="project-card portfolio-card" href={`${basePath}/projects/${project.slug}/?lang=${lang}`} aria-label={zh ? `查看${project.zh}` : `View ${project.en}`} key={project.slug}>
@@ -261,7 +240,7 @@ export default function WorkPage() {
             </a>
           ))}
         </div>
-      </section>
+      </GlassSection>
       <SiteFooter lang={lang} />
     </main>
   );
