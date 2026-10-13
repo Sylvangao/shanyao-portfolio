@@ -996,3 +996,19 @@ main[lang="zh-CN"] .resume-body h1,main[lang="zh-CN"] .resume-body h2,main[lang=
 .patent-name>span{flex-shrink:0;color:var(--muted)}
 .patent-meta{display:flex;flex-wrap:wrap;gap:4px 12px;margin-top:6px;font-size:11px;line-height:1.6;color:var(--muted);overflow-wrap:anywhere}
 @media(max-width:560px){.resume-patents summary{align-items:flex-start;flex-direction:column;gap:4px}.patent-records{padding:0 12px}.patent-meta{flex-direction:column}}
+
+/* Fixed SVG geometry and optical alignment for patent actions. */
+.resume-patents summary{align-items:center;min-height:28px}
+.patent-disclosure-hint{align-items:center;gap:8px;font-size:12px;line-height:20px}
+.patent-icon{display:block;flex:none;width:16px;height:16px;color:currentColor}
+.patent-icon-chevron{transition:transform .22s ease}
+.resume-patents[open] .patent-icon-chevron{transform:rotate(180deg)}
+.patent-label-open{display:none}
+.resume-patents[open] .patent-label-open{display:inline}
+.resume-patents[open] .patent-label-closed{display:none}
+.patent-name{display:grid;grid-template-columns:minmax(0,1fr) 16px;align-items:start;gap:14px;line-height:24px}
+.patent-title{min-width:0;overflow-wrap:anywhere;color:inherit!important}
+.patent-icon-external{margin-top:4px;color:var(--muted)}
+.patent-records a:hover .patent-icon-external{color:#0066ff}
+@media(max-width:560px){.resume-patents summary{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:start;gap:10px}.patent-disclosure-hint{min-height:26px;font-size:11px;gap:6px}.patent-name{gap:10px}.patent-icon{width:16px;height:16px}}
+@media(prefers-reduced-motion:reduce){.patent-icon-chevron{transition:none}}
