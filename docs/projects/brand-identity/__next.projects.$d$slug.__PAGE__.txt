@@ -2,5 +2,5 @@
 2:I[8112,["419","static/chunks/app/projects/%5Bslug%5D/page-6357f3ee08e18641.js"],"ProjectDetailClient"]
 3:I[484,[],"OutletBoundary"]
 4:"$Sreact.suspense"
-0:{"rsc":["$","$1","c",{"children":[["$","$L2",null,{"project":{"slug":"brand-identity","en":"Brand identity","zh":"品牌焕新","tone":"coral"}}],null,["$","$L3",null,{"children":["$","$4",null,{"name":"Next.MetadataOutlet","children":"$@5"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"5ydCcxNOVvt2Gc2FX2X7o"}
+0:{"rsc":["$","$1","c",{"children":[["$","$L2",null,{"project":{"slug":"brand-identity","en":"Brand identity","zh":"品牌焕新","tone":"coral"}}],null,["$","$L3",null,{"children":["$","$4",null,{"name":"Next.MetadataOutlet","children":"$@5"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"WN40i3juT5t9GsJ_QqNLb"}
 5:null
