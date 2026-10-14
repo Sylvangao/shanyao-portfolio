@@ -335,7 +335,6 @@ main[lang="zh-CN"] .resume-profile p{letter-spacing:-.0175em}
     backdrop-filter:none;
     -webkit-backdrop-filter:none;
   }
-  .work-page .site-header:not([data-scrolled="true"]){-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
 }
 
 /* The liquid cursor replaces the older two-layer headline spotlight. */
@@ -979,13 +978,13 @@ main[lang="zh-CN"] .resume-body h1,main[lang="zh-CN"] .resume-body h2,main[lang=
 @media(max-width:560px){.footer-heading h2{font-size:clamp(28px,7vw,36px)}.resume-school-mark{height:52px;border-radius:12px}.resume-school-mark .resume-school-logo{width:44px;height:44px;flex-basis:44px}.resume-company-context{padding:16px;border-radius:14px}.resume-job li{font-size:15px}.resume-award-group{grid-template-columns:1fr;gap:12px}.resume-award-group li{grid-template-columns:78px minmax(0,1fr);gap:10px}.resume-awards-gallery img{border-radius:12px}}
 
 .resume-patents{min-width:0}
-.resume-patents summary{display:flex;align-items:baseline;justify-content:space-between;gap:12px;cursor:pointer;list-style:none;border-radius:6px;transition:color .2s}
-.resume-patents summary::-webkit-details-marker{display:none}
-.resume-patents summary:hover{color:#0066ff}
-.resume-patents summary:focus-visible{outline:2px solid #0066ff;outline-offset:5px}
+.resume-patents .patent-summary{display:flex;align-items:baseline;justify-content:space-between;gap:12px;cursor:pointer;list-style:none;border-radius:6px;transition:color .2s}
+.resume-patents .patent-summary::-webkit-details-marker{display:none}
+.resume-patents .patent-summary:hover{color:#0066ff}
+.resume-patents .patent-summary:focus-visible{outline:2px solid #0066ff;outline-offset:5px}
 .patent-disclosure-hint{display:inline-flex;align-items:center;gap:7px;white-space:nowrap;font-size:11px;color:var(--muted)}
 .patent-chevron{display:inline-block;font-size:18px;transition:transform .2s}
-.resume-patents[open] .patent-chevron{transform:rotate(180deg)}
+.resume-patents[data-open="true"] .patent-chevron{transform:rotate(180deg)}
 .patent-records{margin-top:16px;padding:0 16px;border:1px solid rgba(23,23,23,.07);border-radius:14px;background:#f7f8fa}
 .resume-body .patent-note{font-size:11px;line-height:1.6;color:var(--muted);margin:14px 0}
 .resume-award-group .patent-records li{display:block;margin:0;border-top:1px solid rgba(23,23,23,.07)}
@@ -995,22 +994,22 @@ main[lang="zh-CN"] .resume-body h1,main[lang="zh-CN"] .resume-body h2,main[lang=
 .patent-name{display:flex;align-items:baseline;justify-content:space-between;gap:12px;font-size:14px;line-height:1.6}
 .patent-name>span{flex-shrink:0;color:var(--muted)}
 .patent-meta{display:flex;flex-wrap:wrap;gap:4px 12px;margin-top:6px;font-size:11px;line-height:1.6;color:var(--muted);overflow-wrap:anywhere}
-@media(max-width:560px){.resume-patents summary{align-items:flex-start;flex-direction:column;gap:4px}.patent-records{padding:0 12px}.patent-meta{flex-direction:column}}
+@media(max-width:560px){.resume-patents .patent-summary{align-items:flex-start;flex-direction:column;gap:4px}.patent-records{padding:0 12px}.patent-meta{flex-direction:column}}
 
 /* Fixed SVG geometry and optical alignment for patent actions. */
-.resume-patents summary{align-items:center;min-height:28px}
+.resume-patents .patent-summary{align-items:center;min-height:28px}
 .patent-disclosure-hint{align-items:center;gap:8px;font-size:12px;line-height:20px}
 .patent-icon{display:block;flex:none;width:16px;height:16px;color:currentColor}
 .patent-icon-chevron{transition:transform .22s ease}
-.resume-patents[open] .patent-icon-chevron{transform:rotate(180deg)}
+.resume-patents[data-open="true"] .patent-icon-chevron{transform:rotate(180deg)}
 .patent-label-open{display:none}
-.resume-patents[open] .patent-label-open{display:inline}
-.resume-patents[open] .patent-label-closed{display:none}
+.resume-patents[data-open="true"] .patent-label-open{display:inline}
+.resume-patents[data-open="true"] .patent-label-closed{display:none}
 .patent-name{display:grid;grid-template-columns:minmax(0,1fr) 16px;align-items:start;gap:14px;line-height:24px}
 .patent-title{min-width:0;overflow-wrap:anywhere;color:inherit!important}
 .patent-icon-external{margin-top:4px;color:var(--muted)}
 .patent-records a:hover .patent-icon-external{color:#0066ff}
-@media(max-width:560px){.resume-patents summary{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:start;gap:10px}.patent-disclosure-hint{min-height:26px;font-size:11px;gap:6px}.patent-name{gap:10px}.patent-icon{width:16px;height:16px}}
+@media(max-width:560px){.resume-patents .patent-summary{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:start;gap:10px}.patent-disclosure-hint{min-height:26px;font-size:11px;gap:6px}.patent-name{gap:10px}.patent-icon{width:16px;height:16px}}
 @media(prefers-reduced-motion:reduce){.patent-icon-chevron{transition:none}}
 
 /* White glass shells for transparent project artwork. */
@@ -1132,3 +1131,12 @@ main[lang="zh-CN"] .resume-body h1,main[lang="zh-CN"] .resume-body h2,main[lang=
   [data-reveal-nav]:not([data-revealed="true"]){opacity:1}
   :is(.work-page,.resume-page) .site-header.shape-header{transition:none}
 }
+
+/* Patent disclosure expands in document flow, including its closing transition. */
+.patent-summary{width:100%;padding:0;border:0;background:none;color:inherit;font:inherit;text-align:left}
+.patent-expansion{display:grid;grid-template-rows:0fr;opacity:0;transition:grid-template-rows .55s cubic-bezier(.22,1,.36,1),opacity .3s ease}
+.resume-patents[data-open="true"] .patent-expansion{grid-template-rows:1fr;opacity:1}
+.patent-expansion-inner{min-height:0;overflow:hidden}
+.patent-records{border:0}
+.resume-award-group .patent-records li{border:0}
+@media(prefers-reduced-motion:reduce){.patent-expansion{transition:none}}
