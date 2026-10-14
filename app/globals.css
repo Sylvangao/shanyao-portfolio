@@ -1087,3 +1087,21 @@ main[lang="zh-CN"] .resume-body h1,main[lang="zh-CN"] .resume-body h2,main[lang=
 .site-header.shape-header .page-tabs,.site-header.shape-header .language-switch{border:0}
 .site-header.shape-header .page-tabs a{font-weight:400}
 .site-header.shape-header .page-tabs a.active{font-weight:650}
+
+/* Shared simple frost: one surface, no decorative highlights or simulated blur. */
+:root{--surface-frost:rgba(248,249,251,.68);--surface-frost-filter:blur(24px) saturate(120%);--surface-frost-shadow:0 8px 28px rgba(24,34,57,.07)}
+:is(.work-page,.resume-page) .site-header.shape-header{
+  background:var(--surface-frost);box-shadow:var(--surface-frost-shadow);
+  backdrop-filter:var(--surface-frost-filter);-webkit-backdrop-filter:var(--surface-frost-filter);
+  transform:none;transition:none;
+}
+:is(.work-page,.resume-page) :is(.service-tags li,.social-trigger,.contact-trigger:not(.footer-contact-trigger),.value-card,.portfolio-thumb.portfolio-glass,.footer-contacts a){
+  background:var(--surface-frost);border-color:transparent;box-shadow:var(--surface-frost-shadow);
+  backdrop-filter:var(--surface-frost-filter);-webkit-backdrop-filter:var(--surface-frost-filter);
+}
+:is(.work-page,.resume-page) :is(.service-tags li:hover,.social-trigger:hover,.contact-trigger:not(.footer-contact-trigger):hover,.contact-action[data-open="true"] .contact-trigger:not(.footer-contact-trigger),.portfolio-card:hover .portfolio-glass,.footer-contacts a:hover){
+  background:rgba(248,249,251,.8);border-color:transparent;box-shadow:var(--surface-frost-shadow);
+  backdrop-filter:var(--surface-frost-filter);-webkit-backdrop-filter:var(--surface-frost-filter);
+}
+.value-card::before,.value-card::after,.portfolio-glass::before,
+.shared-glass-section .portfolio-card:nth-child(-n+2) .portfolio-glass::after{display:none}
