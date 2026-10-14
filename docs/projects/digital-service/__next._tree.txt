@@ -1,3 +1,3 @@
 :HL["/shanyao-portfolio/_next/static/css/e38c2a25c9754503.css","style"]
-:HL["/shanyao-portfolio/_next/static/css/88284b07ad80cdc2.css","style"]
-0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"projects","param":null,"prefetchHints":0,"slots":{"children":{"name":"slug","param":{"type":"d","key":"digital-service","siblings":null},"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}}}},"staleTime":300,"buildId":"KIfWNFC7J17pRNk7kztWa"}
+:HL["/shanyao-portfolio/_next/static/css/fabf240232620542.css","style"]
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"projects","param":null,"prefetchHints":0,"slots":{"children":{"name":"slug","param":{"type":"d","key":"digital-service","siblings":null},"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}}}},"staleTime":300,"buildId":"jwP4SUFTpIjCD_itimpZI"}

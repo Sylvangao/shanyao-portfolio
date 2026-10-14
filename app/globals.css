@@ -1134,9 +1134,10 @@ main[lang="zh-CN"] .resume-body h1,main[lang="zh-CN"] .resume-body h2,main[lang=
 
 /* Patent disclosure expands in document flow, including its closing transition. */
 .patent-summary{width:100%;padding:0;border:0;background:none;color:inherit;font:inherit;text-align:left}
-.patent-expansion{display:grid;grid-template-rows:0fr;opacity:0;transition:grid-template-rows .55s cubic-bezier(.22,1,.36,1),opacity .3s ease}
-.resume-patents[data-open="true"] .patent-expansion{grid-template-rows:1fr;opacity:1}
-.patent-expansion-inner{min-height:0;overflow:hidden}
-.patent-records{border:0}
+/* The shell grows first; content follows, and fades before collapse. */
+.patent-expansion{display:block;height:0;opacity:0;overflow:hidden;background:#f7f8fa;border:0;border-radius:14px;overflow-anchor:none}
+.patent-expansion-inner{display:flow-root;opacity:0;transition:opacity .2s ease}
+.resume-patents[data-content-ready="true"] .patent-expansion-inner{opacity:1}
+.patent-expansion .patent-records{margin:0;padding:16px;border:0;background:transparent}
 .resume-award-group .patent-records li{border:0}
-@media(prefers-reduced-motion:reduce){.patent-expansion{transition:none}}
+@media(prefers-reduced-motion:reduce){.patent-expansion-inner{transition:none}}
