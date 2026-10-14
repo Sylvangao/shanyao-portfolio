@@ -1195,25 +1195,28 @@ html[data-preview-theme="dark"] :is(.service-tags :is(li,.service-label):hover,.
 html[data-preview-theme="dark"] .ambient-feather{background:linear-gradient(to bottom,rgba(17,18,22,0),rgba(17,18,22,.5) 54%,#111216)}
 
 /* Slide-in labels sit in a page-colored inset with rounded reverse corners. */
-.project-label-notch{--notch-surface:#fff;position:absolute;z-index:3;left:-1px;bottom:-1px;max-width:calc(100% - 24px);padding:12px 12px 1px 1px;border-radius:0 24px 0 0;background:var(--notch-surface);transform:translate(-105%,105%);transition:transform .4s cubic-bezier(.22,1,.36,1)}
+ .project-label-notch{--notch-surface:#fff;position:absolute;z-index:3;right:-1px;top:-1px;max-width:calc(100% - 24px);padding:1px 1px 12px 12px;border-radius:0 0 0 24px;background:var(--notch-surface);transform:translateY(-110%);transition:transform .3s cubic-bezier(.22,1,.36,1)}
 .project-notch-curve{position:absolute;width:24px;height:24px;fill:var(--notch-surface);pointer-events:none}
-.project-notch-top{left:0;top:-24px}
-.project-notch-right{bottom:0;right:-24px}
+.project-notch-top{top:0;left:-24px}
+.project-notch-right{right:0;bottom:-24px}
 .project-labels{font-size:var(--intro-font-size,16px);color:rgba(23,23,23,.79);letter-spacing:var(--intro-tracking,-.02em);gap:8px}
 .project-labels .service-label{display:block;animation:none;white-space:nowrap}
-.portfolio-card:is(:hover,:focus-visible) .project-label-notch{transform:translate(0,0)}
+.portfolio-card:is(:hover,:focus-visible) .project-label-notch{transform:translateY(0)}
 .portfolio-card:focus-visible{outline:2px solid #0066ff;outline-offset:5px}
-@media(max-width:560px){.project-label-notch{padding:10px 10px 1px 1px;border-top-right-radius:20px}.project-labels{font-size:13px;gap:6px}}
-@media(hover:none){.project-label-notch{transform:none}}
+.portfolio-glass .portfolio-arrow{top:50%;left:50%;right:auto;width:64px;height:64px;transform:translate(-50%,-50%) scale(.8)}
+.portfolio-card:is(:hover,:focus-visible) .portfolio-arrow{opacity:1;transform:translate(-50%,-50%) scale(1)}
+html[data-preview-theme="dark"] .project-label-notch{--notch-surface:#111216}
+@media(max-width:560px){.project-label-notch{padding:1px 1px 10px 10px;border-bottom-left-radius:20px}.project-labels{font-size:13px;gap:6px}}
+@media(hover:none){.project-label-notch{transform:none}.portfolio-glass .portfolio-arrow{top:auto;left:auto;bottom:16px;right:16px;width:40px;height:40px;transform:none;opacity:1}}
 @media(prefers-reduced-motion:reduce){.project-label-notch{transition:none}}
 
 /* Intentional sentence breaks remain readable on smaller screens. */
 .work-page .hero-note .hero-introduction{display:block;overflow:visible;-webkit-line-clamp:unset;line-clamp:unset}
 .work-page .hero-introduction>.intro-line{display:block}
 .work-page .hero-introduction>.intro-line::before{content:none}
-.waving-hand,.sparkle-emoji{display:inline-flex;vertical-align:baseline;transform-origin:bottom right}
+.work-page .hero-introduction .waving-hand{display:inline-flex;vertical-align:baseline;transform-origin:bottom right;will-change:transform}
+.work-page .hero-introduction .waving-hand::before{content:none}
 .waving-hand{animation:waving 2s linear infinite}
-.sparkle-emoji{transform-origin:center;animation:sparkling 2s ease-in-out infinite}
 @keyframes waving{0%,60%,100%{transform:rotate(0deg)}10%{transform:rotate(14deg)}20%{transform:rotate(-8deg)}30%{transform:rotate(14deg)}40%{transform:rotate(-4deg)}50%{transform:rotate(8deg)}}
 @keyframes sparkling{0%,60%,100%{transform:scale(1) rotate(0deg)}20%{transform:scale(1.13) rotate(10deg)}40%{transform:scale(.96) rotate(-6deg)}}
-@media(prefers-reduced-motion:reduce){.waving-hand,.sparkle-emoji{animation:none}}
+@media(prefers-reduced-motion:reduce){.waving-hand{animation:none}}

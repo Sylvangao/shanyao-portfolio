@@ -194,7 +194,8 @@ export default function WorkPage() {
           <div className="intro-row">
             <img className="profile-avatar" src={`${basePath}/profile/shanyao-avatar-optimized.svg`} width="58" height="58" alt={zh ? '山药的头像' : 'Portrait of Shanyao'} />
             <div className="hero-note"><p className="hero-introduction">
-              <span className="intro-line"><TextReveal delay={450}>{zh ? '我是山药' : 'I’m Shanyao'}</TextReveal>{' '}<span className="waving-hand" role="img" aria-label={zh ? '挥手' : 'Waving hand'}><TextReveal delay={500}>👋</TextReveal></span><TextReveal delay={550}>{zh ? '，一名独立产品设计师。' : ', an independent product designer.'}</TextReveal></span>
+              <span className="intro-line"><TextReveal delay={450}>{zh ? '我是山药' : 'I’m Shanyao'}</TextReveal>{' '}<span className="waving-hand" role="img" aria-label={zh ? '挥手' : 'Waving hand'}><TextReveal delay={500}>👋</TextReveal></span></span>
+              <span className="intro-line"><TextReveal delay={550}>{zh ? '一名独立产品设计师。' : 'an independent product designer.'}</TextReveal></span>
               <span className="intro-line"><TextReveal delay={650}>{zh ? '拥有 13 年经验，曾就职于百度、魅族、知乎与腾讯。' : 'Across 13 years at Baidu, Meizu, Zhihu and Tencent,'}</TextReveal></span>
               <span className="intro-line"><TextReveal delay={850}>{zh ? '我专注于将复杂想法转化为清晰、有效的数字产品。' : 'I’ve turned complex ideas into clear digital products that work.'}</TextReveal></span>
             </p>
@@ -236,8 +237,8 @@ export default function WorkPage() {
               <div className="portfolio-thumb portfolio-glass" data-backdrop={zh ? '精选项目' : 'Projects'}>
                 {project.cover && <img className="portfolio-cover" src={`${basePath}${project.cover}`} alt={zh ? project.zh : project.en} loading="lazy" decoding="async" />}
                 <div className="project-label-notch">
-                  <svg className="project-notch-curve project-notch-top" viewBox="0 0 24 24" aria-hidden="true"><path d="M0 0v24h24A24 24 0 0 1 0 0Z" /></svg>
-                  <svg className="project-notch-curve project-notch-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M0 0v24h24A24 24 0 0 1 0 0Z" /></svg>
+                  <svg className="project-notch-curve project-notch-top" viewBox="0 0 24 24" aria-hidden="true"><path d="M24 0H0A24 24 0 0 1 24 24Z" /></svg>
+                  <svg className="project-notch-curve project-notch-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M24 0H0A24 24 0 0 1 24 24Z" /></svg>
                   <div className="service-tags project-labels">{project.labels.map((label,index)=><span className="service-label" key={`${label}-${index}`}>{label}</span>)}</div>
                 </div>
                 <span className="portfolio-arrow" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.65" strokeLinecap="round" strokeLinejoin="round"><path d="M6 14 14 6M6.5 6H14v7.5"/></svg></span>

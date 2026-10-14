@@ -43,7 +43,7 @@ export function SiteFooter({lang}: {lang:'zh'|'en'}) {
           <div className="footer-message">
             <div className="footer-heading">
               <img src={`${basePath}/profile/shanyao-avatar-optimized.svg`} alt={zh ? '山药头像' : 'Portrait of Shanyao'} />
-              <div className="footer-heading-copy"><h2><TextReveal active={revealReady} granularity="line">{zh ? '一起打造更好的产品' : 'Let’s work together'}</TextReveal></h2><p className="footer-tagline"><TextReveal active={revealReady} granularity="line" delay={100}>Make great things</TextReveal>{' '}<span className="sparkle-emoji" role="img" aria-label={zh ? '闪耀' : 'Sparkles'}><TextReveal active={revealReady} granularity="line" delay={100}>✨</TextReveal></span></p></div>
+              <div className="footer-heading-copy"><h2><TextReveal active={revealReady} granularity="line">{zh ? '一起打造更好的产品' : 'Let’s work together'}</TextReveal></h2><p className="footer-tagline"><TextReveal active={revealReady} granularity="line" delay={100}>to make great things.</TextReveal></p></div>
             </div>
             <div className="footer-divider">
               <div className="footer-rule" aria-hidden="true" />
