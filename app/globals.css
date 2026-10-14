@@ -1115,3 +1115,7 @@ main[lang="zh-CN"] .resume-body h1,main[lang="zh-CN"] .resume-body h2,main[lang=
 
 @keyframes header-enter{from{opacity:0;transform:translateY(-24px)}to{opacity:1;transform:translateY(0)}}
 @media(prefers-reduced-motion:reduce){:is(.work-page,.resume-page) .site-header.shape-header{animation:none;transition:none}}
+
+/* Reveal each pill as a whole so its frost cannot precede its label. */
+[data-reveal-surface]:not([data-revealed="true"]){opacity:.001}
+@media(prefers-reduced-motion:reduce){[data-reveal-surface]:not([data-revealed="true"]){opacity:1}}

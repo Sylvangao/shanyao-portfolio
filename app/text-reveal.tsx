@@ -24,7 +24,9 @@ export function TextReveal({ children, delay = 0, active, granularity = 'auto' }
     const resumeLines = lineMode && !!element.closest('.resume-page') && !element.closest('.site-footer');
     const lineInterval = resumeLines ? 300 : 100;
     const duration = resumeLines ? 500 : 400;
-    const words = Array.from(element.querySelectorAll<HTMLElement>('[data-reveal-token]'));
+    // A pill's surface and copy share one animation, trigger and delay.
+    const surface = element.closest<HTMLElement>('[data-reveal-surface]');
+    const words = surface ? [surface] : Array.from(element.querySelectorAll<HTMLElement>('[data-reveal-token]'));
     const animations = words.map((word, index) => {
       const animation = word.animate([
         { opacity: .001, filter: 'blur(10px)', transform: 'translateY(10px)' },
@@ -43,6 +45,7 @@ export function TextReveal({ children, delay = 0, active, granularity = 'auto' }
       if (disposed || started || !ready || !visible) return;
       if (active !== true && popover && getComputedStyle(popover).visibility === 'hidden') return;
       started = true;
+      if (surface) surface.dataset.revealed = 'true';
       if (lineMode) {
         // Measure actual responsive lines after fonts have loaded, immediately
         // before playback. Every word on one rendered line shares its delay.

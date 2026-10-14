@@ -194,7 +194,7 @@ export default function WorkPage() {
               {(zh
                 ? ['App 与网站', 'SaaS 与企业产品', 'AI 产品', '设计系统']
                 : ['Apps & websites', 'SaaS & enterprise', 'AI products', 'Design systems']
-              ).map((service, index) => <li key={service}><TextReveal delay={800 + index * 100}>{service}</TextReveal></li>)}
+              ).map((service, index) => <li key={service} data-reveal-surface><TextReveal delay={800 + index * 100}>{service}</TextReveal></li>)}
             </ul>
           </div>
             </div>

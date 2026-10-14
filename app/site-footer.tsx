@@ -50,8 +50,8 @@ export function SiteFooter({lang}: {lang:'zh'|'en'}) {
               <ContactPopover lang={lang} variant="footer" revealReady={revealReady} />
             </div>
             <div className="footer-contacts">
-              <a href="mailto:nealgao@163.com"><TextReveal active={revealReady} granularity="line" delay={200}>nealgao@163.com</TextReveal></a>
-              <a href="tel:+8615319925652"><TextReveal active={revealReady} granularity="line" delay={300}>+86 153 1992 5652</TextReveal></a>
+              <a href="mailto:nealgao@163.com" data-reveal-surface><TextReveal active={revealReady} granularity="line" delay={200}>nealgao@163.com</TextReveal></a>
+              <a href="tel:+8615319925652" data-reveal-surface><TextReveal active={revealReady} granularity="line" delay={300}>+86 153 1992 5652</TextReveal></a>
             </div>
           </div>
         </div>
