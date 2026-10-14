@@ -1148,3 +1148,6 @@ main[lang="zh-CN"] .resume-body h1,main[lang="zh-CN"] .resume-body h2,main[lang=
   transform:translateX(calc(-1 * var(--footer-button-shift)));
   will-change:transform,opacity;
 }
+
+[data-reveal-media]:not([data-revealed="true"]){opacity:.001}
+@media(prefers-reduced-motion:reduce){[data-reveal-media]:not([data-revealed="true"]){opacity:1}}

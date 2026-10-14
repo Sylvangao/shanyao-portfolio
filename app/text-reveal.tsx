@@ -12,7 +12,7 @@ function tokens(text: string) {
   return result;
 }
 
-export function TextReveal({ children, delay = 0, active, granularity = 'auto' }: { children: string; delay?: number; active?: boolean; granularity?: 'auto' | 'word' | 'line' }) {
+export function TextReveal({ children, delay = 0, active, granularity = 'auto', syncMedia = false }: { children: string; delay?: number; active?: boolean; granularity?: 'auto' | 'word' | 'line'; syncMedia?: boolean }) {
   const ref = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
@@ -35,6 +35,15 @@ export function TextReveal({ children, delay = 0, active, granularity = 'auto' }
       animation.pause();
       return animation;
     });
+    const media = syncMedia ? element.closest('.resume-entry-header')?.querySelector<HTMLElement>('[data-reveal-media]') : null;
+    if (media) {
+      const animation = media.animate([
+        { opacity: .001, filter: 'blur(10px)', transform: 'translateY(10px)' },
+        { opacity: 1, filter: 'blur(0px)', transform: 'translateY(0)' },
+      ], { duration, delay, easing: 'cubic-bezier(.44,0,.56,1)', fill: 'both' });
+      animation.pause();
+      animations.push(animation);
+    }
     let disposed = false;
     let ready = false;
     const popover = element.closest<HTMLElement>('.contact-popover');
@@ -45,6 +54,7 @@ export function TextReveal({ children, delay = 0, active, granularity = 'auto' }
       if (disposed || started || !ready || !visible) return;
       if (active !== true && popover && getComputedStyle(popover).visibility === 'hidden') return;
       started = true;
+      if (media) media.dataset.revealed = 'true';
       if (surface) surface.dataset.revealed = 'true';
       if (lineMode) {
         // Measure actual responsive lines after fonts have loaded, immediately
@@ -90,7 +100,7 @@ export function TextReveal({ children, delay = 0, active, granularity = 'auto' }
       reducedMotion.removeEventListener('change', stopMotion);
       animations.forEach(animation => animation.cancel());
     };
-  }, [children, delay, active, granularity]);
+  }, [children, delay, active, granularity, syncMedia]);
 
   return <span className="text-reveal" ref={ref}>{tokens(children).map((token, index) =>
     /^\s+$/u.test(token)
