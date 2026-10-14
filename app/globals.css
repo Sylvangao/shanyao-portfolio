@@ -1119,3 +1119,16 @@ main[lang="zh-CN"] .resume-body h1,main[lang="zh-CN"] .resume-body h2,main[lang=
 /* Reveal each pill as a whole so its frost cannot precede its label. */
 [data-reveal-surface]:not([data-revealed="true"]){opacity:.001}
 @media(prefers-reduced-motion:reduce){[data-reveal-surface]:not([data-revealed="true"]){opacity:1}}
+
+/* At the page top the header is open and clear; frost arrives on compaction. */
+:is(.work-page,.resume-page) .site-header.shape-header:not([data-compact="true"]){
+  background:transparent;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none;
+}
+:is(.work-page,.resume-page) .site-header.shape-header{
+  transition:width .6s cubic-bezier(.22,1,.36,1),max-width .6s cubic-bezier(.22,1,.36,1),background .4s ease,box-shadow .4s ease;
+}
+[data-reveal-nav]:not([data-revealed="true"]){opacity:.001}
+@media(prefers-reduced-motion:reduce){
+  [data-reveal-nav]:not([data-revealed="true"]){opacity:1}
+  :is(.work-page,.resume-page) .site-header.shape-header{transition:none}
+}

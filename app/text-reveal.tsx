@@ -25,7 +25,7 @@ export function TextReveal({ children, delay = 0, active, granularity = 'auto' }
     const lineInterval = resumeLines ? 300 : 100;
     const duration = resumeLines ? 500 : 400;
     // A pill's surface and copy share one animation, trigger and delay.
-    const surface = element.closest<HTMLElement>('[data-reveal-surface]');
+    const surface = element.closest<HTMLElement>('[data-reveal-surface], [data-reveal-nav]');
     const words = surface ? [surface] : Array.from(element.querySelectorAll<HTMLElement>('[data-reveal-token]'));
     const animations = words.map((word, index) => {
       const animation = word.animate([
