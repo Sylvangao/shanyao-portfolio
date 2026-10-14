@@ -1,9 +1,11 @@
 'use client';
 
+import { TextReveal } from './text-reveal';
 import { useCallback, useEffect, useId, useRef, useState } from 'react';
 
-export function ContactPopover({ lang, variant = 'hero' }: { lang: 'zh' | 'en'; variant?: 'hero' | 'footer' | 'resume' }) {
+export function ContactPopover({ lang, variant = 'hero', revealReady = true }: { lang: 'zh' | 'en'; variant?: 'hero' | 'footer' | 'resume'; revealReady?: boolean }) {
   const [open, setOpen] = useState(false);
+  const [popoverSeen, setPopoverSeen] = useState(false);
   const [placement, setPlacement] = useState<'above' | 'below'>('above');
   const root = useRef<HTMLDivElement>(null);
   const zh = lang === 'zh';
@@ -49,7 +51,7 @@ export function ContactPopover({ lang, variant = 'hero' }: { lang: 'zh' | 'en'; 
       {variant === 'hero' && <a className="social-trigger" href="https://dribbble.com/nealgao" target="_blank" rel="noreferrer" aria-label="View Shanyao on Dribbble">
         <img src={`${basePath}/icons/dribbble.svg`} alt="" aria-hidden="true" />
       </a>}
-      <div className="contact-action" data-open={open ? 'true' : 'false'} data-placement={placement} onPointerEnter={placePopover} onFocusCapture={placePopover}>
+      <div className="contact-action" data-open={open ? 'true' : 'false'} data-placement={placement} onPointerEnter={() => { placePopover(); setPopoverSeen(true); }} onFocusCapture={() => { placePopover(); setPopoverSeen(true); }}>
         <button
           className={`contact-trigger${variant === 'footer' ? ' footer-contact-trigger' : ''}`}
           type="button"
@@ -84,13 +86,13 @@ export function ContactPopover({ lang, variant = 'hero' }: { lang: 'zh' | 'en'; 
           }}
         >
           {variant !== 'footer' && <img src={`${basePath}/icons/wechat.svg`} alt="" aria-hidden="true" />}
-          <span className="contact-label">{variant === 'footer' ? (zh ? '联系我' : 'Get in touch') : variant === 'resume' ? (zh ? '加我微信' : 'Let’s talk') : (zh ? '聊一聊' : 'Let’s talk')}</span>
+          <span className="contact-label"><TextReveal active={variant === 'footer' ? revealReady : undefined} granularity={variant === 'footer' ? 'line' : 'auto'} delay={variant === 'hero' ? 1100 : variant === 'footer' ? 150 : 0}>{variant === 'footer' ? (zh ? '联系我' : 'Get in touch') : variant === 'resume' ? (zh ? '加我微信' : 'Let’s talk') : (zh ? '聊一聊' : 'Let’s talk')}</TextReveal></span>
         </button>
         <div className={`contact-popover${variant === 'footer' ? ' footer-contact-popover' : ''}`} id={popoverId} role="dialog" aria-label={zh ? '微信联系方式' : 'WeChat contact'}>
           <img className="wechat-qr" src={`${basePath}/profile/shanyao-wechat-qr.jpg`} alt={zh ? '山药的微信二维码' : 'Shanyao’s WeChat QR code'} />
           <div className="contact-popover-copy">
-            <strong>{zh ? '微信 · nealgao' : 'WeChat · nealgao'}</strong>
-            <span>{zh ? '加我微信，聊聊你的项目。' : 'Add me and tell me about your project.'}</span>
+            <strong><TextReveal active={open || popoverSeen}>{zh ? '微信 · nealgao' : 'WeChat · nealgao'}</TextReveal></strong>
+            <span><TextReveal delay={100} active={open || popoverSeen}>{zh ? '加我微信，聊聊你的项目。' : 'Add me and tell me about your project.'}</TextReveal></span>
           </div>
         </div>
       </div>

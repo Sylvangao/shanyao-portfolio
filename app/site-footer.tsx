@@ -1,8 +1,10 @@
 'use client';
-import { useEffect, useRef } from 'react';
+import { TextReveal } from './text-reveal';
+import { useEffect, useRef, useState } from 'react';
 import { ContactPopover } from './contact-popover';
 export function SiteFooter({lang}: {lang:'zh'|'en'}) {
  const ref=useRef<HTMLElement>(null);
+ const [revealReady,setRevealReady]=useState(false);
  const zh=lang==='zh';
  const basePath=process.env.NEXT_PUBLIC_BASE_PATH ?? '';
  useEffect(()=>{
@@ -12,6 +14,9 @@ export function SiteFooter({lang}: {lang:'zh'|'en'}) {
         const rect = footer.getBoundingClientRect();
         const footerTravel = Math.min(window.innerHeight, rect.height);
         const progress = Math.max(0, Math.min(1, (window.innerHeight - rect.top) / footerTravel));
+        // Wait for the footer shell to be visible; its translated content can
+        // intersect the viewport while still covered by the preceding section.
+        if (progress >= .55 || window.matchMedia('(prefers-reduced-motion: reduce)').matches) setRevealReady(true);
         const eased = progress * progress * (3 - 2 * progress);
         const curveHeight = window.innerHeight * .1 * (1 - eased);
         const contentShift = -Math.min(210, window.innerHeight * .34) * (1 - eased);
@@ -32,27 +37,27 @@ export function SiteFooter({lang}: {lang:'zh'|'en'}) {
   return ()=>{cancelAnimationFrame(frame);window.removeEventListener('scroll',request);window.removeEventListener('resize',request)};
  },[]);
  return (
-      <footer className="site-footer" id="contact" ref={ref}>
+      <footer className="site-footer" id="contact" ref={ref} data-reveal-ready={revealReady}>
         <div className="footer-curve" aria-hidden="true"><span /></div>
         <div className="footer-cta">
           <div className="footer-message">
             <div className="footer-heading">
               <img src={`${basePath}/profile/shanyao-avatar-optimized.svg`} alt={zh ? '山药头像' : 'Portrait of Shanyao'} />
-              <h2>{zh ? '一起打造更好的产品' : 'Let’s work together'}</h2>
+              <h2><TextReveal active={revealReady} granularity="line">{zh ? '一起打造更好的产品' : 'Let’s work together'}</TextReveal></h2>
             </div>
             <div className="footer-divider">
               <div className="footer-rule" aria-hidden="true" />
-              <ContactPopover lang={lang} variant="footer" />
+              <ContactPopover lang={lang} variant="footer" revealReady={revealReady} />
             </div>
             <div className="footer-contacts">
-              <a href="mailto:nealgao@163.com">nealgao@163.com</a>
-              <a href="tel:+8615319925652">+86 153 1992 5652</a>
+              <a href="mailto:nealgao@163.com"><TextReveal active={revealReady} granularity="line" delay={200}>nealgao@163.com</TextReveal></a>
+              <a href="tel:+8615319925652"><TextReveal active={revealReady} granularity="line" delay={300}>+86 153 1992 5652</TextReveal></a>
             </div>
           </div>
         </div>
         <div className="footer-meta">
-          <div><small>COPYRIGHT</small><span>© 2026 Shanyao Gao.</span></div>
-          <div><small>LEGAL</small><span>All rights reserved.</span></div>
+          <div><small><TextReveal active={revealReady} granularity="line">COPYRIGHT</TextReveal></small><span><TextReveal active={revealReady} granularity="line" delay={100}>© 2026 Shanyao Gao.</TextReveal></span></div>
+          <div><small><TextReveal active={revealReady} granularity="line" delay={100}>LEGAL</TextReveal></small><span><TextReveal active={revealReady} granularity="line" delay={200}>All rights reserved.</TextReveal></span></div>
         </div>
       </footer>
  );

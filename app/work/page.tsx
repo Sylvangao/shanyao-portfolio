@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { TextReveal } from '../text-reveal';
 import { SiteHeader } from '../site-header';
 import { FocusHeadline } from '../focus-headline';
 import { ContactPopover } from '../contact-popover';
@@ -54,7 +55,6 @@ export default function WorkPage() {
   }, []);
   useEffect(() => {
     const hero = document.querySelector<HTMLElement>('.work-hero');
-    const header = document.querySelector<HTMLElement>('.site-header');
     const headline = document.querySelector<HTMLElement>('.focus-stage');
     const cards = Array.from(document.querySelectorAll<HTMLElement>('.project-card'));
     const portfolioCards = Array.from(document.querySelectorAll<HTMLElement>('.portfolio-card'));
@@ -84,7 +84,6 @@ export default function WorkPage() {
     let frame = 0;
     let targetScroll = window.scrollY;
     let smoothScroll = targetScroll;
-    let headlineStart = headline ? headline.getBoundingClientRect().top + targetScroll : 280;
     const updateParallax = () => {
       if (reduceMotion.matches) {
         frame = 0;
@@ -109,13 +108,6 @@ export default function WorkPage() {
       const ambienceShift = Math.max(-24, Math.min(24, lag * .1));
       hero?.style.setProperty('--hero-shift', `${heroShift}px`);
       hero?.style.setProperty('--ambience-shift', `${ambienceShift}px`);
-      if (header && window.innerWidth > 760) {
-        const collapseDistance = Math.max(120, headlineStart - 100);
-        const rawProgress = Math.max(0, Math.min(1, targetScroll / collapseDistance));
-        const progress = rawProgress * rawProgress * (3 - 2 * rawProgress);
-        header.style.setProperty('--header-progress', `${progress}`);
-        header.dataset.scrolled = rawProgress > .025 ? 'true' : 'false';
-      }
       const viewportCenter = window.innerHeight / 2;
       const strengths = [.022, .034, .026];
       cards.forEach((card, index) => {
@@ -173,7 +165,6 @@ export default function WorkPage() {
     };
     const requestParallax = () => {
       targetScroll = window.scrollY;
-      if (headline && targetScroll === 0) headlineStart = headline.getBoundingClientRect().top;
       if (!frame) frame = window.requestAnimationFrame(updateParallax);
     };
     requestParallax();
@@ -197,13 +188,13 @@ export default function WorkPage() {
           <FocusHeadline words={zh ? ['化繁为简，','设计真正有效的产品。'] : ['Complexity made clear.','Products designed to grow.']} label={zh ? '化繁为简，设计真正有效的产品' : 'Complexity made clear. Products designed to grow'} href={zh ? '/work?lang=zh' : '/work'} emphasis={zh ? ['化繁为简', '有效', '产品'] : ['Complexity', 'clear', 'grow']} />
           <div className="intro-row">
             <img className="profile-avatar" src={`${basePath}/profile/shanyao-avatar-optimized.svg`} width="58" height="58" alt={zh ? '山药的头像' : 'Portrait of Shanyao'} />
-            <div className="hero-note"><p>{zh ? <><span>我是山药，一名拥有 13 年经验的独立产品设计师，曾就职于百度、魅族、知乎与腾讯。</span><span>我专注于将复杂想法转化为清晰、有效的数字产品。</span></> : <><span>I’m Shanyao, an independent product designer.</span><span>Across 13 years at Baidu, Meizu, Zhihu and Tencent, I’ve turned complex ideas into clear digital products that work.</span></>}</p>
+            <div className="hero-note"><p>{zh ? <><span><TextReveal delay={450}>我是山药，一名拥有 13 年经验的独立产品设计师，曾就职于百度、魅族、知乎与腾讯。</TextReveal></span><span><TextReveal delay={650}>我专注于将复杂想法转化为清晰、有效的数字产品。</TextReveal></span></> : <><span><TextReveal delay={450}>I’m Shanyao, an independent product designer.</TextReveal></span><span><TextReveal delay={650}>Across 13 years at Baidu, Meizu, Zhihu and Tencent, I’ve turned complex ideas into clear digital products that work.</TextReveal></span></>}</p>
           <div className="service-summary" aria-label={zh ? '设计服务范围' : 'Design services'}>
             <ul className="service-tags">
               {(zh
                 ? ['App 与网站', 'SaaS 与企业产品', 'AI 产品', '设计系统']
                 : ['Apps & websites', 'SaaS & enterprise', 'AI products', 'Design systems']
-              ).map((service) => <li key={service}>{service}</li>)}
+              ).map((service, index) => <li key={service}><TextReveal delay={800 + index * 100}>{service}</TextReveal></li>)}
             </ul>
           </div>
             </div>
@@ -223,8 +214,8 @@ export default function WorkPage() {
                 WebkitBackdropFilter: 'blur(72px) saturate(112%) brightness(1.08)',
               }}
             >
-              <h3>{zh ? item.zh : item.en}</h3>
-              <p>{zh ? item.zhCopy : item.enCopy}</p>
+              <h3><TextReveal>{zh ? item.zh : item.en}</TextReveal></h3>
+              <p><TextReveal delay={150}>{zh ? item.zhCopy : item.enCopy}</TextReveal></p>
             </article>
           ))}
         </div>

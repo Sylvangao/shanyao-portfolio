@@ -19,8 +19,9 @@ export function FocusHeadline({ words, label, href, emphasis = [] }: { words: st
     event.currentTarget.style.setProperty('--pointer-y', `${event.clientY - bounds.top}px`);
   };
 
-  let wordIndex = 0;
-  const renderLines = (animated: boolean) => words.map((line) => (
+  const renderLines = () => {
+    let wordIndex = 0;
+    return words.map((line) => (
     <span className="headline-line" key={line}>
       {tokenize(line).map((word) => {
         const index = wordIndex++;
@@ -28,20 +29,21 @@ export function FocusHeadline({ words, label, href, emphasis = [] }: { words: st
         const strong = emphasis.some((term) => term.toLowerCase().includes(normalized));
         return (
           <span className="headline-word-mask" key={`${line}-${index}`}>
-            <span className={`headline-word${strong ? ' is-strong' : ''}`} style={animated ? { '--word-delay': `${index * 55}ms` } as CSSProperties : undefined}>{word}</span>
+            <span className={`headline-word${strong ? ' is-strong' : ''}`} style={{ '--word-delay': `${index * 50}ms` } as CSSProperties}>{word}</span>
           </span>
         );
       })}
     </span>
-  ));
+    ));
+  };
 
   return (
     <Link className="focus-stage" href={href} onPointerMove={moveMask} aria-label={`${label} — Home`}>
       <h1 className="focus-title focus-base" aria-label={label}>
-        {renderLines(true)}
+        {renderLines()}
       </h1>
       <h1 className="focus-title focus-clear" aria-hidden="true">
-        {renderLines(false)}
+        {renderLines()}
       </h1>
     </Link>
   );
