@@ -17,7 +17,7 @@ export function TextReveal({ children, delay = 0, active, granularity = 'auto', 
 
   useEffect(() => {
     const element = ref.current;
-    if (!element?.closest('.work-page, .resume-page') || active === false) return;
+    if (!element?.closest('.work-page, .resume-page, .project-detail-page') || active === false) return;
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
     if (reducedMotion.matches) return;
     const lineMode = granularity === 'line' || (granularity === 'auto' && !!element.closest('.resume-page') && !element.closest('.site-header, .site-footer'));
@@ -35,7 +35,7 @@ export function TextReveal({ children, delay = 0, active, granularity = 'auto', 
       animation.pause();
       return animation;
     });
-    const media = syncMedia ? element.closest('.resume-entry-header')?.querySelector<HTMLElement>('[data-reveal-media]') : null;
+    const media = syncMedia ? element.closest('[data-reveal-scope], .resume-entry-header')?.querySelector<HTMLElement>('[data-reveal-media]') : null;
     if (media) {
       const animation = media.animate([
         { opacity: .001, filter: 'blur(10px)', transform: 'translateY(10px)' },

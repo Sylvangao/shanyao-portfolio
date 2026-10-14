@@ -1,6 +1,6 @@
 1:"$Sreact.fragment"
-2:I[8112,["419","static/chunks/app/projects/%5Bslug%5D/page-ecafb92e8c01e094.js"],"ProjectDetailClient"]
+2:I[8112,["419","static/chunks/app/projects/%5Bslug%5D/page-d2c83b772985dd60.js"],"ProjectDetailClient"]
 3:I[484,[],"OutletBoundary"]
 4:"$Sreact.suspense"
-0:{"rsc":["$","$1","c",{"children":[["$","$L2",null,{"project":{"slug":"enterprise-product","en":"Enterprise product","zh":"企业产品","labels":["SaaS"],"tone":"violet"}}],null,["$","$L3",null,{"children":["$","$4",null,{"name":"Next.MetadataOutlet","children":"$@5"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"P5rl5S0Kd_aKBK0Qsgrg9"}
+0:{"rsc":["$","$1","c",{"children":[["$","$L2",null,{"project":{"slug":"enterprise-product","en":"Enterprise product","zh":"企业产品","labels":["SaaS"],"tone":"violet"}}],null,["$","$L3",null,{"children":["$","$4",null,{"name":"Next.MetadataOutlet","children":"$@5"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"gtby8gvY8HSwg10LH6Yxv"}
 5:null

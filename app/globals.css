@@ -1036,9 +1036,9 @@ main[lang="zh-CN"] .resume-body h1,main[lang="zh-CN"] .resume-body h2,main[lang=
 @media(max-width:1024px){.shared-glass-section .portfolio-glass::after{display:none}}
 
 /* Shared text reveals preserve each parent's typography and wrapping. */
-:is(.work-page,.resume-page) .text-reveal{display:inline;width:auto;max-width:none;white-space:inherit;font:inherit;letter-spacing:inherit;color:inherit}
-:is(.work-page,.resume-page) .text-reveal .text-reveal-token{display:inline-block;width:auto;max-width:none;margin:0;padding:0;white-space:pre;font:inherit;letter-spacing:inherit;color:inherit}
-:is(.work-page,.resume-page) .text-reveal .text-reveal-token::before{content:none}
+:is(.work-page,.resume-page,.project-detail-page) .text-reveal{display:inline;width:auto;max-width:none;white-space:inherit;font:inherit;letter-spacing:inherit;color:inherit}
+:is(.work-page,.resume-page,.project-detail-page) .text-reveal .text-reveal-token{display:inline-block;width:auto;max-width:none;margin:0;padding:0;white-space:pre;font:inherit;letter-spacing:inherit;color:inherit}
+:is(.work-page,.resume-page,.project-detail-page) .text-reveal .text-reveal-token::before{content:none}
 /* Text now owns its entrance; don't fade the surrounding controls twice. */
 .work-page .intro-row,.work-page .hero-actions,.work-page .service-tags :is(li,.service-label){animation:none}
 :is(.work-page,.resume-page) .footer-heading,:is(.work-page,.resume-page) .footer-contacts,:is(.work-page,.resume-page) .footer-meta{filter:none;opacity:1}
@@ -1220,3 +1220,10 @@ html[data-preview-theme="dark"] .project-label-notch{--notch-surface:#111216}
 @keyframes waving{0%,60%,100%{transform:rotate(0deg)}10%{transform:rotate(14deg)}20%{transform:rotate(-8deg)}30%{transform:rotate(14deg)}40%{transform:rotate(-4deg)}50%{transform:rotate(8deg)}}
 @keyframes sparkling{0%,60%,100%{transform:scale(1) rotate(0deg)}20%{transform:scale(1.13) rotate(10deg)}40%{transform:scale(.96) rotate(-6deg)}}
 @media(prefers-reduced-motion:reduce){.waving-hand{animation:none}}
+
+/* Avoid a static frame of supporting media before the matching text reveals. */
+[data-reveal-surface]:not([data-revealed="true"]),[data-reveal-media]:not([data-revealed="true"]){opacity:.001}
+@media(prefers-reduced-motion:reduce){[data-reveal-surface]:not([data-revealed="true"]),[data-reveal-media]:not([data-revealed="true"]){opacity:1}}
+.project-detail-cover{animation:detail-cover-enter .5s cubic-bezier(.44,0,.56,1) .3s both}
+@keyframes detail-cover-enter{from{opacity:.001;filter:blur(10px);transform:translateY(10px)}to{opacity:1;filter:none;transform:none}}
+@media(prefers-reduced-motion:reduce){.project-detail-cover{animation:none}}

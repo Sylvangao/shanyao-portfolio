@@ -47,14 +47,14 @@ export function ContactPopover({ lang, variant = 'hero', revealReady = true }: {
   }, [open, placePopover]);
 
   return (
-    <div className={variant === 'footer' ? 'footer-contact-root' : variant === 'resume' ? 'resume-wechat' : 'hero-actions'} ref={root}>
-      {variant === 'hero' && <a className="social-trigger" href="https://dribbble.com/nealgao" target="_blank" rel="noreferrer" aria-label="View Shanyao on Dribbble">
+    <div className={variant === 'footer' ? 'footer-contact-root' : variant === 'resume' ? 'resume-wechat' : 'hero-actions'} ref={root} data-reveal-scope>
+      {variant === 'hero' && <a data-reveal-media className="social-trigger" href="https://dribbble.com/nealgao" target="_blank" rel="noreferrer" aria-label="View Shanyao on Dribbble">
         <img src={`${basePath}/icons/dribbble.svg`} alt="" aria-hidden="true" />
       </a>}
       <div className="contact-action" data-open={open ? 'true' : 'false'} data-placement={placement} onPointerEnter={() => { placePopover(); setPopoverSeen(true); }} onFocusCapture={() => { placePopover(); setPopoverSeen(true); }}>
         <button
           className={`contact-trigger${variant === 'footer' ? ' footer-contact-trigger' : ''}`}
-          data-reveal-surface={variant === 'resume' ? '' : undefined}
+          data-reveal-surface={variant !== 'footer' ? '' : undefined}
           type="button"
           aria-haspopup="dialog"
           aria-expanded={open}
@@ -87,7 +87,7 @@ export function ContactPopover({ lang, variant = 'hero', revealReady = true }: {
           }}
         >
           {variant !== 'footer' && <img src={`${basePath}/icons/wechat.svg`} alt="" aria-hidden="true" />}
-          <span className="contact-label"><TextReveal active={variant === 'footer' ? revealReady : undefined} granularity={variant === 'footer' ? 'line' : 'auto'} delay={variant === 'hero' ? 1100 : variant === 'footer' ? 150 : 0}>{variant === 'footer' ? (zh ? '联系我' : 'Get in touch') : variant === 'resume' ? (zh ? '加我微信' : 'Let’s talk') : (zh ? '聊一聊' : 'Let’s talk')}</TextReveal></span>
+          <span className="contact-label"><TextReveal syncMedia={variant === 'hero'} active={variant === 'footer' ? revealReady : undefined} granularity={variant === 'footer' ? 'line' : 'auto'} delay={variant === 'hero' ? 1100 : variant === 'footer' ? 150 : 0}>{variant === 'footer' ? (zh ? '联系我' : 'Get in touch') : variant === 'resume' ? (zh ? '加我微信' : 'Let’s talk') : (zh ? '聊一聊' : 'Let’s talk')}</TextReveal></span>
         </button>
         <div className={`contact-popover${variant === 'footer' ? ' footer-contact-popover' : ''}`} id={popoverId} role="dialog" aria-label={zh ? '微信联系方式' : 'WeChat contact'}>
           <img className="wechat-qr" src={`${basePath}/profile/shanyao-wechat-qr.jpg`} alt={zh ? '山药的微信二维码' : 'Shanyao’s WeChat QR code'} />
