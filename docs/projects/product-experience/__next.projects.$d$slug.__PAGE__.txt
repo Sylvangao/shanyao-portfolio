@@ -1,6 +1,6 @@
 1:"$Sreact.fragment"
-2:I[8112,["419","static/chunks/app/projects/%5Bslug%5D/page-1ec5f99fd69f95cd.js"],"ProjectDetailClient"]
+2:I[8112,["419","static/chunks/app/projects/%5Bslug%5D/page-57e3104c85032116.js"],"ProjectDetailClient"]
 3:I[484,[],"OutletBoundary"]
 4:"$Sreact.suspense"
-0:{"rsc":["$","$1","c",{"children":[["$","$L2",null,{"project":{"slug":"product-experience","en":"Product experience","zh":"产品体验设计","tone":"blue"}}],null,["$","$L3",null,{"children":["$","$4",null,{"name":"Next.MetadataOutlet","children":"$@5"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"6sLQao7vQeTCdCpU-pcmc"}
+0:{"rsc":["$","$1","c",{"children":[["$","$L2",null,{"project":{"slug":"product-experience","en":"Product experience","zh":"产品体验设计","tone":"blue"}}],null,["$","$L3",null,{"children":["$","$4",null,{"name":"Next.MetadataOutlet","children":"$@5"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"saA_n-cwxely49irjYCAZ"}
 5:null

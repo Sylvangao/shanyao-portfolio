@@ -1105,3 +1105,9 @@ main[lang="zh-CN"] .resume-body h1,main[lang="zh-CN"] .resume-body h2,main[lang=
 }
 .value-card::before,.value-card::after,.portfolio-glass::before,
 .shared-glass-section .portfolio-card:nth-child(-n+2) .portfolio-glass::after{display:none}
+
+/* Mark the current page without shifting the navigation labels. */
+.site-header.shape-header .page-tabs a.active::after{
+  content:"";position:absolute;left:50%;bottom:0;width:4px;height:4px;
+  border-radius:50%;background:#171717;transform:translateX(-50%);pointer-events:none;
+}
