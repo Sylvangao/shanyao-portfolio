@@ -1,12 +1,31 @@
 'use client';
 
+import { useEffect, useRef } from 'react';
 import { TextReveal } from './text-reveal';
 
 export function SiteHeader({ active, lang }: { active: 'work' | 'resume'; lang: 'zh' | 'en' }) {
+  const headerRef = useRef<HTMLElement>(null);
+  useEffect(() => {
+    const header = headerRef.current;
+    if (!header) return;
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      header.dataset.compact = `${window.scrollY > 10}`;
+    };
+    const onScroll = () => { if (!frame) frame = requestAnimationFrame(update); };
+    update();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener('scroll', onScroll);
+    };
+  }, []);
   const suffix = lang === 'zh' ? '?lang=zh' : '?lang=en';
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
   return (
     <header
+      ref={headerRef}
       className="site-header shape-header"
     >
       <a className="wordmark" href={`${basePath}/work/${suffix}`} aria-label="Shanyao work">
