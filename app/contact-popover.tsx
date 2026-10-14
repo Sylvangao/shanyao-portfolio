@@ -54,6 +54,7 @@ export function ContactPopover({ lang, variant = 'hero', revealReady = true }: {
       <div className="contact-action" data-open={open ? 'true' : 'false'} data-placement={placement} onPointerEnter={() => { placePopover(); setPopoverSeen(true); }} onFocusCapture={() => { placePopover(); setPopoverSeen(true); }}>
         <button
           className={`contact-trigger${variant === 'footer' ? ' footer-contact-trigger' : ''}`}
+          data-reveal-surface={variant === 'resume' ? '' : undefined}
           type="button"
           aria-haspopup="dialog"
           aria-expanded={open}
