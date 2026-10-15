@@ -20,9 +20,9 @@ export function ProjectCard({ project, lang, basePath }: {
       const nw = Math.min(labels.offsetWidth + 14, w - 40);
       const nh = labels.offsetHeight + 12;
       const r = 24;
-      const x = w - nw;
-      // The second subpath is the transparent cutout. Slide it in from above.
-      const path = (dy:number) => `path(evenodd, "M0 0H${w}V${h}H0Z M${x-r} ${dy} Q${x} ${dy} ${x} ${dy+r} V${dy+nh-r} Q${x} ${dy+nh} ${x+r} ${dy+nh} H${w-r} Q${w} ${dy+nh} ${w} ${dy+nh+r} H${w+2} V${dy-100} H${x-r} Z")`;
+      // Mirror the top-right cutout into the bottom-left corner. The same
+      // path commands keep the 300 ms shape interpolation continuous.
+      const path = (dy:number) => `path(evenodd, "M0 0H${w}V${h}H0Z M${nw+r} ${h-dy} Q${nw} ${h-dy} ${nw} ${h-dy-r} V${h-dy-nh+r} Q${nw} ${h-dy-nh} ${nw-r} ${h-dy-nh} H${r} Q0 ${h-dy-nh} 0 ${h-dy-nh-r} H-2 V${h-dy+100} H${nw+r} Z")`;
       card.style.setProperty('--project-clip-rest', path(-nh-r-2));
       card.style.setProperty('--project-clip-hover', path(0));
     };
