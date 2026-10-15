@@ -8,6 +8,7 @@ import { ContactPopover } from '../contact-popover';
 import { SiteFooter } from '../site-footer';
 import { GlassSection } from '../glass-section';
 import { projects } from '../project-data';
+import { ProjectCard } from '../project-card';
 
 const advantages = [
   {
@@ -245,19 +246,7 @@ export default function WorkPage() {
       </GlassSection>
       <GlassSection className="portfolio-section" id="portfolio-title" title={zh ? '精选项目' : 'Projects'}>
         <div className="portfolio-grid">
-          {projects.map((project) => (
-            <a className="project-card portfolio-card" href={`${basePath}/projects/${project.slug}/?lang=${lang}`} aria-label={zh ? `查看${project.zh}` : `View ${project.en}`} key={project.slug}>
-              <div className="portfolio-thumb portfolio-glass" data-backdrop={zh ? '精选项目' : 'Projects'}>
-                {project.cover && <img className="portfolio-cover" src={`${basePath}${project.cover}`} alt={zh ? project.zh : project.en} loading="lazy" decoding="async" />}
-                <div className="project-label-notch">
-                  <svg className="project-notch-curve project-notch-top" viewBox="0 0 24 24" aria-hidden="true"><path d="M24 0H0A24 24 0 0 1 24 24Z" /></svg>
-                  <svg className="project-notch-curve project-notch-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M24 0H0A24 24 0 0 1 24 24Z" /></svg>
-                  <div className="service-tags project-labels">{project.labels.map((label,index)=><span className="service-label" key={`${label}-${index}`}>{label}</span>)}</div>
-                </div>
-                <span className="portfolio-arrow" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.65" strokeLinecap="round" strokeLinejoin="round"><path d="M6 14 14 6M6.5 6H14v7.5"/></svg></span>
-              </div>
-            </a>
-          ))}
+          {projects.map((project) => <ProjectCard key={project.slug} project={project} lang={lang} basePath={basePath} />)}
         </div>
       </GlassSection>
       <SiteFooter lang={lang} />
