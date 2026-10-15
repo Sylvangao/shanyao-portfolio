@@ -220,7 +220,7 @@ export default function WorkPage() {
                 event.currentTarget.style.setProperty('--resume-label-x', '0px');
                 event.currentTarget.style.setProperty('--resume-label-y', '0px');
               }}>
-              <span className="hero-resume-label"><TextReveal delay={1100}>{zh ? '简历' : 'Resume'}</TextReveal></span>
+              <span className="hero-resume-label"><TextReveal delay={1100}>{zh ? '简历' : 'Resume'}</TextReveal><svg className="hero-resume-arrow" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3.5 10h12M10.5 5l5 5-5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg></span>
             </a>
           </div>
         </div>

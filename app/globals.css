@@ -1239,9 +1239,12 @@ html[data-preview-theme="dark"] .project-label-notch{--notch-surface:#111216}
 .hero-bottom-actions{display:flex;justify-content:space-between;align-items:center;gap:24px;margin-top:50px}
 .hero-bottom-actions .hero-actions{margin-top:0}
 .hero-resume-link{display:flex;align-items:center;justify-content:center;flex:none;height:58px;min-width:130px;padding:0 28px;border-radius:999px;background:#171717;color:#fff;font-size:17px;box-shadow:0 6px 16px rgba(0,0,0,.08);transition:background .25s ease,box-shadow .25s ease}
-.hero-resume-label{display:block;transform:translate(var(--resume-label-x,0px),var(--resume-label-y,0px));transition:transform .25s cubic-bezier(.22,1,.36,1)}
+.hero-resume-label{display:flex;align-items:center;justify-content:center;gap:10px;transform:translate(var(--resume-label-x,0px),var(--resume-label-y,0px));transition:transform .25s cubic-bezier(.22,1,.36,1)}
 .hero-resume-link:hover{background:#303033;box-shadow:0 8px 20px rgba(0,0,0,.12)}
 .hero-resume-link:focus-visible{outline:3px solid #0084ff;outline-offset:5px}
 @media(max-width:760px){.hero-bottom-actions{gap:16px;margin-top:34px}.hero-resume-link{min-width:116px;height:54px;font-size:16px;padding-inline:24px}}
 @media(max-width:560px){.hero-bottom-actions{align-items:center;gap:12px;margin-top:28px}.hero-resume-link{min-width:98px;height:48px;font-size:15px;padding-inline:20px}}
 @media(prefers-reduced-motion:reduce){.hero-resume-link,.hero-resume-label{transition:none}.hero-resume-label{transform:none}}
+
+.hero-resume-arrow{display:block;flex:none}
+@media(max-width:560px){.hero-resume-label{gap:8px}.hero-resume-arrow{width:18px;height:18px}}
