@@ -1,0 +1,8 @@
+docs
+out
+work
+dist
+.next
+node_modules
+app/fonts
+app/resume/patents.json

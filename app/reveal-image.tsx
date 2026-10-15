@@ -1,41 +1,43 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
-import type { ImgHTMLAttributes } from 'react';
+import { useEffect, useRef, type ImgHTMLAttributes } from 'react';
+import {
+  motion,
+  observeEntrance,
+  observeMotionPreference,
+  prefersReducedMotion,
+  revealElement,
+  whenFontsReady,
+} from './motion/runtime';
 
-// Image surfaces follow the same font-ready, viewport-driven entrance as copy.
 export function RevealImage(props: ImgHTMLAttributes<HTMLImageElement>) {
   const ref = useRef<HTMLImageElement>(null);
   useEffect(() => {
     const image = ref.current;
     if (!image) return;
-    const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
     let disposed = false;
     let animation: Animation | undefined;
-    let observer: IntersectionObserver | undefined;
+    let stopObserving: (() => void) | undefined;
     const show = () => {
       if (disposed) return;
       image.dataset.revealed = 'true';
-      if (motion.matches) return;
-      animation = image.animate([
-        { opacity: .001, filter: 'blur(10px)', transform: 'translateY(10px)' },
-        { opacity: 1, filter: 'blur(0px)', transform: 'translateY(0)' },
-      ], { duration: 500, easing: 'cubic-bezier(.44,0,.56,1)', fill: 'both' });
-      animation.finished.then(() => animation?.cancel(), () => {});
+      if (!prefersReducedMotion()) animation = revealElement(image, motion.resumeDuration);
     };
-    document.fonts.ready.then(() => {
-      if (disposed) return;
-      observer = new IntersectionObserver(entries => {
-        if (entries.some(entry => entry.isIntersecting)) {
-          observer?.disconnect();
-          show();
-        }
-      }, { threshold: .1 });
-      observer.observe(image);
+    whenFontsReady().then(() => {
+      if (!disposed) stopObserving = observeEntrance(image, show);
     });
-    const reduce = () => { if (motion.matches) { animation?.cancel(); image.dataset.revealed = 'true'; } };
-    motion.addEventListener('change', reduce);
-    return () => { disposed = true; observer?.disconnect(); animation?.cancel(); motion.removeEventListener('change', reduce); };
+    const stopMotion = observeMotionPreference((reduced) => {
+      if (reduced) {
+        animation?.cancel();
+        image.dataset.revealed = 'true';
+      }
+    });
+    return () => {
+      disposed = true;
+      stopObserving?.();
+      stopMotion();
+      animation?.cancel();
+    };
   }, []);
-  return <img {...props} ref={ref} data-reveal-media />;
+  return <img {...props} alt={props.alt ?? ''} ref={ref} data-reveal-media />;
 }
