@@ -20,11 +20,16 @@ export function ProjectCard({ project, lang, basePath }: {
       const nw = Math.min(labels.offsetWidth + 14, w - 40);
       const nh = labels.offsetHeight + 12;
       const r = 24;
-      // Mirror the top-right cutout into the bottom-left corner. The same
-      // path commands keep the 300 ms shape interpolation continuous.
-      const path = (dy:number) => `path(evenodd, "M0 0H${w}V${h}H0Z M${nw+r} ${h-dy} Q${nw} ${h-dy} ${nw} ${h-dy-r} V${h-dy-nh+r} Q${nw} ${h-dy-nh} ${nw-r} ${h-dy-nh} H${r} Q0 ${h-dy-nh} 0 ${h-dy-nh-r} H-2 V${h-dy+100} H${nw+r} Z")`;
-      card.style.setProperty('--project-clip-rest', path(-nh-r-2));
-      card.style.setProperty('--project-clip-hover', path(0));
+      // A single bounded outline also clips the glass shadow: subtracting an
+      // outside subpath can accidentally leave a pale slab below the notch.
+      const path = (open:boolean) => {
+        const n = open ? nw : 0;
+        const t = open ? nh : 0;
+        const c = open ? r : 0;
+        return `path("M0 0H${w}V${h}H${n+c} Q${n} ${h} ${n} ${h-c} V${h-t+c} Q${n} ${h-t} ${n-c} ${h-t} H${c} Q0 ${h-t} 0 ${h-t-c} V0Z")`;
+      };
+      card.style.setProperty('--project-clip-rest', path(false));
+      card.style.setProperty('--project-clip-hover', path(true));
     };
     const observer = new ResizeObserver(update);
     observer.observe(card);
