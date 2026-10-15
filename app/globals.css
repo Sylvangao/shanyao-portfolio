@@ -1247,3 +1247,14 @@ html[data-preview-theme="dark"] .project-tag{background:rgba(41,43,53,.56);color
 @media(max-width:560px){.hero-resume-label{gap:8px}.hero-resume-arrow{width:18px;height:18px}}
 
 .notched-project .project-independent-tags{background:transparent;box-shadow:none;border:0}
+
+/* Shadow-only SVG is outside the clipped glass, so every edge stays soft. */
+.project-shape-shadow{position:absolute;inset:0;overflow:visible;pointer-events:none;z-index:0}
+.project-shadow-outline{d:var(--project-clip-rest);transition:d .3s cubic-bezier(.22,1,.36,1)}
+.notched-project:is(:hover,:focus-visible) .project-shadow-outline{d:var(--project-clip-hover)}
+.work-page .notched-project .portfolio-thumb.portfolio-glass{box-shadow:none!important;position:relative;z-index:1}
+.project-independent-tags{overflow:visible;gap:10px;opacity:1;transform:none}
+.project-tag{opacity:0;transform:translate(8px,-10px) scale(.96);background:var(--surface-frost);box-shadow:0 5px 14px rgba(24,34,57,.09);transition:opacity .22s ease,transform .3s cubic-bezier(.22,1,.36,1)}
+.notched-project:is(:hover,:focus-visible) .project-tag{opacity:1;transform:none}
+@media(hover:none){.notched-project .project-shadow-outline{d:var(--project-clip-hover)}.project-tag{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.project-shadow-outline,.project-tag{transition:none!important}}

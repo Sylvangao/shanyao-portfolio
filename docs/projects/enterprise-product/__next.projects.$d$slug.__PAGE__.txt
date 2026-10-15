@@ -2,5 +2,5 @@
 2:I[8112,["419","static/chunks/app/projects/%5Bslug%5D/page-d2c83b772985dd60.js"],"ProjectDetailClient"]
 3:I[484,[],"OutletBoundary"]
 4:"$Sreact.suspense"
-0:{"rsc":["$","$1","c",{"children":[["$","$L2",null,{"project":{"slug":"enterprise-product","en":"Enterprise product","zh":"企业产品","labels":["SaaS","Enterprise","Design system"],"tone":"violet"}}],null,["$","$L3",null,{"children":["$","$4",null,{"name":"Next.MetadataOutlet","children":"$@5"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"_5kxhTrHkK8syhAqUsWG-"}
+0:{"rsc":["$","$1","c",{"children":[["$","$L2",null,{"project":{"slug":"enterprise-product","en":"Enterprise product","zh":"企业产品","labels":["SaaS","Enterprise","Design system"],"tone":"violet"}}],null,["$","$L3",null,{"children":["$","$4",null,{"name":"Next.MetadataOutlet","children":"$@5"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"GytTKG0wIhEIw6uJWtVhF"}
 5:null
