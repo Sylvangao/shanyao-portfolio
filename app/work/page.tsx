@@ -209,9 +209,18 @@ export default function WorkPage() {
           </div>
           <div className="hero-bottom-actions">
             <ContactPopover lang={lang} />
-            <a className="hero-resume-link" data-reveal-surface href={`${basePath}/resume/?lang=${lang}`} aria-label={zh ? '查看我的简历' : 'View my resume'}>
-              <TextReveal delay={1100}>{zh ? '简历' : 'Resume'}</TextReveal>
-              <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M6 18 18 6M6 6h12v12" /></svg>
+            <a className="hero-resume-link" data-reveal-surface href={`${basePath}/resume/?lang=${lang}`} aria-label={zh ? '查看我的简历' : 'View my resume'}
+              onPointerMove={(event) => {
+                if (event.pointerType === 'touch' || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+                const rect = event.currentTarget.getBoundingClientRect();
+                event.currentTarget.style.setProperty('--resume-label-x', `${((event.clientX - rect.left) / rect.width - .5) * 10}px`);
+                event.currentTarget.style.setProperty('--resume-label-y', `${((event.clientY - rect.top) / rect.height - .5) * 8}px`);
+              }}
+              onPointerLeave={(event) => {
+                event.currentTarget.style.setProperty('--resume-label-x', '0px');
+                event.currentTarget.style.setProperty('--resume-label-y', '0px');
+              }}>
+              <span className="hero-resume-label"><TextReveal delay={1100}>{zh ? '简历' : 'Resume'}</TextReveal></span>
             </a>
           </div>
         </div>
