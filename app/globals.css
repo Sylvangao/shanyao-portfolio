@@ -1227,3 +1227,9 @@ html[data-preview-theme="dark"] .project-label-notch{--notch-surface:#111216}
 .project-detail-cover{animation:detail-cover-enter .5s cubic-bezier(.44,0,.56,1) .3s both}
 @keyframes detail-cover-enter{from{opacity:.001;filter:blur(10px);transform:translateY(10px)}to{opacity:1;filter:none;transform:none}}
 @media(prefers-reduced-motion:reduce){.project-detail-cover{animation:none}}
+
+/* Greeting stays centered with the larger hand; the biography wraps naturally. */
+.work-page .hero-introduction>.intro-greeting{display:flex;align-items:center;gap:.35em;min-height:1.7em}
+.work-page .hero-introduction .waving-hand{font-size:1.4em;line-height:1;align-items:center;justify-content:center;flex:none}
+.work-page .hero-introduction>.intro-description{white-space:normal;overflow-wrap:break-word}
+.work-page .hero-introduction .intro-description>.text-reveal::before{content:none}

@@ -194,10 +194,8 @@ export default function WorkPage() {
           <div className="intro-row" data-reveal-scope>
             <img data-reveal-media className="profile-avatar" src={`${basePath}/profile/shanyao-avatar-optimized.svg`} width="58" height="58" alt={zh ? '山药的头像' : 'Portrait of Shanyao'} />
             <div className="hero-note"><p className="hero-introduction">
-              <span className="intro-line"><TextReveal delay={450} syncMedia>{zh ? '我是山药' : 'I’m Shanyao'}</TextReveal>{' '}<span className="waving-hand" role="img" aria-label={zh ? '挥手' : 'Waving hand'}><TextReveal delay={500}>👋</TextReveal></span></span>
-              <span className="intro-line"><TextReveal delay={550}>{zh ? '一名独立产品设计师。' : 'an independent product designer.'}</TextReveal></span>
-              <span className="intro-line"><TextReveal delay={650}>{zh ? '拥有 13 年经验，曾就职于百度、魅族、知乎与腾讯。' : 'Across 13 years at Baidu, Meizu, Zhihu and Tencent,'}</TextReveal></span>
-              <span className="intro-line"><TextReveal delay={850}>{zh ? '我专注于将复杂想法转化为清晰、有效的数字产品。' : 'I’ve turned complex ideas into clear digital products that work.'}</TextReveal></span>
+              <span className="intro-line intro-greeting"><TextReveal delay={450} syncMedia>{zh ? '我是山药' : 'I’m Shanyao'}</TextReveal>{' '}<span className="waving-hand" role="img" aria-label={zh ? '挥手' : 'Waving hand'}><TextReveal delay={500}>👋</TextReveal></span></span>
+              <span className="intro-line intro-description"><TextReveal delay={550}>{zh ? '一名独立产品设计师。' : 'an independent product designer.'}</TextReveal>{' '}<TextReveal delay={650}>{zh ? '拥有 13 年经验，曾就职于百度、魅族、知乎与腾讯。' : 'Across 13 years at Baidu, Meizu, Zhihu and Tencent,'}</TextReveal>{' '}<TextReveal delay={850}>{zh ? '我专注于将复杂想法转化为清晰、有效的数字产品。' : 'I’ve turned complex ideas into clear digital products that work.'}</TextReveal></span>
             </p>
           <div className="service-summary" aria-label={zh ? '设计服务范围' : 'Design services'}>
             <ul className="service-tags">
