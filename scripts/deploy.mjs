@@ -1,4 +1,5 @@
 import { spawnSync } from 'node:child_process';
+import { pagesRunId } from './pages-run.mjs';
 
 function run(command, args, capture = false) {
   const result = spawnSync(command, args, {
@@ -37,12 +38,13 @@ if (run('git', ['diff', '--cached', '--name-only', '--', 'docs'], true)) {
 run('git', ['-c', 'http.version=HTTP/1.1', 'push', 'origin', 'main']);
 const sha = run('git', ['rev-parse', 'HEAD'], true);
 // Confirm the actual deployment for this commit, rather than the previous run.
+console.log(`Waiting for GitHub Pages deployment of ${sha.slice(0, 7)}…`);
 let runId;
 for (let attempt = 0; attempt < 18; attempt++) {
   const runs = JSON.parse(
     run('gh', ['run', 'list', '--commit', sha, '--limit', '5', '--json', 'databaseId,name'], true),
   );
-  runId = runs.find((item) => item.name === 'pages-build-deployment')?.databaseId;
+  runId = pagesRunId(runs);
   if (runId) break;
   await new Promise((resolve) => setTimeout(resolve, 5000));
 }
