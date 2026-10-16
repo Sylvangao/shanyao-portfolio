@@ -54,7 +54,12 @@
   transform: none;
 }
 .work-page .overlap-heading {
-  opacity: 1;
+  opacity: var(--overlap-progress, 0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .work-page .overlap-heading {
+    opacity: 1;
+  }
 }
 .site-footer[data-reveal-ready='false'] .text-reveal-token {
   opacity: 0.001;

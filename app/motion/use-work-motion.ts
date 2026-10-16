@@ -91,10 +91,11 @@ export function useWorkMotion() {
           Math.min(1, (window.innerHeight * 0.72 + 240 - rect.top) / (window.innerHeight * 0.62)),
         );
         const eased = progress * progress * (3 - 2 * progress);
-        const titleReveal = Math.max(0, Math.min(1, (progress - 0.55) / 0.35));
+        // Delay both headings by ~10% of viewport height; cards retain their timing.
+        const titleReveal = Math.max(0, Math.min(1, (progress - 0.72) / 0.28));
         const titleRevealEased = titleReveal * titleReveal * (3 - 2 * titleReveal);
         title.style.setProperty('--overlap-progress', `${titleRevealEased}`);
-        title.style.setProperty('--overlap-title-shift', `${(1 - eased) * 100}px`);
+        title.style.setProperty('--overlap-title-shift', `${(1 - titleRevealEased) * 100}px`);
         sectionCards.forEach((card, index) => {
           // Stacked cards must reveal as each card enters the viewport.
           const cardRect = measured.get(card)!;
