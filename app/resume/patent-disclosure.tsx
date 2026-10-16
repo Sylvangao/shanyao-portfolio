@@ -68,7 +68,6 @@ export function PatentDisclosure({
       ],
       {
         duration: reduced ? 0 : motion.disclosureDuration,
-        delay: reduced || expanded ? 0 : motion.disclosureCloseLead,
         easing: 'cubic-bezier(.22,1,.36,1)',
         fill: 'both',
       },

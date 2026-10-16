@@ -9,7 +9,6 @@ export const motion = {
   fontTimeout: 2000,
   disclosureDuration: 400,
   disclosureContentLead: 260,
-  disclosureCloseLead: 220,
 } as const;
 
 let fontsReady: Promise<void> | undefined;
