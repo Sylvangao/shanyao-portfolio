@@ -2,5 +2,5 @@
 2:I[8112,["419","static/chunks/app/projects/%5Bslug%5D/page-a958da2f73421117.js"],"ProjectDetailClient"]
 3:I[484,[],"OutletBoundary"]
 4:"$Sreact.suspense"
-0:{"rsc":["$","$1","c",{"children":[["$","$L2",null,{"project":{"slug":"growth-experience","en":"Growth experience","zh":"增长体验","labels":["Product","Growth"],"tone":"amber"}}],null,["$","$L3",null,{"children":["$","$4",null,{"name":"Next.MetadataOutlet","children":"$@5"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"BeqX5vBjmodKx4Buzu10p"}
+0:{"rsc":["$","$1","c",{"children":[["$","$L2",null,{"project":{"slug":"growth-experience","en":"Growth experience","zh":"增长体验","labels":["Product","Growth"],"tone":"amber"}}],null,["$","$L3",null,{"children":["$","$4",null,{"name":"Next.MetadataOutlet","children":"$@5"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"lkiirYlUT9vlS1tVUhQr6"}
 5:null
