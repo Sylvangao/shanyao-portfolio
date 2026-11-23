@@ -315,7 +315,7 @@ main[lang='zh-CN'] .value-card p {
 .portfolio-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 36px;
+  gap: 72px 36px;
 }
 .portfolio-card {
   display: block;
@@ -735,7 +735,7 @@ main[lang='zh-CN'] .value-card p {
   }
   .portfolio-grid {
     grid-template-columns: 1fr;
-    gap: 24px;
+    gap: 48px 24px;
   }
   .portfolio-thumb {
     border-radius: 28px;
