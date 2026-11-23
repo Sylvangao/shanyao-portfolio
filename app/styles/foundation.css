@@ -1557,7 +1557,12 @@ a {
   }
 }
 main[lang='zh-CN'] .focus-title .headline-line {
-  gap: 0 0.095em;
+  gap: 0 0.015em;
+}
+/* Apply identical Chinese metrics to both sharp and blurred headline layers. */
+main[lang='zh-CN'] .focus-title .headline-word:not(.is-strong) {
+  font-weight: 350;
+  font-variation-settings: 'wght' 350;
 }
 main[lang='zh-CN'] .hero-note p {
   letter-spacing: -0.003em;
