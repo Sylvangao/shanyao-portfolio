@@ -551,6 +551,7 @@ main[lang='zh-CN'] .value-card p {
     box-shadow 0.3s ease;
 }
 .footer-contact-trigger .contact-label {
+  white-space: nowrap;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -919,4 +920,9 @@ main[lang='zh-CN'] .value-card p {
     width: 16px;
     height: 16px;
   }
+}
+
+.footer-contact-trigger .contact-label > .text-reveal {
+  flex: none;
+  white-space: nowrap;
 }
