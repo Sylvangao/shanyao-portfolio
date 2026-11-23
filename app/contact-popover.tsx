@@ -158,7 +158,7 @@ export function ContactPopover({
                 aria-hidden="true"
               >
                 <path
-                  d="M3.5 10h12M10.5 5l5 5-5 5"
+                  d="M4.5 15.5l11-11M5.5 4.5h10v10"
                   stroke="currentColor"
                   strokeWidth="1.5"
                   strokeLinecap="round"

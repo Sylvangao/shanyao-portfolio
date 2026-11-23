@@ -926,3 +926,16 @@ main[lang='zh-CN'] .value-card p {
   flex: none;
   white-space: nowrap;
 }
+
+/* Lift the contact overlay above the decorative footer reveal curve. */
+.site-footer:has(
+  .footer-contact-root .contact-action:is(:hover, :focus-within, [data-open='true'])
+) {
+  overflow: visible;
+  z-index: 10;
+}
+.footer-cta:has(
+  .footer-contact-root .contact-action:is(:hover, :focus-within, [data-open='true'])
+) {
+  z-index: 3;
+}

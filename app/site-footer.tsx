@@ -50,12 +50,12 @@ export function SiteFooter({ lang }: { lang: 'zh' | 'en' }) {
             <div className="footer-heading-copy">
               <h2>
                 <TextReveal active={revealReady} granularity="line">
-                  {zh ? '一起打造更好的产品' : 'Let’s work together'}
+                  {zh ? '一起合作' : 'Let’s work together'}
                 </TextReveal>
               </h2>
               <p className="footer-tagline">
                 <TextReveal active={revealReady} granularity="line" delay={100}>
-                  to make great things.
+                  {zh ? '打造出色的产品与体验。' : 'to make great things.'}
                 </TextReveal>
               </p>
             </div>
