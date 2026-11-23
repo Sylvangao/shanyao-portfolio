@@ -148,7 +148,7 @@ main[lang='zh-CN'] .value-card p {
   display: none;
 }
 .value-cards {
-  gap: 18px;
+  gap: 18px 36px;
 }
 .value-card {
   position: relative;
