@@ -62,6 +62,10 @@ export default function WorkPage() {
       <section className="work-hero">
         <div className="ambient-feather" aria-hidden="true" />
         <div className="hero-copy">
+          <div className="availability-status" data-reveal-surface>
+            <span className="availability-dot" aria-hidden="true" />
+            <TextReveal>Open for work</TextReveal>
+          </div>
           <FocusHeadline words={zh ? ['化繁为简，','设计真正有效的产品。'] : ['Complexity made clear.','Products designed to grow.']} label={zh ? '化繁为简，设计真正有效的产品' : 'Complexity made clear. Products designed to grow'} href={zh ? '/work?lang=zh' : '/work'} emphasis={zh ? ['化繁为简', '有效', '产品'] : ['Complexity', 'clear', 'grow']} />
           <div className="intro-row" data-reveal-scope>
             <img data-reveal-media className="profile-avatar" src={`${basePath}/profile/shanyao-avatar-optimized.svg`} width="58" height="58" alt={zh ? '山药的头像' : 'Portrait of Shanyao'} />
