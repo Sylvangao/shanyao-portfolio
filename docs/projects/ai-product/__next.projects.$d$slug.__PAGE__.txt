@@ -2,5 +2,5 @@
 2:I[6838,["419","static/chunks/app/projects/%5Bslug%5D/page-c4f2abf1d3c7a4f8.js"],"ProjectDetailClient"]
 3:I[887,[],"OutletBoundary"]
 4:"$Sreact.suspense"
-0:{"rsc":["$","$1","c",{"children":[["$","$L2",null,{"project":{"slug":"ai-product","en":"AI product","zh":"AI 产品","labels":["AI","Product","SaaS"],"tone":"cyan"}}],null,["$","$L3",null,{"children":["$","$4",null,{"name":"Next.MetadataOutlet","children":"$@5"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"MMN4CWeiXSygosTKvmso_"}
+0:{"rsc":["$","$1","c",{"children":[["$","$L2",null,{"project":{"slug":"ai-product","en":"AI product","zh":"AI 产品","labels":["AI","Product","SaaS"],"tone":"cyan"}}],null,["$","$L3",null,{"children":["$","$4",null,{"name":"Next.MetadataOutlet","children":"$@5"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"8V0TxipY5BxvDVZw4ZBLp"}
 5:null
