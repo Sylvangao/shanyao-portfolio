@@ -551,6 +551,11 @@ main[lang='zh-CN'] .value-card p {
     box-shadow 0.3s ease;
 }
 .footer-contact-trigger .contact-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  gap: 8px;
   transform: translate3d(var(--contact-label-x), var(--contact-label-y), 0);
   transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
@@ -899,5 +904,19 @@ main[lang='zh-CN'] .value-card p {
     --footer-button-shift: 0px !important;
     --footer-chrome-reveal: 1 !important;
     --footer-text-clarity: 1 !important;
+  }
+}
+
+.footer-contact-arrow {
+  display: block;
+  flex: none;
+}
+@media (max-width: 560px) {
+  .footer-contact-trigger .contact-label {
+    gap: 6px;
+  }
+  .footer-contact-arrow {
+    width: 16px;
+    height: 16px;
   }
 }

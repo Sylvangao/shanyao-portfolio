@@ -130,7 +130,7 @@ export function ContactPopover({
           )}
           <span className="contact-label">
             <TextReveal
-              syncMedia={variant === 'hero'}
+              syncMedia={variant === 'hero' || variant === 'footer'}
               active={variant === 'footer' ? revealReady : undefined}
               granularity={variant === 'footer' ? 'line' : 'auto'}
               delay={variant === 'hero' ? 1100 : variant === 'footer' ? 150 : 0}
@@ -147,6 +147,25 @@ export function ContactPopover({
                     ? '聊一聊'
                     : 'Let’s talk'}
             </TextReveal>
+            {variant === 'footer' && (
+              <svg
+                data-reveal-media
+                className="footer-contact-arrow"
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                aria-hidden="true"
+              >
+                <path
+                  d="M3.5 10h12M10.5 5l5 5-5 5"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            )}
           </span>
         </button>
         <div
