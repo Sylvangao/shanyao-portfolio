@@ -393,7 +393,7 @@ html[data-preview-theme='dark'] .availability-status {
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  .availability-status .availability-dot::after {
+  .availability-status[data-revealed='true'] .availability-dot::after {
     animation: none;
   }
 }
