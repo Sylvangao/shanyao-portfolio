@@ -336,7 +336,7 @@ main[lang='zh-CN'] .value-card p {
 .portfolio-thumb {
   position: relative;
   isolation: isolate;
-  aspect-ratio: 1.16/1;
+  aspect-ratio: 4/3;
   overflow: hidden;
   border-radius: 38px;
   box-shadow: 0 16px 40px rgba(21, 31, 52, 0.07);
@@ -710,7 +710,7 @@ main[lang='zh-CN'] .value-card p {
 .project-detail-cover {
   position: relative;
   isolation: isolate;
-  aspect-ratio: 1.8/1;
+  aspect-ratio: 4/3;
   max-width: 1200px;
   margin: 0 auto;
   overflow: hidden;
@@ -813,7 +813,7 @@ main[lang='zh-CN'] .value-card p {
   .project-detail-cover {
     margin: 0 14px;
     border-radius: 30px;
-    aspect-ratio: 1/1;
+    aspect-ratio: 4/3;
   }
   .project-detail-placeholder {
     margin-top: 40px;
