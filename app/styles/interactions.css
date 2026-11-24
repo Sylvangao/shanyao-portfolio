@@ -333,3 +333,104 @@ html[data-preview-theme='dark'] .project-tag {
     transition: none !important;
   }
 }
+
+/* Pointer-relative depth is independent of the outer scroll reveal. */
+.project-tilt-surface {
+  position: relative;
+  width: 100%;
+  transform-origin: center;
+}
+.project-tilt-light {
+  position: absolute;
+  z-index: 3;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  opacity: 0;
+  background: radial-gradient(
+    ellipse at var(--project-light-x, 50%) var(--project-light-y, 50%),
+    rgba(255, 255, 255, 0.3),
+    transparent 68%
+  );
+  transition: opacity 0.35s ease;
+}
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .notched-project .project-tilt-surface {
+    transform: perspective(900px) rotateX(var(--project-rotate-x, 0deg))
+      rotateY(var(--project-rotate-y, 0deg)) scale(var(--project-hover-scale, 1));
+    transform-style: preserve-3d;
+  }
+  .notched-project[data-tilting='true'] .project-tilt-surface {
+    will-change: transform;
+  }
+  .notched-project[data-tilt-hovered='true'] .project-tilt-light {
+    opacity: 1;
+  }
+  .notched-project .project-independent-tags {
+    --content-depth: 32px;
+    translate: calc(var(--project-depth-x, 0) * var(--content-depth))
+      calc(var(--project-depth-y, 0) * var(--content-depth));
+  }
+}
+
+.value-card {
+  position: relative;
+}
+.value-card > :is(h3, p) {
+  position: relative;
+  z-index: 1;
+}
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .work-page .value-card {
+    transform: translate3d(0, var(--value-card-shift, 42px), 0) perspective(900px)
+      rotateX(var(--project-rotate-x, 0deg)) rotateY(var(--project-rotate-y, 0deg))
+      scale(var(--project-hover-scale, 1));
+  }
+  .value-card[data-tilt-hovered='true'] .project-tilt-light {
+    opacity: 1;
+  }
+}
+
+@media (min-width: 561px) and (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .contact-action:is(:hover, :focus-within, [data-open='true']) .contact-popover {
+    transform: perspective(900px) rotateX(var(--project-rotate-x, 0deg))
+      rotateY(var(--project-rotate-y, 0deg)) scale(var(--project-hover-scale, 1));
+    transform-origin: center;
+  }
+  .contact-popover[data-tilting='true'] {
+    transition-property: opacity, visibility;
+  }
+}
+
+/* Depth projection survives the glass's backdrop/clip flattening. Individual
+   translate composes with reveal transforms rather than replacing them. */
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .notched-project .portfolio-cover,
+  .value-card > h3,
+  .value-card > p {
+    translate: calc(var(--project-depth-x, 0) * var(--content-depth))
+      calc(var(--project-depth-y, 0) * var(--content-depth));
+  }
+  .notched-project .portfolio-cover {
+    --content-depth: 64px;
+  }
+  .value-card > h3 {
+    --content-depth: 32px;
+  }
+  .value-card > p {
+    --content-depth: 16px;
+  }
+}
+@media (min-width: 561px) and (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .contact-popover > .wechat-qr,
+  .contact-popover > .contact-popover-copy {
+    translate: calc(var(--project-depth-x, 0) * var(--content-depth))
+      calc(var(--project-depth-y, 0) * var(--content-depth));
+  }
+  .contact-popover > .wechat-qr {
+    --content-depth: 32px;
+  }
+  .contact-popover > .contact-popover-copy {
+    --content-depth: 16px;
+  }
+}

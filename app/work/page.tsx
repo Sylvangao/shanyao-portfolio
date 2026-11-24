@@ -1,5 +1,7 @@
 'use client';
 
+import { attachProjectTilt } from '../motion/project-tilt';
+
 import { useEffect } from 'react';
 import { useLanguage } from '../use-language';
 import { whenFontsReady } from '../motion/runtime';
@@ -95,6 +97,7 @@ export default function WorkPage() {
           {advantages.map((item) => (
             <article
               className="value-card"
+              ref={(node) => { if (node) return attachProjectTilt(node); }}
               key={item.en}
               data-backdrop={zh ? '为什么是我' : 'Why me'}
               style={{
@@ -102,6 +105,7 @@ export default function WorkPage() {
                 WebkitBackdropFilter: 'blur(72px) saturate(112%) brightness(1.08)',
               }}
             >
+              <span className="project-tilt-light" aria-hidden="true" />
               <h3><TextReveal>{zh ? item.zh : item.en}</TextReveal></h3>
               <p><TextReveal delay={150}>{zh ? item.zhCopy : item.enCopy}</TextReveal></p>
             </article>

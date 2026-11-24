@@ -1,5 +1,6 @@
 'use client';
 
+import { attachProjectTilt } from './motion/project-tilt';
 import { TextReveal } from './text-reveal';
 import { useCallback, useEffect, useId, useRef, useState } from 'react';
 
@@ -170,6 +171,9 @@ export function ContactPopover({
         </button>
         <div
           className={`contact-popover${variant === 'footer' ? ' footer-contact-popover' : ''}`}
+          ref={(node) => {
+            if (node) return attachProjectTilt(node);
+          }}
           id={popoverId}
           role="dialog"
           aria-label={zh ? '微信联系方式' : 'WeChat contact'}
