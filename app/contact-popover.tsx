@@ -180,7 +180,7 @@ export function ContactPopover({
         >
           <img
             className="wechat-qr"
-            src={`${basePath}/profile/shanyao-wechat-qr.jpg`}
+            src={`${basePath}/profile/shanyao-wechat-qr.svg`}
             alt={zh ? '山药的微信二维码' : 'Shanyao’s WeChat QR code'}
           />
           <div className="contact-popover-copy">
