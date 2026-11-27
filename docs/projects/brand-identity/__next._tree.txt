@@ -1,4 +1,4 @@
 :HL["/shanyao-portfolio/_next/static/css/b86b764b626f0b8c.css","style"]
 :HL["/shanyao-portfolio/_next/static/css/465a1cb8dab49e0d.css","style"]
-:HL["/shanyao-portfolio/_next/static/css/636f4913e162a158.css","style"]
-0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"projects","param":null,"prefetchHints":0,"slots":{"children":{"name":"slug","param":{"type":"d","key":"brand-identity","siblings":null},"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}}}},"staleTime":300,"buildId":"jjkGuDG4YDdPKfh6dNwGp"}
+:HL["/shanyao-portfolio/_next/static/css/792ff798fe3b2fc4.css","style"]
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"projects","param":null,"prefetchHints":0,"slots":{"children":{"name":"slug","param":{"type":"d","key":"brand-identity","siblings":null},"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}}}},"staleTime":300,"buildId":"4CvsnwdZDyreNFXGzNKCr"}
