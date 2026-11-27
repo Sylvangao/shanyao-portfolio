@@ -4,7 +4,15 @@ import { useEffect, useRef } from 'react';
 import { TextReveal } from './text-reveal';
 import { observeScroll } from './motion/runtime';
 
-export function SiteHeader({ active, lang }: { active: 'work' | 'resume'; lang: 'zh' | 'en' }) {
+export function SiteHeader({
+  active,
+  lang,
+  languagePath,
+}: {
+  active: 'work' | 'resume';
+  lang: 'zh' | 'en';
+  languagePath?: string;
+}) {
   const headerRef = useRef<HTMLElement>(null);
   useEffect(() => {
     const header = headerRef.current;
@@ -43,7 +51,7 @@ export function SiteHeader({ active, lang }: { active: 'work' | 'resume'; lang: 
       </nav>
       <a
         className="language-switch"
-        href={`${basePath}/${active === 'work' ? 'work' : 'resume'}/?lang=${lang === 'zh' ? 'en' : 'zh'}`}
+        href={`${basePath}${languagePath ?? `/${active === 'work' ? 'work' : 'resume'}/`}?lang=${lang === 'zh' ? 'en' : 'zh'}`}
         aria-label={lang === 'zh' ? 'Switch to English' : '切换到中文'}
       >
         <span className={lang === 'en' ? 'selected' : ''}>

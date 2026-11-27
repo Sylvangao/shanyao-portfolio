@@ -11,7 +11,14 @@ export function ProjectCard({
   lang,
   basePath,
 }: {
-  project: { slug: string; en: string; zh: string; cover?: string; labels: string[] };
+  project: {
+    slug: string;
+    en: string;
+    zh: string;
+    cover?: string;
+    coverLayout?: 'bleed';
+    labels: string[];
+  };
   lang: 'en' | 'zh';
   basePath: string;
 }) {
@@ -90,7 +97,7 @@ export function ProjectCard({
         >
           {project.cover && (
             <img
-              className="portfolio-cover"
+              className={`portfolio-cover${project.coverLayout === 'bleed' ? ' portfolio-cover-bleed' : ''}`}
               src={`${basePath}${project.cover}`}
               alt={lang === 'zh' ? project.zh : project.en}
               loading="lazy"

@@ -4,14 +4,17 @@ type Project = {
   zh: string;
   tone: string;
   cover?: string;
+  coverLayout?: 'bleed';
   labels: string[];
 };
 
 export const projects: readonly Project[] = [
   {
-    slug: 'product-experience',
-    en: 'Product experience',
-    zh: '产品体验设计',
+    slug: 'yunji',
+    cover: '/projects/yunji/cover.webp',
+    coverLayout: 'bleed',
+    en: 'Yunji · Content collaboration',
+    zh: '云迹 · 企业内容协作',
     labels: ['SaaS', 'Product', 'Design system'],
     tone: 'blue',
   },

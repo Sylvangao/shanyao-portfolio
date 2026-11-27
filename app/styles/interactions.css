@@ -434,3 +434,11 @@ html[data-preview-theme='dark'] .project-tag {
     --content-depth: 16px;
   }
 }
+
+/* Finished 4:3 cover compositions fill the card; transparent artwork retains
+   its original inset. Overscan keeps pointer parallax from exposing edges. */
+.notched-project .portfolio-cover-bleed {
+  padding: 0;
+  object-fit: cover;
+  transform: scale(1.04);
+}

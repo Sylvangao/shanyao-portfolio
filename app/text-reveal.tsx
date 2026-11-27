@@ -95,7 +95,7 @@ export function TextReveal({
       words.forEach((word, index) => animations.push(revealElement(word, duration, delays[index])));
       if (media) animations.push(revealElement(media, duration, delay));
     };
-    const stopObserving = observeEntrance(element, () => {
+    const stopObserving = observeEntrance(surface ?? element, () => {
       visible = true;
       play();
     });
