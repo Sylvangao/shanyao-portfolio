@@ -1,5 +1,6 @@
 /* Yunji is scoped so long-form case layouts cannot alter the home or resume. */
 .yunji-case {
+  display: flow-root;
   position: relative;
   isolation: isolate;
   padding-bottom: 0;
@@ -13,7 +14,7 @@
   position: absolute;
   z-index: -1;
   pointer-events: none;
-  top: 30px;
+  top: 0;
   right: 0;
   width: min(1100px, 100%);
   height: 880px;
@@ -22,7 +23,7 @@
     radial-gradient(ellipse at 92% 52%, #bbddff66, transparent 65%);
 }
 .yunji-hero {
-  padding-top: 160px;
+  padding-top: 48px;
   padding-bottom: 52px;
 }
 .yunji-back {
@@ -31,7 +32,7 @@
   gap: 12px;
   color: #727278;
   font-size: 14px;
-  margin-bottom: 70px;
+  margin-bottom: 32px;
   transition: color 0.2s;
 }
 .yunji-back:hover {
@@ -345,11 +346,11 @@
     width: calc(100% - 40px);
   }
   .yunji-hero {
-    padding-top: 120px;
+    padding-top: 36px;
     padding-bottom: 32px;
   }
   .yunji-back {
-    margin-bottom: 48px;
+    margin-bottom: 28px;
     font-size: 13px;
   }
   .yunji-hero h1 {

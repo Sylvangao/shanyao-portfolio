@@ -4,7 +4,11 @@
   isolation: isolate;
 }
 .notched-project .portfolio-thumb {
-  clip-path: var(--project-clip-rest, inset(0));
+  /* The animated path is the single corner geometry. A native circular
+     border-radius additionally clipped its quadratic corners, leaving white
+     crescents between the glass and the SVG shadow's matching outline. */
+  border-radius: 0;
+  clip-path: var(--project-clip-rest, inset(0 round 38px));
   transition: clip-path 0.3s cubic-bezier(0.22, 1, 0.36, 1);
   border: 0 !important;
 }
@@ -435,10 +439,32 @@ html[data-preview-theme='dark'] .project-tag {
   }
 }
 
-/* Finished 4:3 cover compositions fill the card; transparent artwork retains
-   its original inset. Overscan keeps pointer parallax from exposing edges. */
+/* A 2000×1500 composition starts at a centered 1600×1200 crop (1.25×).
+   Keep the full composition anchored while the card tilts, so the complete
+   hover frame never exposes an empty strip at an image edge. */
 .notched-project .portfolio-cover-bleed {
   padding: 0;
   object-fit: cover;
-  transform: scale(1.04);
+  transform-origin: center;
+  transform: scale(1.25);
+  translate: none;
+  transition: transform 650ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+@media (hover: hover) and (pointer: fine) {
+  .notched-project:hover .portfolio-cover-bleed {
+    transform: scale(1);
+  }
+}
+.notched-project:focus-visible .portfolio-cover-bleed {
+  transform: scale(1);
+}
+@media (hover: none) {
+  .notched-project .portfolio-cover-bleed {
+    transform: scale(1);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .notched-project .portfolio-cover-bleed {
+    transition: none;
+  }
 }
